@@ -167,17 +167,51 @@ def metadata(img_path=IMAGE_PATH):
     <td align="center">
   <a href="https://github.com/Heestroy-118">
     <img src="markdown/ljh.jpg" width="100px;" alt=""/>
-    문재희
+    문재희<br>
     Front End
   </a>
 </td>
-    <td align="center"><img src="markdown/yhj.jpg" width="100px;" alt=""/><br /><b>정환희</b><br/>FE</td>
+    <td align="center">
+  <a href="https://github.com/HwanHee927">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    정환희<br>
+    Front End
+  </a>
+</td>
 </tr>
   <tr>
-    <td align="center"><img src="markdown/ysi.png" width="100px;" alt=""/><br /><b>김유정</b><br/>BE</td>
-    <td align="center"><img src="markdown/lhk.jpg" width="100px;" alt=""/><br /><b>박광호</b><br/>BE</td>
-    <td align="center"><img src="markdown/csy.jpg" width="100px;" alt=""/><br /><b>원치현</b><br/>BE</td>
-    <td align="center"><img src="markdown/csy.jpg" width="100px;" alt=""/><br /><b>소진오</b></b><br/>BE</td>
+    </td>
+    <td align="center">
+  <a href="https://github.com/chihyeonwon">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    원치현<br>
+    Back End
+  </a>
+</td>
+    </td>
+    <td align="center">
+  <a href="https://github.com/jin0792">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    소진오<br>
+    Back End
+  </a>
+</td>
+    </td>
+    <td align="center">
+  <a href="https://github.com/doncici77">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    박광호<br>
+    Back End
+  </a>
+</td>
+    </td>
+    <td align="center">
+  <a href="https://github.com/youngmumi">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    김유정<br>
+    Back End
+  </a>
+</td>
   <tr>
   </tr>
 <table>

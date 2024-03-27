@@ -164,7 +164,13 @@ def metadata(img_path=IMAGE_PATH):
 # Collaborators
 <table>
   <tr>
-    <td align="center"><img src="markdown/ljh.jpg" width="100px;" alt=""/><br /><b>문재희</b><br/>FE</td>
+    <td align="center">
+  <a href="https://github.com/Heestroy-118">
+    <img src="markdown/ljh.jpg" width="100px;" alt=""/>
+    문재희
+    Front End
+  </a>
+</td>
     <td align="center"><img src="markdown/yhj.jpg" width="100px;" alt=""/><br /><b>정환희</b><br/>FE</td>
 </tr>
   <tr>

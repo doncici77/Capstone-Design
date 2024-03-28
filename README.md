@@ -217,9 +217,7 @@ def metadata(img_path=IMAGE_PATH):
 <table>
 
 ## 3월 28일 팀회의 피드백
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ffa874b9-9814-4196-b09a-f00ba2782ddc)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/559345f0-2c6f-4976-9da0-cc13425f920b)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/28c25b5a-65f9-4a82-99e6-03455b85225c)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/372bfaf1-415c-4c59-83e2-fb9330eb499f)
 ```
 검색 결과 - 사진으로 블록형식으로 여러 개 보일 수 있게
 -> gridView의 형태로 사진으로 여러 개를 보여줄 수 있게끔 수정한다.

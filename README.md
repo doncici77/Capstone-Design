@@ -210,19 +210,26 @@ def metadata(img_path=IMAGE_PATH):
     <img src="markdown/ljh.jpg" width="100px;" alt=""/>
     김유정<br>
     Back End
-  </a>
+  </a>  
 </td>
   <tr>
   </tr>
 <table>
 
 ## 3월 28일 팀회의 피드백
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ffa874b9-9814-4196-b09a-f00ba2782ddc)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/559345f0-2c6f-4976-9da0-cc13425f920b)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/28c25b5a-65f9-4a82-99e6-03455b85225c)
 ```
 검색 결과 - 사진으로 블록형식으로 여러 개 보일 수 있게
+-> gridView의 형태로 사진으로 여러 개를 보여줄 수 있게끔 수정한다.
 
 물건등록 페이지 - 사진을 찍어서 올리는 기능, 사진 가져오는 기능
+-> 사진을 찍어서 올리는 기능, 가져오는 기능을 드랍 메뉴의 형태로 구현, 사진을 여러 개를 추가할 수 있는 기능을 구현,
+AI기능을 이용하여 여러 개의 사진을 분석하여 물건이 어떤 물건인지 파악하는 데 입력값으로 이용될 수가 있다.
 
 지도 api 기능은 과할 수도 있다
+-> 물건 등록 페이지의 지도 api 기능을 빼고 단순히 위치만을 입력하게 한다.
 
 보관장소 입력 시 굳이 채팅 기능이 필요 하지 않을 수 있다.
 보관장소 입력 안 할 시 채팅 기능이 필요 할 수도 있다.

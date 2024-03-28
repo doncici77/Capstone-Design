@@ -236,3 +236,8 @@ AI기능을 이용하여 여러 개의 사진을 분석하여 물건이 어떤 �
 
 기능 정의서 작성
 ```
+[원주캠퍼스 지도의 건물](https://www.gwnu.ac.kr/newCampusMap/kr/view.do)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/b6cf8e7a-a1da-4cf9-8de6-24fcb000fa8e)
+```
+실제 지도에 있는 건물들의 명칭 데이터를 분실물 데이터베이스 Ref의 값(프로퍼티)들로 지정한다.
+```

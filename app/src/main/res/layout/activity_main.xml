@@ -20,19 +20,10 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/settingBtn"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints"></TextView>
 
-        <ImageView
-            android:id="@+id/settingBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/main_menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

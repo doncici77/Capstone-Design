@@ -1,24 +1,31 @@
 package com.example.giveback.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.giveback.R
+import com.example.giveback.auth.LoginActivity
 import com.example.giveback.databinding.FragmentMyBinding
+import com.google.firebase.auth.FirebaseAuth
 
 // 사용자 페이지
 class MyFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var binding: FragmentMyBinding
+
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
+
     }
 
     override fun onCreateView(
@@ -27,6 +34,11 @@ class MyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my, container, false)
+
+        auth = FirebaseAuth.getInstance()
+
+
+
 
         binding.tipTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_myFragment_to_tipFragment)

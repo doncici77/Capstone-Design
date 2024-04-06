@@ -49,7 +49,7 @@ class GetFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_get, container, false)
 
         // BoardListLVAdpater와 연결
-        boardRVAdapter = GetBoardListLVAdapter(boardDataList)
+        boardRVAdapter = GetBoardListLVAdapter(boardDataList, boardKeyList)
         binding.boardListView.adapter = boardRVAdapter
 
         // 게시글 리스트 중 하나를 클릭했을 때

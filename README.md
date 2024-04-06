@@ -318,3 +318,8 @@ QnA - 제목 내용 상태
 ```
 게시물 작성해서 어뎁터의 키리스트를 get_board_list의 매개변수로 넘겨준다음 해당하는 스토리지 경로의 이미지를 추가했다.
 ```
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/582d1933-08fa-46a5-805c-004fcfae4ed5)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/c1df5236-aa5a-409a-bba7-4a0f709f28f0)
+```
+습득 위치 옆의 물음표 이미지를 클릭하면 건물 조직도 홈페이지로 이동한다.
+```

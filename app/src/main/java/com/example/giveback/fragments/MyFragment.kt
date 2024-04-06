@@ -21,6 +21,9 @@ class MyFragment : Fragment() {
     private lateinit var binding: FragmentMyBinding
 
     private lateinit var auth: FirebaseAuth
+
+    val user = FirebaseAuth.getInstance().currentUser
+    val email = user?.email.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,8 +40,7 @@ class MyFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
 
-
-
+        binding.email.setText("사용자: ${email}")
 
         binding.tipTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_myFragment_to_tipFragment)

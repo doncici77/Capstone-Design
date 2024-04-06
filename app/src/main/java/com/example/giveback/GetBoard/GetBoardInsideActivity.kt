@@ -18,6 +18,7 @@ import com.example.giveback.databinding.ActivityGetBoardInsideBinding
 import com.example.giveback.utils.FBAuth
 import com.example.giveback.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -96,17 +97,21 @@ class GetGetBoardInsideActivity : AppCompatActivity() {
         })
     }
 
-    // 게시글 데이터를 가져오는 함수
+    // 게시글을 가져오는 함수
     private fun getBoardData(key: String) {
         val postListner = object: ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val dataModel = dataSnapshot.getValue(GetBoardModel::class.java)
+
                 if (dataModel != null) {
-                    binding.titleArea.setText(dataModel.title)
-                    binding.textArea.setText(dataModel.content)
-                    binding.timeArea.setText(dataModel.time)
-                    val writerUid = dataModel.uid
+
+                    binding.emailArea.setText("습득자: ${dataModel.email}")
+                    binding.titleArea.setText("습득물명: ${dataModel.title}")
+                    binding.getDateArea.setText("습득날짜: ${dataModel.getDate}")
+                    binding.getlocationArea.setText("습득위치: ${dataModel.getLocation}")
+                    binding.keeplocationArea.setText("보관위치: ${dataModel.keepLocation}")
+                    binding.contentArea.setText("상세내용 : ${dataModel.content}")
                 }
 
                 val myUid = FBAuth.getUid()

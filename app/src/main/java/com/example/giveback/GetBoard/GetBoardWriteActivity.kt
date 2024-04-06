@@ -12,6 +12,7 @@ import com.example.giveback.R
 import com.example.giveback.databinding.ActivityGetBoardWriteBinding
 import com.example.giveback.utils.FBAuth
 import com.example.giveback.utils.FBRef
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
@@ -22,6 +23,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
     private lateinit var binding : ActivityGetBoardWriteBinding
 
     private var isImageUpload = false
+
+    val user = FirebaseAuth.getInstance().currentUser
+    val email = user?.email.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -31,14 +35,15 @@ class GetBoardWriteActivity : AppCompatActivity() {
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.
         binding.writeBtn.setOnClickListener {
 
-            val title = binding.titleArea.text.toString()
-            val content = binding.contentArea.text.toString()
-
             // uid를 가져온다.
             val uid = FBAuth.getUid()
 
-            // time을 가져온다.
-            val time = FBAuth.getTime()
+            val getUid = uid.toString()
+            val title = binding.titleArea.text.toString()
+            val content = binding.contentArea.text.toString()
+            val getDate = binding.getDateArea.text.toString()
+            val getLocation = binding.getlocationArea.text.toString()
+            val keepLocation = binding.keeplocationArea.text.toString()
 
             // 키부터 생성하고 데이터베이스에 저장하도록 수정
             val key = FBRef.getboardRef.push().key.toString()
@@ -46,7 +51,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
             // 파이어 베이스에 데이터를 저장한다.
             FBRef.getboardRef
                 .child(key) // 랜덤한 값
-                .setValue(GetBoardModel(title,content,uid,time))
+                .setValue(GetBoardModel(uid, email, title, getDate, getLocation, keepLocation, content,))
 
             Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
 

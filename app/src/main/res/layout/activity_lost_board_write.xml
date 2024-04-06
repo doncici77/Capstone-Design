@@ -38,13 +38,20 @@
                     android:background="#000000">
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/imageArea"
+                    android:src="@drawable/plusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"/>
+
                 <EditText
                     android:id="@+id/titleArea"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:hint="제목을 입력해주세요"/>
+                    android:hint="분실물명을 입력해주세요"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,13 +76,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp">
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageArea"
-                    android:src="@drawable/plusbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"/>
 
                 <Button
                     android:id="@+id/writeBtn"

@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.example.giveback.R
 import com.example.giveback.utils.FBAuth
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 // 리스트뷰와 게시글 데이터를 연결해주는 게시물 리스트 어댑터
 class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>): BaseAdapter() {
@@ -31,23 +37,26 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>): BaseAda
 
         //if(view== null) {
 
-            view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent,false)
+            view = LayoutInflater.from(parent?.context).inflate(R.layout.get_board_list_item, parent,false)
         //}
 
+        var imageView = view?.findViewById<ImageView>(R.id.imageArea)
         val title = view?.findViewById<TextView>(R.id.titleArea)
-        val content = view?.findViewById<TextView>(R.id.contentArea)
-        val time = view?.findViewById<TextView>(R.id.timeArea)
+        val getLocation = view?.findViewById<TextView>(R.id.getlocationArea)
+        val keepLocation = view?.findViewById<TextView>(R.id.keeplocationArea)
+        val getDate = view?.findViewById<TextView>(R.id.getDateArea)
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
         if(boardList[position].uid.equals(FBAuth.getUid())) {
             itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#ffa500"))
         }
 
+
         title!!.text = boardList[position].title
-        content!!.text = boardList[position].content
-        time!!.text = boardList[position].time
+        getLocation!!.text = "습득장소: ${boardList[position].getLocation}"
+        keepLocation!!.text = "보관장소: ${boardList[position].keepLocation}"
+        getDate!!.text = boardList[position].getDate
 
         return view!!
     }
-
 }

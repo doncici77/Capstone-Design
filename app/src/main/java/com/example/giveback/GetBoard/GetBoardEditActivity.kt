@@ -45,6 +45,8 @@ class GetBoardEditActivity : AppCompatActivity() {
         getBoardData(key)
         getImageData(key)
 
+        writerUid = FBAuth.getUid()
+
         // 수정 버튼을 누르면 게시글과 이미지의 수정이 일어난다.
         binding.editBtn.setOnClickListener {
             editBoardData(key)
@@ -67,10 +69,15 @@ class GetBoardEditActivity : AppCompatActivity() {
         FBRef.getboardRef
             .child(key) // 랜덤한 값
             .setValue(
-                GetBoardModel(binding.titleArea.text.toString(),
+                GetBoardModel(
+                    writerUid.toString(),
+                    binding.emailArea.text.toString(),
+                    binding.titleArea.text.toString(),
+                    binding.getDateArea.text.toString(),
+                    binding.getlocationArea.text.toString(),
+                    binding.keeplocationArea.text.toString(),
                     binding.contentArea.text.toString(),
-                    writerUid,
-                    FBAuth.getTime()))
+                ))
         Toast.makeText(this,"수정완료", Toast.LENGTH_LONG).show()
         finish()
     }
@@ -113,9 +120,12 @@ class GetBoardEditActivity : AppCompatActivity() {
                 val dataModel = dataSnapshot.getValue(GetBoardModel::class.java)
 
                 if (dataModel != null) {
+                    binding.emailArea.setText(dataModel.email)
                     binding.titleArea.setText(dataModel.title)
+                    binding.getDateArea.setText(dataModel.getDate)
+                    binding.getlocationArea.setText(dataModel.getLocation)
+                    binding.keeplocationArea.setText(dataModel.keepLocation)
                     binding.contentArea.setText(dataModel.content)
-                    writerUid = dataModel.uid
                 }
             }
 

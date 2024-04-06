@@ -25,7 +25,7 @@
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:text="글 수정 페이지"
+                        android:text="습득물 정보 수정 페이지"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"/>
@@ -37,13 +37,98 @@
                     android:background="#000000">
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/imageArea"
+                    android:src="@drawable/plusbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/uidArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/emailArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/titleArea"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:hint="제목을 입력해주세요"/>
+                    android:hint="습득물명을 입력해주세요"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/getDateArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="습득일자를 선택해주세요"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/getlocationArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="습득위치를 입력해주세요"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/keeplocationArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="보관장소를 입력해주세요"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -68,13 +153,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp">
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageArea"
-                    android:src="@drawable/plusbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"/>
 
                 <Button
                     android:id="@+id/editBtn"

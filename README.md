@@ -328,3 +328,11 @@ QnA - 제목 내용 상태
 ```
 습득 날짜 선택 UI를 EditText에서 DatePickerDialog로 수정하였습니다.
 ```
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/26e98a05-08af-4310-a125-0ff420a7bc9c)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a63f048b-cc71-4901-bc13-4d7673c823a3)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/020b90ed-97fc-4e3c-9523-5029203ceaff)
+```
+습득 위치와 보관 위치 선택 UI를 EditText에서 DropDown으로 수정하였습니다.
+습득 위치와 보관 위치 드롭다운 선택한 String과 상세 습득위치, 상세 보관위치를 EditText로 입력받아
+두 개의 String을 합쳐서 최종적으로 습득 위치, 상세위치를 산출한 뒤 데이터베이스에 저장하였습니다.
+```

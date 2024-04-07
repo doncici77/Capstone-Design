@@ -98,13 +98,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/getlocationArea"
-                        android:layout_margin="20dp"
-                        android:background="@android:color/transparent"
-                        android:layout_width="300dp"
-                        android:layout_height="60dp"
-                        android:hint="습득위치를 입력해주세요"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/getlocationArea"
+                            android:layout_margin="20dp"
+                            android:background="@android:color/transparent"
+                            android:layout_width="300dp"
+                            android:layout_height="60dp"
+                            android:spinnerMode="dropdown"
+                            android:hint="습득위치를 입력해주세요"/>
+
+                        <EditText
+                            android:id="@+id/detailgetArea"
+                            android:layout_margin="20dp"
+                            android:background="@android:color/transparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:hint="상세 습득위치를 입력해주세요"/>
+
+                    </LinearLayout>
 
                     <ImageView
                         android:id="@+id/question"

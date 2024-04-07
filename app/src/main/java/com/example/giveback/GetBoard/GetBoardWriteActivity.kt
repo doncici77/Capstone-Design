@@ -7,6 +7,8 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
@@ -62,6 +64,30 @@ class GetBoardWriteActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        // 습득위치와 관련한 드롭다운 메뉴 코드입니다.
+        // R.id.gender_spinner 는 1번에서 지정한 Spinner 태그의 ID 입니다.
+        val spinner: Spinner = findViewById(R.id.getlocationArea)
+
+        ArrayAdapter.createFromResource(
+            this,
+
+            // 설정한 string-array 태그의 name 입니다.
+            R.array.getlocation_array,
+
+            // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
+            // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
+            R.layout.getlocation_spinner_item
+
+        ).also { adapter ->
+
+            // android.R.layout.simple_spinner_dropdown_item 도 android 에서 기본 제공
+            // 되는 layout 입니다. 이 부분은 "선택할 item 목록" 부분의 layout을 결정합니다.
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        val detailget = binding.detailgetArea.text
+
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.
         binding.writeBtn.setOnClickListener {
 
@@ -72,7 +98,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
             val getDate = binding.getDateArea.text.toString()
-            val getLocation = binding.getlocationArea.text.toString()
+            val getLocation = "${spinner.selectedItem.toString()} ${detailget}"
             val keepLocation = binding.keeplocationArea.text.toString()
 
             // 키부터 생성하고 데이터베이스에 저장하도록 수정

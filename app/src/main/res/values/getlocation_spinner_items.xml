@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getlocation_array">
+        <item>W1 정문</item>
+        <item>W2 보건복지대학 3호관</item>
+        <item>W3 대학본부</item>
+        <item>W4 산학2호관</item>
+        <item>W5 보건복지대학 1호관</item>
+        <item>W6 과학기술대학 2호관</item>
+        <item>W8 학생휴게실</item>
+        <item>W9 보건복지대학 2호관</item>
+        <item>W10 파워플랜트</item>
+        <item>W11 학생복지관</item>
+        <item>W12 과학기술대학 1호관</item>
+        <item>W13 실험실습실</item>
+        <item>W14 학생생활관(예솔관)</item>
+        <item>W15 과학기술대학 3호관</item>
+        <item>W16 부설유치원</item>
+        <item>E1 체육관</item>
+        <item>E2 운동장</item>
+        <item>E3 도서관</item>
+        <item>E4 학생생활관(청송관)</item>
+        <item>E5 학생생활관(해솔관)</item>
+    </string-array>
+</resources>

@@ -110,7 +110,7 @@
                             android:layout_width="300dp"
                             android:layout_height="60dp"
                             android:spinnerMode="dropdown"
-                            android:hint="습득위치를 입력해주세요"/>
+                            android:hint="습득위치를 선택해주세요"/>
 
                         <EditText
                             android:id="@+id/detailgetArea"
@@ -141,13 +141,29 @@
             </LinearLayout>
 
 
-                <EditText
-                    android:id="@+id/keeplocationArea"
-                    android:layout_margin="20dp"
-                    android:background="@android:color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="보관장소를 입력해주세요"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Spinner
+                        android:id="@+id/keeplocationArea"
+                        android:layout_margin="20dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="300dp"
+                        android:layout_height="60dp"
+                        android:spinnerMode="dropdown"
+                        android:hint="보관위치를 선택해주세요"/>
+
+                    <EditText
+                        android:id="@+id/detailkeepArea"
+                        android:layout_margin="20dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="상세 보관위치를 입력해주세요"/>
+
+                </LinearLayout>
 
 
                 <LinearLayout

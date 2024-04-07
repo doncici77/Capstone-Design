@@ -323,3 +323,8 @@ QnA - 제목 내용 상태
 ```
 습득 위치 옆의 물음표 이미지를 클릭하면 건물 조직도 홈페이지로 이동한다.
 ```
+## 24.04.08
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/2d3dbea3-821c-45c9-83e7-bffdc8ce8341)
+```
+습득 날짜 선택 UI를 EditText에서 DatePickerDialog로 수정하였습니다.
+```

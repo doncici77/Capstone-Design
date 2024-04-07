@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
+import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityGetBoardWriteBinding
 import com.example.giveback.utils.FBAuth
 import com.example.giveback.utils.FBRef
@@ -31,6 +32,12 @@ class GetBoardWriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_get_board_write)
+
+        // 습득 위치 옆의 물음표 버튼을 눌렀을 때 학교 건물 웹뷰로 이동한다.
+        binding.question.setOnClickListener {
+            val intent = Intent(this, WebviewActivity::class.java)
+            startActivity(intent)
+        }
 
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.
         binding.writeBtn.setOnClickListener {

@@ -1,5 +1,6 @@
 package com.example.giveback.GetBoard
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
+import java.util.Calendar
 
 // 게시글 작성 페이지
 class GetBoardWriteActivity : AppCompatActivity() {
@@ -37,6 +39,27 @@ class GetBoardWriteActivity : AppCompatActivity() {
         binding.question.setOnClickListener {
             val intent = Intent(this, WebviewActivity::class.java)
             startActivity(intent)
+        }
+
+        // 날짜를 입력받을 때 달력이 나오고 달력에서 날짜를 선택하면 선택한 날짜가 text로 들어간다.
+        val datePickerListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            // 선택한 날짜를 원하는 형식으로 텍스트로 변환
+            val selectedDateText = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+
+            // 버튼의 텍스트를 선택한 날짜로 변경
+            binding.getDateArea.text = selectedDateText
+        }
+
+        // 버튼 클릭 시 DatePickerDialog를 띄우는 코드
+        binding.getDateArea.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val initialYear = calendar.get(Calendar.YEAR)
+            val initialMonth = calendar.get(Calendar.MONTH)
+            val initialDay = calendar.get(Calendar.DAY_OF_MONTH)
+
+            // DatePickerDialog 생성
+            val datePickerDialog = DatePickerDialog(this, datePickerListener, initialYear, initialMonth, initialDay)
+            datePickerDialog.show()
         }
 
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.

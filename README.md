@@ -340,3 +340,12 @@ ps 드롭다운 메뉴의 Text 색을 변경할 수는 있으나 전체적으로
 일부분 즉 W1~W15는 빨간색 E1~E5는 노란색 개별로는 변경불가능하다.
 W1~W15, E1~E5 전체를 빨간색이나 노란색으로 변경하는 것은 가능
 ```
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/7d9d7ba6-e97d-46e0-843c-913e92a45e39)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/4c0a467a-35b0-425e-91bc-34766a1e9924)
+```
+하단 네비게이션 바의 UI를 설계 UI대로 수정하였습니다.
+
+하단 네비게이션 바의 현재 창을 나타내는 바의 색상을 노란색(MainColor)에서 검정색으로 수정하였습니다.
+
+PS 4번째 텍스트 Q/N -> Q/A로 수정할 예정
+```

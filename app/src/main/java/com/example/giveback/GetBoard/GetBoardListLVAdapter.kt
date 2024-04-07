@@ -67,7 +67,7 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
             itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#ffa500"))
         }
 
-        title!!.text = boardList[position].title
+        title!!.text = "습득명: ${boardList[position].title}"
         getLocation!!.text = "습득장소: ${boardList[position].getLocation}"
         keepLocation!!.text = "보관장소: ${boardList[position].keepLocation}"
         getDate!!.text = boardList[position].getDate

@@ -21,7 +21,7 @@
                     android:textSize = "25dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:layout_width="350dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="-16dp"
@@ -30,6 +30,7 @@
                 </TextView>
 
                 <ImageView
+                    android:layout_marginRight="30dp"
                     android:src="@drawable/search"
                     android:layout_width="50dp"
                     android:layout_height="50dp">
@@ -52,7 +53,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout">
 
                 <LinearLayout
-                    android:background="@color/mainColor"
+                    android:background="@color/black"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -93,35 +94,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_hometap" />
+                    android:src="@drawable/get"
+                    android:background="#E0E0E0"/>
 
                 <ImageView
                     android:id="@+id/tipTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_goodtip" />
+                    android:src="@drawable/lost"
+                    android:background="#E0E0E0"/>
 
                 <ImageView
                     android:id="@+id/talkTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_talk" />
+                    android:src="@drawable/report"
+                    android:background="#E0E0E0" />
 
                 <ImageView
                     android:id="@+id/bookmarkTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_bookmark" />
+                    android:src="@drawable/qa"
+                    android:background="#E0E0E0" />
 
                 <ImageView
                     android:id="@+id/storeTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_store" />
+                    android:src="@drawable/user"
+                    android:background="#E0E0E0" />
 
             </LinearLayout>
 

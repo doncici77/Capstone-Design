@@ -51,7 +51,7 @@
                     android:layout_weight="1" />
 
                 <LinearLayout
-                    android:background="@color/mainColor"
+                    android:background="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
@@ -76,35 +76,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_hometap" />
+                    android:src="@drawable/get"
+                    android:background="#E0E0E0"/>
 
                 <ImageView
                     android:id="@+id/tipTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_goodtip" />
+                    android:src="@drawable/lost"
+                    android:background="#E0E0E0"/>
 
                 <ImageView
                     android:id="@+id/talkTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_talk" />
+                    android:src="@drawable/report"
+                    android:background="#E0E0E0" />
 
                 <ImageView
                     android:id="@+id/bookmarkTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_bookmark" />
+                    android:src="@drawable/qa"
+                    android:background="#E0E0E0" />
 
                 <ImageView
                     android:id="@+id/storeTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_store" />
+                    android:src="@drawable/user"
+                    android:background="#E0E0E0" />
 
             </LinearLayout>
 

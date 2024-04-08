@@ -353,7 +353,7 @@ PS 4번째 텍스트 Q/N -> Q/A로 수정할 예정
 #### 검색 기능 구현
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/87a014f2-8c2f-49e4-a0c9-ee4338783a5b)
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/50094e5a-62ef-446f-8ab2-b78db8b6aa54)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/050a00dc-fa50-4a64-8c5c-40b1177332a5)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/37c42101-8e85-4a81-abfb-02ac2efa36cd)
 ```
 검색버튼을 눌렀을 때 검색하는 창(searchActivity)에서 검색옵션을 주고 그 옵션 값을 intent.putExtra에 담아서
 검색된 창(searchActivity)로 넘긴다.(intent.getStringExtra)

@@ -349,3 +349,19 @@ W1~W15, E1~E5 전체를 빨간색이나 노란색으로 변경하는 것은 가�
 
 PS 4번째 텍스트 Q/N -> Q/A로 수정할 예정
 ```
+## 24.04.09
+#### 검색 기능 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/87a014f2-8c2f-49e4-a0c9-ee4338783a5b)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/50094e5a-62ef-446f-8ab2-b78db8b6aa54)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/050a00dc-fa50-4a64-8c5c-40b1177332a5)
+```
+검색버튼을 눌렀을 때 검색하는 창(searchActivity)에서 검색옵션을 주고 그 옵션 값을 intent.putExtra에 담아서
+검색된 창(searchActivity)로 넘긴다.(intent.getStringExtra)
+
+검색된 창에서 넘겨받은 옵션 값과 게시글을 불러오는 함수 getFBBoardData의 매개변수로 넘겨준다음
+옵션 값과 데이터 모델의 값과 같은 게시물만 출력하도록 한다.
+
+최종적으로 옵션값에 입력한 습득물명과 같은 게시물만 출력하도록 했다.
+
+ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
+```

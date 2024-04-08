@@ -31,6 +31,12 @@ class JoinActivity : AppCompatActivity() {
 
             var isGoToJoin = true
 
+            // 이메일과 비밀번호, 비밀번호확인이 비어있는지 확인
+            if (email.isEmpty() || password1.isEmpty() || password2.isEmpty()) {
+                Toast.makeText(this, "이메일, 비밀번호, 비밀번호 확인 모두를 입력해주세요.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             // 이메일 값이 비어있는지 확인
             if(email.isEmpty()){
                 Toast.makeText(this,"이메일을 입력해주세요", Toast.LENGTH_LONG).show()

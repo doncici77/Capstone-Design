@@ -365,3 +365,8 @@ PS 4번째 텍스트 Q/N -> Q/A로 수정할 예정
 
 ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ```
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/e3c43a64-1127-4319-a220-e8111416f9b6)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/779b8509-ad70-4c41-9fd2-ee4ccdac00d6)
+```
+검색된 창에서 전체 글보기(MainActivity)로 되돌아가는 버튼을 추가했다. 누르면 메인화면(GetFragment)로 이동한다.
+```

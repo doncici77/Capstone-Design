@@ -26,9 +26,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
 // 게시글 보기 페이지
-class GetGetBoardInsideActivity : AppCompatActivity() {
+class GetBoardInsideActivity : AppCompatActivity() {
 
-    private val TAG = GetGetBoardInsideActivity::class.java.simpleName
+    private val TAG = GetBoardInsideActivity::class.java.simpleName
 
     private lateinit var binding: ActivityGetBoardInsideBinding
 
@@ -40,7 +40,6 @@ class GetGetBoardInsideActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lost_board_inside)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_get_board_inside)
 

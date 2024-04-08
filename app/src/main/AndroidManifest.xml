@@ -16,13 +16,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".searchGet.SearchedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchGet.SearchGetActivity"
+            android:exported="false" />
+        <activity
             android:name=".WebviewActivity"
             android:exported="false" />
         <activity
             android:name=".GetBoard.GetBoardEditActivity"
             android:exported="false" />
         <activity
-            android:name=".GetBoard.GetGetBoardInsideActivity"
+            android:name=".GetBoard.GetBoardInsideActivity"
             android:exported="false" />
         <activity
             android:name=".GetBoard.GetBoardWriteActivity"

@@ -80,8 +80,9 @@ class MyFragment : Fragment() {
         }
 
         binding.homeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_getFragment_to_storeFragment)
+            it.findNavController().navigate(R.id.action_myFragment_to_homeFragment)
         }
+
 
         return binding.root
     }

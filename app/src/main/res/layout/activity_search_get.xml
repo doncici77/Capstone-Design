@@ -41,6 +41,7 @@
                 </TextView>
 
                 <EditText
+                    android:textSize="20dp"
                     android:id="@+id/titleArea"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
@@ -67,6 +68,7 @@
                 </TextView>
 
                 <Button
+                    android:textSize="20dp"
                     android:id="@+id/getStartDate"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
@@ -82,6 +84,7 @@
 
                 <Button
                     android:id="@+id/getEndDate"
+                    android:textSize="20dp"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
                     android:layout_width="match_parent"

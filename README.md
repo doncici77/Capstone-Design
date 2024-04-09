@@ -370,3 +370,12 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ```
 검색된 창에서 전체 글보기(MainActivity)로 되돌아가는 버튼을 추가했다. 누르면 메인화면(GetFragment)로 이동한다.
 ```
+## 24.04.10
+#### 검색 기능 구현2 (시작일~종료일 기준 검색)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/3f3193e0-ef99-4709-ae6c-901883714c37)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/fbb3d806-e8f1-4396-a221-0dbc3f8d1f1d)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/60306577-95a3-4138-b2f1-6bc81be42050)
+```
+4월 8일,9일,10일,11일 게시물이 있을 때 4월 8일부터 4월 9일까지 게시물을 검색하면 8일, 9일게시물이 나온다.
+```
+

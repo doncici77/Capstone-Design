@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.giveback.GetBoard.GetBoardInsideActivity
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
+import com.example.giveback.LostBoard.LostGetBoardInsideActivity
 import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivitySearchedBinding
@@ -20,10 +21,13 @@ import com.example.giveback.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class SearchedActivity : AppCompatActivity() {
 
+    private val TAG = SearchedActivity::class.java.simpleName
 
     private val boardDataList = mutableListOf<GetBoardModel>()
     private val boardKeyList = mutableListOf<String>()
@@ -31,6 +35,12 @@ class SearchedActivity : AppCompatActivity() {
     private lateinit var boardRVAdapter: GetBoardListLVAdapter
 
     private lateinit var binding: ActivitySearchedBinding
+
+    private lateinit var searchtitle: String
+    private lateinit var startDate: Date
+    private lateinit var endDate: Date
+
+    val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searched)
@@ -49,11 +59,14 @@ class SearchedActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val searchtitle = intent.getStringExtra("물품명")
+        searchtitle = intent.getStringExtra("물품명").toString()
+        startDate = sdf.parse(intent.getStringExtra("시작일").toString())
+        endDate = sdf.parse(intent.getStringExtra("종료일").toString())
 
-        if (searchtitle != null) {
-            getFBBoardData(searchtitle)
-        }
+        Log.d(TAG, startDate.toString())
+
+        getFBBoardData(searchtitle)
+
 
         // 되돌아기 버튼을 눌렀을 때 GetFragment로 이동
         binding.backGetFragment.setOnClickListener{
@@ -75,10 +88,15 @@ class SearchedActivity : AppCompatActivity() {
 
                     val item = dataModel.getValue(GetBoardModel::class.java)
 
-                    if(searchtitle.equals(item?.title.toString())) {
+                    val sdfDate = sdf.parse(item?.getDate)
+
+                    if(searchtitle.equals(item?.title.toString()) ||
+                        (sdfDate <= endDate && sdfDate >= startDate))
+                    {
                         boardDataList.add(item!!)
                         boardKeyList.add(dataModel.key.toString())
                     }
+
                 }
 
                 boardKeyList.reverse()

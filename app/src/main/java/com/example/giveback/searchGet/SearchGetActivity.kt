@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
 import com.example.giveback.WebviewActivity
@@ -92,9 +93,25 @@ class SearchGetActivity : AppCompatActivity() {
             getSpinner.adapter = adapter
         }
 
+        // 검색 버튼을 눌렀을 때 검색된 화면(SearchedActivity로 이동
         binding.searchBtn.setOnClickListener{
+
+            // 시작일은 필수로 입력되어야 한다.
+            if(binding.getStartDate.text.toString() == ""){
+                Toast.makeText(this,"시작일을 선택해주세요", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            // 종료일은 필수로 입력되어야 한다.
+            if(binding.getEndDate.text.toString() == ""){
+                Toast.makeText(this,"종료일을 선택해주세요", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val intent = Intent(this, SearchedActivity::class.java)
             intent.putExtra("물품명",binding.titleArea.text.toString())
+            intent.putExtra("시작일", binding.getStartDate.text.toString())
+            intent.putExtra("종료일", binding.getEndDate.text.toString())
             startActivity(intent)
         }
     }

@@ -67,7 +67,6 @@
                 </TextView>
 
                 <Button
-                    android:text="시작일자를 선택해주세요"
                     android:id="@+id/getStartDate"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
@@ -82,7 +81,6 @@
                 </ImageView>
 
                 <Button
-                    android:text="종료일자를 선택해주세요"
                     android:id="@+id/getEndDate"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"

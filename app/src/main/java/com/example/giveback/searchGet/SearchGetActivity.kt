@@ -112,6 +112,7 @@ class SearchGetActivity : AppCompatActivity() {
             intent.putExtra("물품명",binding.titleArea.text.toString())
             intent.putExtra("시작일", binding.getStartDate.text.toString())
             intent.putExtra("종료일", binding.getEndDate.text.toString())
+            intent.putExtra("습득위치", binding.getlocationArea.selectedItem.toString().substring(0, binding.getlocationArea.selectedItem.toString().indexOf(" ")))
             startActivity(intent)
         }
     }

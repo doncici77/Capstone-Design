@@ -39,6 +39,7 @@ class SearchedActivity : AppCompatActivity() {
     private lateinit var searchtitle: String
     private lateinit var startDate: Date
     private lateinit var endDate: Date
+    private lateinit var getlocation: String
 
     val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,11 +63,9 @@ class SearchedActivity : AppCompatActivity() {
         searchtitle = intent.getStringExtra("물품명").toString()
         startDate = sdf.parse(intent.getStringExtra("시작일").toString())
         endDate = sdf.parse(intent.getStringExtra("종료일").toString())
-
-        Log.d(TAG, startDate.toString())
+        getlocation = intent.getStringExtra("습득위치").toString()
 
         getFBBoardData(searchtitle)
-
 
         // 되돌아기 버튼을 눌렀을 때 GetFragment로 이동
         binding.backGetFragment.setOnClickListener{
@@ -84,20 +83,21 @@ class SearchedActivity : AppCompatActivity() {
 
                 // dataModel에 있는 데이터를 하나씩 가져오는 부분
                 for(dataModel in dataSnapshot.children) {
-                    Log.d(TAG, dataModel.toString())
 
                     val item = dataModel.getValue(GetBoardModel::class.java)
 
                     val sdfDate = sdf.parse(item?.getDate)
 
                     if(searchtitle.equals(item?.title.toString()) ||
-                        (sdfDate <= endDate && sdfDate >= startDate))
+                        (sdfDate <= endDate && sdfDate >= startDate) ||
+                        getlocation.equals(item?.getLocation.toString().substring(0,item?.getLocation.toString().indexOf(" "))))
                     {
                         boardDataList.add(item!!)
                         boardKeyList.add(dataModel.key.toString())
                     }
 
                 }
+
 
                 boardKeyList.reverse()
                 // 최신 게시글이 앞으로 오도록 리스트를 뒤집는다.

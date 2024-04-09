@@ -128,6 +128,19 @@ class GetBoardWriteActivity : AppCompatActivity() {
             // 키부터 생성하고 데이터베이스에 저장하도록 수정
             val key = FBRef.getboardRef.push().key.toString()
 
+
+            // 습득명은 필수로 입력되어야 한다.
+            if(title.isEmpty()){
+                Toast.makeText(this,"습득명을 선택해주세요",Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            // 습득날짜는 필수로 입력되어야 한다.
+            if(getDate.isEmpty()){
+                Toast.makeText(this,"습득날짜를 선택해주세요",Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             // 파이어 베이스에 데이터를 저장한다.
             FBRef.getboardRef
                 .child(key) // 랜덤한 값

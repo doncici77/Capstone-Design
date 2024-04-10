@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_margin="20dp"
+            android:text="사진 등록"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_margin="10dp"
+            android:src="@drawable/close"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+        </ImageView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cameraButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/white"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:text="카메라로 촬영하기"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/galleryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@android:drawable/ic_menu_gallery"
+        android:text="앨범에서 선택하기"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/closeButton"
+        android:text="닫기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_radius_yellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

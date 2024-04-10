@@ -31,43 +31,45 @@
 
             <EditText
                 android:id="@+id/emailArea"
+                style="@style/AuthEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="25dp"
                 android:hint="email"
-                style="@style/AuthEditText"/>
+                android:textSize="25dp" />
+
             <LinearLayout
-                android:background="#999999"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="18dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:background="#999999" />
 
             <EditText
                 android:id="@+id/passwordArea"
+                style="@style/AuthEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="25dp"
-                android:inputType="textPassword"
                 android:hint="password"
-                style="@style/AuthEditText"/>
+                android:inputType="textPassword"
+                android:textSize="25dp" />
+
             <LinearLayout
-                android:background="#999999"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="18dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:background="#999999" />
 
             <Button
                 android:id="@+id/loginBtn"
-                android:text="로그인하기"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/background_radius_yellow"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:text="로그인하기"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/joinBtn"
@@ -79,6 +81,16 @@
                 android:textColor="#ff00ff"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/resetPasswordBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="비밀번호 재설정"
+                android:textAlignment="center"
+                android:textColor="#007BFF"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

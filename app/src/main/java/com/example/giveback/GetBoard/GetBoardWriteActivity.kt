@@ -1,15 +1,22 @@
 package com.example.giveback.GetBoard
 
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
 import com.example.giveback.WebviewActivity
@@ -31,6 +38,8 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
     val user = FirebaseAuth.getInstance().currentUser
     val email = user?.email.toString()
+
+    private lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -112,6 +121,8 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
         val detailkeep = binding.detailkeepArea.text
 
+        dialog = Dialog(this)
+
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.
         binding.writeBtn.setOnClickListener {
 
@@ -157,40 +168,108 @@ class GetBoardWriteActivity : AppCompatActivity() {
         }
         // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
         binding.imageArea.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 100)
-            isImageUpload = true
+            showImageUploadDialog()
         }
         
     }
 
     // 이미지를 업로드하는 함수
     private fun imageUpload(key: String) {
-
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png")
+        val mountainsRef = storageRef.child("$key.png")
 
+
+        // 이미지 업로드
         val imageView = binding.imageArea
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
 
         val bitmap = (imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100000, baos)
         val data = baos.toByteArray()
 
         val uploadTask = mountainsRef.putBytes(data)
-        uploadTask.addOnFailureListener {
 
+        uploadTask.addOnFailureListener {
+            // 업로드 실패 처리
         }
+    }
+
+    private fun showImageUploadDialog() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_image_upload) // dialog_image_upload.xml 파일을 생성해주세요
+
+        // 카메라로 사진 찍기 버튼 클릭 시
+        val cameraButton = dialog.findViewById<Button>(R.id.cameraButton)
+        cameraButton.setOnClickListener {
+
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+            val cameraPermissionCheck = ContextCompat.checkSelfPermission(
+                this@GetBoardWriteActivity,
+                android.Manifest.permission.CAMERA
+            )
+            if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED) { // 권한이 없는 경우
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.CAMERA),
+                    1000
+                )
+            } else { //권한이 있는 경우
+                cameraIntent.also { takePictureIntent ->
+                    takePictureIntent.resolveActivity(packageManager)?.also {
+                        startActivityForResult(cameraIntent, 100)
+                        isImageUpload = true
+                        dialog.dismiss()
+                    }
+                }
+            }
+        }
+
+        // 갤러리에서 사진 선택 버튼 클릭 시
+        val galleryButton = dialog.findViewById<Button>(R.id.galleryButton)
+        galleryButton.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 100)
+            isImageUpload = true
+            dialog.dismiss()
+        }
+
+        // close이미지 클릭 시
+        val closeBtn = dialog.findViewById<ImageView>(R.id.closeBtn)
+        closeBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // close버튼 클릭 시
+        val closeButton = dialog.findViewById<Button>(R.id.closeButton)
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // 다이얼로그 띄우기
+        dialog.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
             binding.imageArea.setImageURI(data?.data)
+        }
+    }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1000) {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) { //거부
+                Toast.makeText(this@GetBoardWriteActivity, "카메라 권한을 허용하고 이용해주세요 ", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

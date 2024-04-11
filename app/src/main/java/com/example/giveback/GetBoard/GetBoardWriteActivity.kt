@@ -170,7 +170,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
         binding.imageArea.setOnClickListener {
             showImageUploadDialog()
         }
-        
+
     }
 
     // 이미지를 업로드하는 함수
@@ -187,7 +187,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
         val bitmap = (imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100000, baos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
 
         val uploadTask = mountainsRef.putBytes(data)

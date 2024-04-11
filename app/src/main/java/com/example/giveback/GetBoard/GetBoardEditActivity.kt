@@ -60,11 +60,20 @@ class GetBoardEditActivity : AppCompatActivity() {
 
         // 수정 버튼을 누르면 게시글과 이미지의 수정이 일어난다.
         binding.editBtn.setOnClickListener {
-            editBoardData(key)
 
-            if(isImageUpload) {
-                imageUpload(key)
-            }
+            val alertDialog = androidx.appcompat.app.AlertDialog.Builder(this)
+                .setIcon(R.drawable.chat)
+                .setTitle("해당 게시글을 수정하겠습니까?")
+                .setPositiveButton("확인") { dialog, which ->
+                    editBoardData(key)
+
+                    if(isImageUpload) {
+                        imageUpload(key)
+                    }
+                }
+                .setNegativeButton("취소", null)
+                .create()
+            alertDialog.show()
         }
 
         // 이미지 영역을 클릭했을 때 이미지 업로드를 실행한다.
@@ -170,11 +179,12 @@ class GetBoardEditActivity : AppCompatActivity() {
 
     // 이미지를 업로드하는 함수
     private fun imageUpload(key: String) {
-
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png")
+        val mountainsRef = storageRef.child("$key.png")
 
+
+        // 이미지 업로드
         val imageView = binding.imageArea
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
@@ -185,8 +195,9 @@ class GetBoardEditActivity : AppCompatActivity() {
         val data = baos.toByteArray()
 
         val uploadTask = mountainsRef.putBytes(data)
-        uploadTask.addOnFailureListener {
 
+        uploadTask.addOnFailureListener {
+            // 업로드 실패 처리
         }
     }
 

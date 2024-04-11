@@ -393,3 +393,11 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ```
 
 ```
+## 24.04.12
+#### 마이페이지 내가 쓴 글(습득물, 분실물)을 모아서 보여주는 기능 추가
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/bf4908a6-986e-4c22-9bda-f2604fcf9edf)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/b24e9083-2867-4cf1-bc32-7f9ca5fc33ed)
+```
+내가 쓴 글 = 주황색 배경, 남이 쓴 글 = 하얀색 배경일 때 마이페이지의 게시글 버튼을 누르면 내가 작성한 습득물, 분실물에 대한
+글만 모아서 볼 수 있다.
+```

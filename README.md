@@ -407,6 +407,12 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ```
 키워드 설정 관련 도움말을 알려주는 다이얼로그 기능을 추가했습니다.
 ```
+#### 마이페이지 로그아웃, 회원탈퇴 버튼 클릭 시 다이얼로그 기능 추가
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/5c6fc8ec-f587-4c02-af00-fa2b8798c032)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/98101304-eff0-4cf0-bbc3-665337d78b07)
+```
+바로 로그아웃, 회원탈퇴가 이루어지지 않게 다이얼로그를 추가하였습니다.
+```
 ## 24.04.13
 #### 메인화면 
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/323c1994-b3fe-451e-941c-baf71038bdec)

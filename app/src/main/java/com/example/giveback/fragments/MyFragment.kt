@@ -1,5 +1,6 @@
 package com.example.giveback.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.giveback.MyBoard.MyBoardActivity
@@ -49,6 +51,21 @@ class MyFragment : Fragment() {
             // MyboardActivity로 화면 이동
             val intent = Intent(requireContext(), MyBoardActivity::class.java)
             startActivity(intent)
+        }
+
+        // 키워드 옆 question버튼을 클릭했을 때 키워드 알림에 대한 도움말을 알려준다.
+        binding.question.setOnClickListener {
+
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setIcon(R.drawable.chat)
+                .setTitle("키워드 설정")
+                .setMessage("사전에 물품을 설정하여 해당 물품과 관련된 게시글 등록 시 자동으로 알림을 받을 수 있는 기능입니다.")
+                .setPositiveButton("확인") { dialog, which ->
+                    dialog.dismiss()
+                }
+                .setNegativeButton("취소", null)
+                .create()
+            alertDialog.show()
         }
 
         // 로그아웃 버튼을 클릭했을 때 로그아웃이 진행되고 로그인 페이지로 이동

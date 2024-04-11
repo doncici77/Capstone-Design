@@ -389,7 +389,7 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ```
 ## 24.04.11
 #### 습득물 등록 시 카메라, 갤러리에서 선택하는 다이얼로그 추가
-[파이어베이스 스토리지 공식 문서](https://firebase.google.com/docs/storage/android/upload-files?hl=ko)
+[파이어베이스 스토리지 공식 문서](https://firebase.google.com/docs/storage/android/upload-files?hl=ko)     
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/00288169-34dc-4283-87a6-478c08692cda)
 ```
 

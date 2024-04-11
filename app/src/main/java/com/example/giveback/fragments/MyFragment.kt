@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.giveback.Keyword.SetKeywordActivity
 import com.example.giveback.MyBoard.MyBoardActivity
 import com.example.giveback.R
 import com.example.giveback.auth.LoginActivity
@@ -68,26 +69,51 @@ class MyFragment : Fragment() {
             alertDialog.show()
         }
 
+        // 키워드 버튼을 눌렀을 때 키워드 설정 페이지(SetKeywordActivitiy)로 이동
+        binding.keyword.setOnClickListener {
+            // SetkeywordActivity로 화면 이동
+            val intent = Intent(requireContext(), SetKeywordActivity::class.java)
+            startActivity(intent)
+        }
+        
         // 로그아웃 버튼을 클릭했을 때 로그아웃이 진행되고 로그인 페이지로 이동
         binding.logoutBtn.setOnClickListener {
-            auth.signOut()
 
-            // LoginActivity로 화면 이동
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setIcon(R.drawable.chat)
+                .setTitle("로그아웃")
+                .setMessage("계정을 로그아웃 합니다.")
+                .setPositiveButton("확인") { dialog, which ->
+                    auth.signOut()
+
+                    // LoginActivity로 화면 이동
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                .setNegativeButton("취소", null)
+                .create()
+            alertDialog.show()
         }
 
         // SIGNOUT 버튼을 클릭했을 때 회원탈퇴가 진행되고 로그인 페이지로 이동
         binding.signoutBtn.setOnClickListener {
 
-            auth.currentUser?.delete()
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setIcon(R.drawable.chat)
+                .setTitle("회원탈퇴")
+                .setMessage("회원탈퇴 시 모든 계정은 삭제되며 복구되지 않습니다.")
+                .setPositiveButton("확인") { dialog, which ->
+                    auth.currentUser?.delete()
 
-            // LoginActivity로 화면 이동
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            
+                    // LoginActivity로 화면 이동
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                .setNegativeButton("취소", null)
+                .create()
+            alertDialog.show()
         }
 
 

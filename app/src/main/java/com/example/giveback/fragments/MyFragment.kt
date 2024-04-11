@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.giveback.MyBoard.MyBoardActivity
 import com.example.giveback.R
 import com.example.giveback.auth.LoginActivity
 import com.example.giveback.databinding.FragmentMyBinding
@@ -42,7 +43,13 @@ class MyFragment : Fragment() {
 
         binding.email.setText("사용자: ${email}")
 
+        // 게시글 버튼을 클릭했을 때 내가 작성한 습득물, 분실물 게시판을 모아서 보여주는 Myboard 페이지로 이동
+        binding.board.setOnClickListener {
 
+            // MyboardActivity로 화면 이동
+            val intent = Intent(requireContext(), MyBoardActivity::class.java)
+            startActivity(intent)
+        }
 
         // 로그아웃 버튼을 클릭했을 때 로그아웃이 진행되고 로그인 페이지로 이동
         binding.logoutBtn.setOnClickListener {

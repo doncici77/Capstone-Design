@@ -423,3 +423,12 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 화면(습득물게시판, 분실물게시판, 분실신고, Q/A, 마이페이지)에서 뒤로가기 버튼 시 앱이 바로 종료되는 것을 막기위해서
 종료 다이얼로그 메세지와 함께 앱 종료 여부를 묻도록 수정하였다.(확인 시 앱이 꺼짐)
 ```
+#### 키워드 설정 및 알림 기능 구현(백그라운드 정상 작동)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/fa1f5f39-9aa3-4e30-a0c2-0aea3fae182f)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/1e164a45-853e-4826-b2bc-2ac16e282025)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/fdfa2b3c-2a61-40c8-a5de-db075318d831)
+```
+키워드 설정 페이지에서 습득물명으로 키워드를 입력한 후 해당 키워드로 게시글이 올라오면 백그라운드에서 알림이 발생한다.
+
+ps 알림을 눌렀을 때 해당 게시글로 이동하는 기능과 알림 메시지에 키워드명이 들어갈 수 있도록 수정한다.
+```

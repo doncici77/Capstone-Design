@@ -15,7 +15,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
@@ -152,20 +154,30 @@ class GetBoardWriteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 파이어 베이스에 데이터를 저장한다.
-            FBRef.getboardRef
-                .child(key) // 랜덤한 값
-                .setValue(GetBoardModel(uid, email, title, getDate, getLocation, keepLocation, content,))
+            val alertDialog = AlertDialog.Builder(this)
+                .setIcon(R.drawable.chat)
+                .setTitle("습득물 게시글 등록")
+                .setMessage("등록된 게시글은 2024-05-05까지 유지되며 그 이후 자동으로 삭제됩니다.")
+                .setPositiveButton("확인") { dialog, which ->
+                    // 파이어 베이스에 데이터를 저장한다.
+                    FBRef.getboardRef
+                        .child(key) // 랜덤한 값
+                        .setValue(GetBoardModel(uid, email, title, getDate, getLocation, keepLocation, content,))
 
-            Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
 
-            // 이미지를 Firebase 스토리지에 업로드
-            if(isImageUpload) {
-                imageUpload(key)
-            }
+                    // 이미지를 Firebase 스토리지에 업로드
+                    if(isImageUpload) {
+                        imageUpload(key)
+                    }
 
-            finish()
+                    finish()
+                }
+                .setNegativeButton("취소", null)
+                .create()
+            alertDialog.show()
         }
+
         // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
         binding.imageArea.setOnClickListener {
             showImageUploadDialog()

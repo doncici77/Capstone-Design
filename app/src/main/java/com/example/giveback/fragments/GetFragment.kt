@@ -51,6 +51,7 @@ class GetFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_get, container, false)
 

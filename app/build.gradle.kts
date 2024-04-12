@@ -78,6 +78,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // 알림관련
+    implementation("com.android.support:support-compat:28.0.0")
+
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Import the Firebase BoM

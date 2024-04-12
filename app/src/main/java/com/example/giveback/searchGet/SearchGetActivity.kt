@@ -96,17 +96,6 @@ class SearchGetActivity : AppCompatActivity() {
         // 검색 버튼을 눌렀을 때 검색된 화면(SearchedActivity로 이동
         binding.searchBtn.setOnClickListener{
 
-            // 시작일은 필수로 입력되어야 한다.
-            if(binding.getStartDate.text.toString() == ""){
-                Toast.makeText(this,"시작일을 선택해주세요", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
-
-            // 종료일은 필수로 입력되어야 한다.
-            if(binding.getEndDate.text.toString() == ""){
-                Toast.makeText(this,"종료일을 선택해주세요", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
 
             val intent = Intent(this, SearchedActivity::class.java)
             intent.putExtra("물품명",binding.titleArea.text.toString())

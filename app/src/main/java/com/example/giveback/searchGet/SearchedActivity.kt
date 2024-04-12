@@ -37,11 +37,12 @@ class SearchedActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchedBinding
 
     private lateinit var searchtitle: String
-    private lateinit var startDate: Date
-    private lateinit var endDate: Date
     private lateinit var getlocation: String
 
     val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
+
+    private lateinit var startDate: Date
+    private lateinit var endDate: Date
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searched)
@@ -61,8 +62,15 @@ class SearchedActivity : AppCompatActivity() {
         }
 
         searchtitle = intent.getStringExtra("물품명").toString()
-        startDate = sdf.parse(intent.getStringExtra("시작일").toString())
-        endDate = sdf.parse(intent.getStringExtra("종료일").toString())
+
+        if(intent.getStringExtra("시작일").toString() == "" && intent.getStringExtra("종료일").toString() == "") {
+            startDate = sdf.parse("2024년 1월 1일")
+            endDate = sdf.parse("2030년 1월 1일")
+        } else {
+            startDate = sdf.parse(intent.getStringExtra("시작일").toString())
+            endDate = sdf.parse(intent.getStringExtra("종료일").toString())
+        }
+
         getlocation = intent.getStringExtra("습득위치").toString()
 
         getFBBoardData(searchtitle)
@@ -88,8 +96,8 @@ class SearchedActivity : AppCompatActivity() {
 
                     val sdfDate = sdf.parse(item?.getDate)
 
-                    if(searchtitle.equals(item?.title.toString()) ||
-                        (sdfDate <= endDate && sdfDate >= startDate) ||
+                    if(searchtitle.equals(item?.title.toString()) &&
+                        (sdfDate <= endDate && sdfDate >= startDate) &&
                         getlocation.equals(item?.getLocation.toString().substring(0,item?.getLocation.toString().indexOf(" "))))
                     {
                         boardDataList.add(item!!)

@@ -35,6 +35,9 @@ class SetKeywordActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_set_keyword)
 
         createNotificationChannel()
+
+        getKeyword()
+
         binding.settingBtn.setOnClickListener {
 
             val alertDialog = AlertDialog.Builder(this)

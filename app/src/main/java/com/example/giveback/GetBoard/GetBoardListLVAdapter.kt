@@ -64,7 +64,7 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
         if(boardList[position].uid.equals(FBAuth.getUid())) {
-            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#ffa500"))
+            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#EEEEEE"))
         }
 
         title!!.text = "습득명: ${boardList[position].title}"

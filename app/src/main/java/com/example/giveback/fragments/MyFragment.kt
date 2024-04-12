@@ -50,7 +50,7 @@ class MyFragment : Fragment() {
         binding.board.setOnClickListener {
 
             // MyboardActivity로 화면 이동
-            val intent = Intent(requireContext(), MyBoardActivity::class.java)
+            val intent = Intent(context, MyBoardActivity::class.java)
             startActivity(intent)
         }
 
@@ -87,7 +87,7 @@ class MyFragment : Fragment() {
                     auth.signOut()
 
                     // LoginActivity로 화면 이동
-                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    val intent = Intent(context, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.giveback.Keyword.SetKeywordActivity
 import com.google.firebase.auth.FirebaseAuth
 
 // 메인 화면
@@ -16,6 +17,18 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val PERMISSION_REQUEST_CODE = 5000
+
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        permissionCheck()
+
+        auth = FirebaseAuth.getInstance()
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
 
     private fun permissionCheck() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -32,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -51,17 +65,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        permissionCheck()
-
-        auth = FirebaseAuth.getInstance()
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         val alertDialog = AlertDialog.Builder(this)

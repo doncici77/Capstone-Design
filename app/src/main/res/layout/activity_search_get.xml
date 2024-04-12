@@ -7,7 +7,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".searchGet.SearchGetActivity">
+        tools:context=".searchGet.SearchGetActivity"
+        android:background="@color/white">
 
         <TextView
             android:background="@color/mainColor"

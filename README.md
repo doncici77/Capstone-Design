@@ -435,15 +435,17 @@ ps 알림을 눌렀을 때 해당 게시글로 이동하는 기능과 알림 메
 ```
 ## 24.04.14
 #### 카메라로 업로드 하는 기능 추가
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9b4715f8-0c60-4159-9d1a-dafbf8cb4e5a)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ef38ec41-99d4-4814-a726-35c930b6bdf4)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f47b6e33-49cc-4544-a934-699618dc232a)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/20887dfe-52ec-444c-bb4f-fa8da39667ba)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/c8fbc5f3-a56e-4662-9650-3afcfd89c7f7)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/688f10b5-75bf-4d56-859d-88960e13455f)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/10655733-8897-4c22-806d-909cb128df53)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/033737ef-f6a5-45b9-a22c-76f6a6290b88)
+
 ```
 갤러리에서의 requestCode 100 말고 카메라에서의 요청 requestCode를 200으로 수정한 뒤 Uri를 불러오기 전
 비트맵으로 데이터를 변환한 후에 넘겨주도록 수정하여 카메라 찍은 사진이 갤러리에 저장되지 않고도 바로 파이어베이스
 스토리지로 업로드되고 업로드된 이미지를 이미지뷰에 보여지도록 처리하였다.
+
+1. 카메라 권한 확인 2. 카메라로 촬영 3. 카메라로 찰영된 이미지를 파이어베이스 스토리지에 업로드 4. 업로드 된 이미지를
+이미지뷰에 띄운다.
 ```
 #### 습득물 게시물 관리번호 텍스트 추가
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9b850465-e74b-4688-8dc3-f4bd12509f0d)

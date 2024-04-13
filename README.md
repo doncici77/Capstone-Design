@@ -434,7 +434,19 @@ ps 다음 구현 예정 -> 일자, 위치 검색 필터 옵션을 추가한다.
 ps 알림을 눌렀을 때 해당 게시글로 이동하는 기능과 알림 메시지에 키워드명이 들어갈 수 있도록 수정한다.
 ```
 ## 24.04.14
+#### 카메라로 업로드 하는 기능 추가
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9b4715f8-0c60-4159-9d1a-dafbf8cb4e5a)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ef38ec41-99d4-4814-a726-35c930b6bdf4)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f47b6e33-49cc-4544-a934-699618dc232a)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/20887dfe-52ec-444c-bb4f-fa8da39667ba)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/c8fbc5f3-a56e-4662-9650-3afcfd89c7f7)
+```
+갤러리에서의 requestCode 100 말고 카메라에서의 요청 requestCode를 200으로 수정한 뒤 Uri를 불러오기 전
+비트맵으로 데이터를 변환한 후에 넘겨주도록 수정하여 카메라 찍은 사진이 갤러리에 저장되지 않고도 바로 파이어베이스
+스토리지로 업로드되고 업로드된 이미지를 이미지뷰에 보여지도록 처리하였다.
+```
 
+#### 
 ```
 사진 업로드를 6개 할 수 있도록 하고 그 중 첫번째 큰 이미지에 등록한 이미지는 미리보기 이미지로 한다.(대표이미지)
 슬라이드 기능 (caurosel 기능이 있나 찾아보고 적용)을 적용해보고 사진을 클릭하면 학대 축소가 가능한 페이지로 이동하는 기능 구현

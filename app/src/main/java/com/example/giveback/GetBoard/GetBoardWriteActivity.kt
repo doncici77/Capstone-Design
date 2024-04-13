@@ -179,7 +179,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
         }
 
         // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
-        binding.imageArea.setOnClickListener {
+        binding.imageArea1.setOnClickListener {
             showImageUploadDialog()
         }
 
@@ -193,7 +193,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
 
         // 이미지 업로드
-        val imageView = binding.imageArea
+        val imageView = binding.imageArea1
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
 
@@ -230,12 +230,10 @@ class GetBoardWriteActivity : AppCompatActivity() {
                     1000
                 )
             } else { //권한이 있는 경우
-                cameraIntent.also { takePictureIntent ->
-                    takePictureIntent.resolveActivity(packageManager)?.also {
-                        startActivityForResult(cameraIntent, 100)
-                        isImageUpload = true
-                        dialog.dismiss()
-                    }
+                cameraIntent.resolveActivity(packageManager)?.also {
+                    startActivityForResult(cameraIntent, 200)
+                    isImageUpload = true
+                    dialog.dismiss()
                 }
             }
         }
@@ -268,7 +266,10 @@ class GetBoardWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
-            binding.imageArea.setImageURI(data?.data)
+            binding.imageArea1.setImageURI(data?.data)
+        } else if(resultCode == RESULT_OK && requestCode == 200) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            binding.imageArea1.setImageBitmap(imageBitmap)
         }
     }
 

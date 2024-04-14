@@ -53,6 +53,8 @@ class GetBoardInsideActivity : AppCompatActivity() {
         getImageData(key)
 
         commentAdapter = CommentLVAdpater(commentDataList)
+
+        binding.manageNumber.text = "관리번호 : ${key}"
     }
 
     // 만든 custom_dialog를 띄우는 showDialog() 함수 생성

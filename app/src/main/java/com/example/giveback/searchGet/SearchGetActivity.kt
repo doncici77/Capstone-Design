@@ -65,28 +65,6 @@ class SearchGetActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        // 습득위치와 관련한 드롭다운 메뉴 코드입니다.
-        // R.id.gender_spinner 는 1번에서 지정한 Spinner 태그의 ID 입니다.
-        val getSpinner: Spinner = findViewById(R.id.getlocationArea)
-
-        ArrayAdapter.createFromResource(
-            this,
-
-            // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
-
-            // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
-            // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
-            R.layout.getlocation_spinner_item
-
-        ).also { adapter ->
-
-            // android.R.layout.simple_spinner_dropdown_item 도 android 에서 기본 제공
-            // 되는 layout 입니다. 이 부분은 "선택할 item 목록" 부분의 layout을 결정합니다.
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            getSpinner.adapter = adapter
-        }
-
         // 검색 버튼을 눌렀을 때 검색된 화면(SearchedActivity로 이동
         binding.searchBtn.setOnClickListener{
 

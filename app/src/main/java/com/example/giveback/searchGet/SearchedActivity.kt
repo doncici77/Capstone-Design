@@ -37,7 +37,6 @@ class SearchedActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchedBinding
 
     private lateinit var searchtitle: String
-    private lateinit var getlocation: String
 
     val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
 
@@ -71,8 +70,6 @@ class SearchedActivity : AppCompatActivity() {
             endDate = sdf.parse(intent.getStringExtra("종료일").toString())
         }
 
-        getlocation = intent.getStringExtra("습득위치").toString()
-
         getFBBoardData(searchtitle)
 
         // 되돌아기 버튼을 눌렀을 때 GetFragment로 이동
@@ -96,7 +93,7 @@ class SearchedActivity : AppCompatActivity() {
 
                     val sdfDate = sdf.parse(item?.getDate)
 
-                    if(searchtitle.contains(item?.title.toString()) &&
+                    if((item?.title.toString().contains(searchtitle)) &&
                         (sdfDate <= endDate && sdfDate >= startDate))
                     {
                         boardDataList.add(item!!)

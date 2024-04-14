@@ -96,7 +96,7 @@ class SearchedActivity : AppCompatActivity() {
 
                     val sdfDate = sdf.parse(item?.getDate)
 
-                    if(searchtitle.equals(item?.title.toString()) &&
+                    if(searchtitle.contains(item?.title.toString()) &&
                         (sdfDate <= endDate && sdfDate >= startDate))
                     {
                         boardDataList.add(item!!)

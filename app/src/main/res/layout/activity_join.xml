@@ -36,6 +36,14 @@
                 android:layout_height="50dp"
                 android:hint="email"
                 style="@style/AuthEditText"/>
+            <TextView
+                android:id="@+id/emailokText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#FF0000"
+                android:paddingLeft="20dp" />
+
             <LinearLayout
                 android:background="#999999"
                 android:layout_width="match_parent"
@@ -50,12 +58,22 @@
                 android:inputType="textPassword"
                 android:hint="password"
                 style="@style/AuthEditText"/>
+
+            <TextView
+                android:id="@+id/pwokText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#FF0000"
+                android:paddingLeft="20dp" />
+
             <LinearLayout
                 android:background="#999999"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="10dp"/>
+
 
             <EditText
                 android:id="@+id/passwordArea2"
@@ -64,6 +82,13 @@
                 android:inputType="textPassword"
                 android:hint="password check"
                 style="@style/AuthEditText"/>
+            <TextView
+                android:id="@+id/pwcheckokText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#FF0000"
+                android:paddingLeft="20dp" />
             <LinearLayout
                 android:background="#999999"
                 android:layout_width="match_parent"

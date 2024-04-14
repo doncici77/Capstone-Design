@@ -460,3 +460,11 @@ ps 알림을 눌렀을 때 해당 게시글로 이동하는 기능과 알림 메
 사진 업로드를 6개 할 수 있도록 하고 그 중 첫번째 큰 이미지에 등록한 이미지는 미리보기 이미지로 한다.(대표이미지)
 슬라이드 기능 (caurosel 기능이 있나 찾아보고 적용)을 적용해보고 사진을 클릭하면 학대 축소가 가능한 페이지로 이동하는 기능 구현
 ```
+#### QnA에 댓글이 달리면 해당 게시글 상태 변경 기능 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a5bead61-3236-4dbe-bed0-ea82ab3221ab)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/5ee565cb-66fc-487f-8713-6225a90ad963)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/6665571f-1bd2-4917-9f95-0d1ee6594356)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/d1247fb7-327d-4625-965a-99f9e719f111)
+```
+QnA에 댓글이 달리면 해당 게시글의 상태를 대기에서 완료로 변경한다.
+```

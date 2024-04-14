@@ -9,9 +9,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.giveback.R
 import com.example.giveback.utils.FBAuth
+import com.example.giveback.utils.FBRef
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 
 // 리스트뷰와 게시글 데이터를 연결해주는 게시물 리스트 어댑터
-class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>): BaseAdapter() {
+class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>, val boardKeyList: MutableList<String>): BaseAdapter() {
     override fun getCount(): Int {
         return boardList.size
     }
@@ -34,18 +38,45 @@ class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>): BaseAda
             view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent,false)
         //}
 
+        val email = view?.findViewById<TextView>(R.id.emailArea)
         val title = view?.findViewById<TextView>(R.id.titleArea)
-        val content = view?.findViewById<TextView>(R.id.contentArea)
-        val time = view?.findViewById<TextView>(R.id.timeArea)
+        val status = view?.findViewById<TextView>(R.id.statusArea)
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
         if(boardList[position].uid.equals(FBAuth.getUid())) {
-            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#ffa500"))
+            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#EEEEEE"))
         }
 
+        // ChildEventListener 등록
+        val childEventListener = object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                // 글이 추가되었을 때 처리하는 로직
+                status?.text = "완료"
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                // 글이 변경되었을 때 처리하는 로직
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                // 글이 삭제되었을 때 처리하는 로직
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                // 글의 순서가 변경되었을 때 처리하는 로직
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // 에러 처리
+            }
+        }
+
+        // posts 경로에 ChildEventListener 등록
+        FBRef.commentRef.child(boardKeyList[position]).addChildEventListener(childEventListener)
+
+        email!!.text = boardList[position].email
         title!!.text = boardList[position].title
-        content!!.text = boardList[position].content
-        time!!.text = boardList[position].time
+        status!!.text = boardList[position].status
 
         return view!!
     }

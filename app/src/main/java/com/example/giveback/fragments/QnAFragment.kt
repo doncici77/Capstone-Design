@@ -1,5 +1,6 @@
 package com.example.giveback.fragments
 
+import android.app.ActionBar
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.QnABoard.QnaBoardInsideActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.FragmentQnaBinding
@@ -20,6 +23,7 @@ import com.google.firebase.database.ValueEventListener
 import com.example.giveback.QnABoard.QnaBoardListLVAdapter
 import com.example.giveback.QnABoard.QnaBoardModel
 import com.example.giveback.QnABoard.QnaBoardWriteActivity
+import com.google.firebase.database.ChildEventListener
 
 // QnA 페이지
 class QnAFragment : Fragment() {
@@ -43,8 +47,9 @@ class QnAFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_qna, container, false)
 
         // BoardListLVAdpater와 연결
-        boardRVAdapter = QnaBoardListLVAdapter(boardDataList)
+        boardRVAdapter = QnaBoardListLVAdapter(boardDataList,  boardKeyList)
         binding.boardListView.adapter = boardRVAdapter
+
 
         // QnA 화면의 QnaWriteBtn을 클릭하면 QnaBoardWriteActivity로 이동하도록 화면 이동 기능 구현
         binding.QnaBtn.setOnClickListener{

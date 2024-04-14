@@ -24,12 +24,6 @@ class SearchGetActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_search_get)
 
-        // 습득 위치 옆의 물음표 버튼을 눌렀을 때 학교 건물 웹뷰로 이동한다.
-        binding.question.setOnClickListener {
-            val intent = Intent(this, WebviewActivity::class.java)
-            startActivity(intent)
-        }
-
         // 날짜를 입력받을 때 달력이 나오고 달력에서 날짜를 선택하면 선택한 날짜가 text로 들어간다.
         val datePickerListener1 = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             // 선택한 날짜를 원하는 형식으로 텍스트로 변환
@@ -101,7 +95,6 @@ class SearchGetActivity : AppCompatActivity() {
             intent.putExtra("물품명",binding.titleArea.text.toString())
             intent.putExtra("시작일", binding.getStartDate.text.toString())
             intent.putExtra("종료일", binding.getEndDate.text.toString())
-            intent.putExtra("습득위치", binding.getlocationArea.selectedItem.toString().substring(0, binding.getlocationArea.selectedItem.toString().indexOf(" ")))
             startActivity(intent)
         }
     }

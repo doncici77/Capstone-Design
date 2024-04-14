@@ -97,8 +97,7 @@ class SearchedActivity : AppCompatActivity() {
                     val sdfDate = sdf.parse(item?.getDate)
 
                     if(searchtitle.equals(item?.title.toString()) &&
-                        (sdfDate <= endDate && sdfDate >= startDate) &&
-                        getlocation.equals(item?.getLocation.toString().substring(0,item?.getLocation.toString().indexOf(" "))))
+                        (sdfDate <= endDate && sdfDate >= startDate))
                     {
                         boardDataList.add(item!!)
                         boardKeyList.add(dataModel.key.toString())

@@ -138,8 +138,6 @@ class QnaBoardInsideActivity : AppCompatActivity() {
                 if (dataModel != null) {
                     binding.titleArea.setText(dataModel.title)
                     binding.textArea.setText(dataModel.content)
-                    binding.timeArea.setText(dataModel.time)
-                    val writerUid = dataModel.uid
                 }
 
                 val myUid = FBAuth.getUid()

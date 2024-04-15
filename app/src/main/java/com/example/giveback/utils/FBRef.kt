@@ -22,6 +22,7 @@ class FBRef {
         // comment 경로의 데이터베이스 경로를 선언
         val commentRef = database.getReference("comment")
 
-
+        // keyword 경로의 데이터베이스 경로를 선언
+        val keywordRef= database.getReference("keyword")
     }
 }

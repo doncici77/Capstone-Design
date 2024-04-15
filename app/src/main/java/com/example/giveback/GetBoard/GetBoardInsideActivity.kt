@@ -52,8 +52,6 @@ class GetBoardInsideActivity : AppCompatActivity() {
         getBoardData(key)
         getImageData(key)
 
-        commentAdapter = CommentLVAdpater(commentDataList)
-
         binding.manageNumber.text = "관리번호 : ${key}"
     }
 

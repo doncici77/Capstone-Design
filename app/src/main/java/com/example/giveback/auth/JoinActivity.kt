@@ -37,10 +37,9 @@ class JoinActivity : AppCompatActivity() {
         binding.emailArea.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val email = s.toString()
-                email_ok = email.endsWith("@gwnu.ac.kr") || email.endsWith("@gwnu.mypiug.kr")
+                email_ok = email.endsWith("@gwnu.ac.kr") || email.endsWith("@gwnu.myplug.kr")
                 if (!email.contains('@')) {
                     // 이메일에 '@'가 포함되어 있는지 확인
                     binding.emailokText.setTextColor(Color.RED)
@@ -48,7 +47,7 @@ class JoinActivity : AppCompatActivity() {
                 } else if (!email_ok) {
                     // 지정된 도메인 확인
                     binding.emailokText.setTextColor(Color.RED)
-                    binding.emailokText.text = "gwnu.ac.kr 혹은 gwnu.mypiug.kr 도메인으로 입력하세요."
+                    binding.emailokText.text = "gwnu.ac.kr 혹은 gwnu.myplug.kr 도메인으로 입력하세요."
                 } else {
                     binding.emailokText.setTextColor(ContextCompat.getColor(applicationContext, R.color.green))
                     binding.emailokText.text = "유효한 아이디"
@@ -97,19 +96,8 @@ class JoinActivity : AppCompatActivity() {
         binding.verifyEmailBtn.setOnClickListener {
             val email = binding.emailArea.text.toString()
             val password1 = binding.passwordArea1.text.toString()
-            val password2 = binding.passwordArea2.text.toString()
 
-            // 이메일, 비밀번호, 비밀번호 확인 입력 검증
-            if (email.isEmpty() || password1.isEmpty() || password2.isEmpty()) {
-                Toast.makeText(this, "이메일, 비밀번호, 비밀번호 확인을 모두 입력해주세요.", Toast.LENGTH_LONG).show()
-            } //else if (!email.endsWith("@gwnu.ac.kr")) { Toast.makeText(this, "gwnu.ac.kr 도메인의 이메일을 사용해주세요.", Toast.LENGTH_LONG).show() } 인증 메일이 안옴
-            else if (password1 != password2) {
-                Toast.makeText(this, "비밀번호가 서로 일치하지 않습니다.", Toast.LENGTH_LONG).show()
-            } else if (password1.length < 6) {
-                Toast.makeText(this, "비밀번호를 6자 이상으로 설정해주세요.", Toast.LENGTH_LONG).show()
-            } else {
-                createUserAndSendEmailVerification(email, password1)
-            }
+            createUserAndSendEmailVerification(email, password1)
         }
 
         binding.joinBtn.setOnClickListener {

@@ -289,6 +289,12 @@ class GetBoardWriteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // 카테고리는 필수로 입력되어야 한다.(검색과 키워드에 사용되기 때문이다.)
+            if(category.isEmpty()){
+                Toast.makeText(this,"카테고리를 선택해주세요",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val alertDialog = AlertDialog.Builder(this)
                 .setIcon(R.drawable.chat)
                 .setTitle("습득물 게시글 등록")

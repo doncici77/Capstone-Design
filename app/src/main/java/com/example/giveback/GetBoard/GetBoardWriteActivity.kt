@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
@@ -42,11 +43,144 @@ class GetBoardWriteActivity : AppCompatActivity() {
     val email = user?.email.toString()
 
     private lateinit var dialog: Dialog
+
+    private lateinit var category: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_get_board_write)
+
+        // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
+        binding.getCategoryArea.setOnClickListener {
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.category_item, null)
+            val mBuilder = android.app.AlertDialog.Builder(this)
+                .setView(mDialogView)
+                .setTitle("카테고리 설정창")
+
+            val alertDialog = mBuilder.show()
+
+            // 지갑을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.wallet)?.setOnClickListener {
+                Toast.makeText(this, "지갑 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.wallet).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 카드을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.card)?.setOnClickListener {
+                Toast.makeText(this, "카드 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.card).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 현금을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cash)?.setOnClickListener {
+                Toast.makeText(this, "현금 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cash).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 가방을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.bag)?.setOnClickListener {
+                Toast.makeText(this, "가방 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.bag).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 전자을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.device)?.setOnClickListener {
+                Toast.makeText(this, "전자 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.device).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 의류을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cloth)?.setOnClickListener {
+                Toast.makeText(this, "의류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cloth).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 스포츠을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.sport)?.setOnClickListener {
+                Toast.makeText(this, "스포츠 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.sport).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 자동차을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.car)?.setOnClickListener {
+                Toast.makeText(this, "자동차 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.car).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 서류를 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.document)?.setOnClickListener {
+                Toast.makeText(this, "서류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.document).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 악기을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.instrument)?.setOnClickListener {
+                Toast.makeText(this, "악기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.instrument).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 증명서을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.certification)?.setOnClickListener {
+                Toast.makeText(this, "증명서 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.certification).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 기타을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.etc)?.setOnClickListener {
+                Toast.makeText(this, "기타 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.etc).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+        }
 
         // 습득 위치 옆의 물음표 버튼을 눌렀을 때 학교 건물 웹뷰로 이동한다.
         binding.question.setOnClickListener {
@@ -121,8 +255,6 @@ class GetBoardWriteActivity : AppCompatActivity() {
             keepSpinner.adapter = adapter
         }
 
-        val detailkeep = binding.detailkeepArea.text
-
         dialog = Dialog(this)
 
         // 게시글 작성 버튼을 눌렀을 때 파이어베이스에 게시글과 이미지를 넣는다.
@@ -133,6 +265,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
             val getUid = uid.toString()
             val title = binding.titleArea.text.toString()
+            val category = category.toString()
             val content = binding.contentArea.text.toString()
             val getDate = binding.getDateArea.text.toString()
             val getLocation = getSpinner.selectedItem.toString()
@@ -146,13 +279,13 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
             // 습득명은 필수로 입력되어야 한다.
             if(title.isEmpty()){
-                Toast.makeText(this,"습득명을 선택해주세요",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"습득명을 선택해주세요",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // 습득날짜는 필수로 입력되어야 한다.
             if(getDate.isEmpty()){
-                Toast.makeText(this,"습득날짜를 선택해주세요",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"습득날짜를 선택해주세요",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -169,6 +302,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
                                 uid,
                                 email,
                                 title,
+                                category,
                                 getDate,
                                 getLocation,
                                 getdetailLocation,
@@ -178,7 +312,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
                             )
                         )
 
-                    Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
                     // 이미지를 Firebase 스토리지에 업로드
                     if(isImageUpload) {

@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -46,6 +48,8 @@ class GetBoardEditActivity : AppCompatActivity() {
     private lateinit var keepSpinner: Spinner
     private lateinit var detailkeep : String
 
+    private lateinit var category: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,6 +61,27 @@ class GetBoardEditActivity : AppCompatActivity() {
         getImageData(key)
 
         writerUid = FBAuth.getUid()
+
+        // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
+        binding.getCategoryArea.setOnClickListener {
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.category_item, null)
+            val mBuilder = android.app.AlertDialog.Builder(this)
+                .setView(mDialogView)
+                .setTitle("카테고리 설정창")
+
+            val alertDialog = mBuilder.show()
+
+            // 지갑을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.wallet)?.setOnClickListener {
+                Toast.makeText(this, "지갑 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.wallet).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+        }
+
 
         // 수정 버튼을 누르면 게시글과 이미지의 수정이 일어난다.
         binding.editBtn.setOnClickListener {
@@ -168,6 +193,7 @@ class GetBoardEditActivity : AppCompatActivity() {
                     writerUid.toString(),
                     binding.emailArea.text.toString(),
                     binding.titleArea.text.toString(),
+                    binding.getCategoryArea.text.toString(),
                     binding.getDateArea.text.toString(),
                     getSpinner.selectedItem.toString(),
                     binding.detailgetArea.text.toString(),
@@ -175,7 +201,7 @@ class GetBoardEditActivity : AppCompatActivity() {
                     binding.detailkeepArea.text.toString(),
                     binding.contentArea.text.toString(),
                 ))
-        Toast.makeText(this,"수정완료", Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"수정완료", Toast.LENGTH_SHORT).show()
         finish()
     }
 
@@ -221,6 +247,7 @@ class GetBoardEditActivity : AppCompatActivity() {
                 if (dataModel != null) {
                     binding.emailArea.setText(dataModel.email)
                     binding.titleArea.setText(dataModel.title)
+                    binding.getCategoryArea.setText(dataModel.category)
                     binding.getDateArea.setText(dataModel.getDate)
                     getSpinner.setSelection(0) // 수정할 때 Spinner 인덱스를 0으로 초기화
                     binding.detailgetArea.setText(dataModel.getdetailLocation)

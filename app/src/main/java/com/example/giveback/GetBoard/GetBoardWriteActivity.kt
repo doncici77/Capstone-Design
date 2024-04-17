@@ -265,7 +265,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
             val getUid = uid.toString()
             val title = binding.titleArea.text.toString()
-            val category = category.toString()
+            val category = binding.getCategoryArea.text.toString()
             val content = binding.contentArea.text.toString()
             val getDate = binding.getDateArea.text.toString()
             val getLocation = getSpinner.selectedItem.toString()

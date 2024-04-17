@@ -40,7 +40,7 @@ class JoinActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val email = s.toString()
-                email_ok = email.endsWith("@gwnu.ac.kr") || email.endsWith("@gwnu.mypiug.kr")
+                email_ok = email.endsWith("@gwnu.ac.kr") || email.endsWith("@gwnu.myplug.kr")
                 if (!email.contains('@')) {
                     // 이메일에 '@'가 포함되어 있는지 확인
                     binding.emailokText.setTextColor(Color.RED)
@@ -48,7 +48,7 @@ class JoinActivity : AppCompatActivity() {
                 } else if (!email_ok) {
                     // 지정된 도메인 확인
                     binding.emailokText.setTextColor(Color.RED)
-                    binding.emailokText.text = "gwnu.ac.kr 혹은 gwnu.mypiug.kr 도메인으로 입력하세요."
+                    binding.emailokText.text = "gwnu.ac.kr 혹은 gwnu.myplug.kr 도메인으로 입력하세요."
                 } else {
                     binding.emailokText.setTextColor(ContextCompat.getColor(applicationContext, R.color.green))
                     binding.emailokText.text = "유효한 아이디"
@@ -113,11 +113,25 @@ class JoinActivity : AppCompatActivity() {
         }
 
         binding.joinBtn.setOnClickListener {
-            // 회원가입 버튼 클릭 시의 액션은 이메일 인증 확인 후에 활성화되어야 함
-            // 여기서는 예제 코드로 바로 메인 액티비티로 이동하도록 설정
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.reload()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    if (user.isEmailVerified) {
+                        // 이메일 인증이 완료된 경우, 로그인 화면으로 전환
+                        val loginIntent = Intent(this, LoginActivity::class.java)
+                        startActivity(loginIntent)
+                        finish()  // 현재 액티비티 종료
+                    } else {
+                        // 이메일 인증이 완료되지 않았다면 사용자에게 안내 메시지 표시
+                        Toast.makeText(this, "이메일 인증이 완료되지 않았습니다. 이메일을 확인해 주세요.", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // 유저 정보 리로드 실패
+                    Toast.makeText(this, "오류가 발생했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
     }
 
     // 이메일 인증 버튼 활성화 상태 변경 메소드

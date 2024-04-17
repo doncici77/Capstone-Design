@@ -135,8 +135,10 @@ class GetBoardWriteActivity : AppCompatActivity() {
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
             val getDate = binding.getDateArea.text.toString()
-            val getLocation = "${getSpinner.selectedItem.toString()} ${detailget}".toString()
-            val keepLocation = "${keepSpinner.selectedItem.toString()} ${detailkeep}".toString()
+            val getLocation = getSpinner.selectedItem.toString()
+            val getdetailLocation = binding.detailgetArea.text.toString()
+            val keepLocation = keepSpinner.selectedItem.toString()
+            val keepdetailLocation = binding.detailkeepArea.text.toString()
 
             // 키부터 생성하고 데이터베이스에 저장하도록 수정
             val key = FBRef.getboardRef.push().key.toString()
@@ -162,7 +164,19 @@ class GetBoardWriteActivity : AppCompatActivity() {
                     // 파이어 베이스에 데이터를 저장한다.
                     FBRef.getboardRef
                         .child(key) // 랜덤한 값
-                        .setValue(GetBoardModel(uid, email, title, getDate, getLocation, keepLocation, content,))
+                        .setValue(
+                            GetBoardModel(
+                                uid,
+                                email,
+                                title,
+                                getDate,
+                                getLocation,
+                                getdetailLocation,
+                                keepLocation,
+                                keepdetailLocation,
+                                content
+                            )
+                        )
 
                     Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
 

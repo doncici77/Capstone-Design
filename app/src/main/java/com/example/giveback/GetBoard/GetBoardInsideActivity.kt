@@ -34,10 +34,6 @@ class GetBoardInsideActivity : AppCompatActivity() {
 
     private lateinit var key:String
 
-    private val commentDataList = mutableListOf<CommentModel>()
-
-    private lateinit var commentAdapter : CommentLVAdpater
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -119,8 +115,8 @@ class GetBoardInsideActivity : AppCompatActivity() {
                     binding.emailArea.setText("습득자: ${dataModel.email}")
                     binding.titleArea.setText("습득물명: ${dataModel.title}")
                     binding.getDateArea.setText("습득날짜: ${dataModel.getDate}")
-                    binding.getlocationArea.setText("습득위치: ${dataModel.getLocation}")
-                    binding.keeplocationArea.setText("보관위치: ${dataModel.keepLocation}")
+                    binding.getlocationArea.setText("습득위치: ${dataModel.getLocation} ${dataModel.getdetailLocation}")
+                    binding.keeplocationArea.setText("보관위치: ${dataModel.keepLocation} ${dataModel.keepdetailLocation}")
                     binding.contentArea.setText("상세내용 : ${dataModel.content}")
                 }
 

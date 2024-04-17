@@ -68,8 +68,8 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
         }
 
         title!!.text = "습득명: ${boardList[position].title}"
-        getLocation!!.text = "습득장소: ${boardList[position].getLocation}"
-        keepLocation!!.text = "보관장소: ${boardList[position].keepLocation}"
+        getLocation!!.text = "습득장소: ${boardList[position].getLocation} ${boardList[position].getdetailLocation}"
+        keepLocation!!.text = "보관장소: ${boardList[position].keepLocation} ${boardList[position].keepdetailLocation}"
         getDate!!.text = boardList[position].getDate
 
         return view!!

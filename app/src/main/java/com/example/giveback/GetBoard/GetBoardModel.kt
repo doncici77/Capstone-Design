@@ -9,6 +9,8 @@ data class GetBoardModel (
     val title: String = "", // 습득물명
     val getDate: String = "", // 습득일자
     val getLocation: String = "", // 습득위치
+    val getdetailLocation: String = "", // 상세 습득위치
     val keepLocation: String = "", // 보관위치
+    val keepdetailLocation: String = "", // 상세 보관위치
     val content: String = "", // 상세 내용
 )

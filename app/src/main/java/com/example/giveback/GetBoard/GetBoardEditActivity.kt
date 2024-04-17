@@ -169,8 +169,10 @@ class GetBoardEditActivity : AppCompatActivity() {
                     binding.emailArea.text.toString(),
                     binding.titleArea.text.toString(),
                     binding.getDateArea.text.toString(),
-                    "${getSpinner.selectedItem.toString()} ${detailget}",
-                    "${keepSpinner.selectedItem.toString()} ${detailkeep}",
+                    getSpinner.selectedItem.toString(),
+                    binding.detailgetArea.text.toString(),
+                    keepSpinner.selectedItem.toString(),
+                    binding.detailkeepArea.text.toString(),
                     binding.contentArea.text.toString(),
                 ))
         Toast.makeText(this,"수정완료", Toast.LENGTH_LONG).show()
@@ -221,7 +223,9 @@ class GetBoardEditActivity : AppCompatActivity() {
                     binding.titleArea.setText(dataModel.title)
                     binding.getDateArea.setText(dataModel.getDate)
                     getSpinner.setSelection(0) // 수정할 때 Spinner 인덱스를 0으로 초기화
+                    binding.detailgetArea.setText(dataModel.getdetailLocation)
                     keepSpinner.setSelection(0) // 수정할 때 Spinner 인덱스를 0으로 초기화
+                    binding.detailkeepArea.setText(dataModel.keepdetailLocation)
                     binding.contentArea.setText(dataModel.content)
                 }
             }

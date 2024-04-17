@@ -4,7 +4,9 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -18,11 +20,143 @@ import java.util.Calendar
 class SearchGetActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySearchGetBinding
+
+    private lateinit var category: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_get)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_search_get)
+
+        // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
+        binding.getCategoryArea.setOnClickListener {
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.category_item, null)
+            val mBuilder = android.app.AlertDialog.Builder(this)
+                .setView(mDialogView)
+                .setTitle("카테고리 설정창")
+
+            val alertDialog = mBuilder.show()
+
+            // 지갑을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.wallet)?.setOnClickListener {
+                Toast.makeText(this, "지갑 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.wallet).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 카드을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.card)?.setOnClickListener {
+                Toast.makeText(this, "카드 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.card).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 현금을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cash)?.setOnClickListener {
+                Toast.makeText(this, "현금 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cash).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 가방을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.bag)?.setOnClickListener {
+                Toast.makeText(this, "가방 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.bag).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 전자기기을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.device)?.setOnClickListener {
+                Toast.makeText(this, "전자기기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.device).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 의류을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cloth)?.setOnClickListener {
+                Toast.makeText(this, "의류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cloth).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 스포츠을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.sport)?.setOnClickListener {
+                Toast.makeText(this, "스포츠 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.sport).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 자동차을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.car)?.setOnClickListener {
+                Toast.makeText(this, "자동차 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.car).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 서류를 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.document)?.setOnClickListener {
+                Toast.makeText(this, "서류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.document).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 악기을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.instrument)?.setOnClickListener {
+                Toast.makeText(this, "악기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.instrument).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 증명서을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.certification)?.setOnClickListener {
+                Toast.makeText(this, "증명서 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.certification).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 기타을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.etc)?.setOnClickListener {
+                Toast.makeText(this, "기타 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.etc).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+        }
 
         // 날짜를 입력받을 때 달력이 나오고 달력에서 날짜를 선택하면 선택한 날짜가 text로 들어간다.
         val datePickerListener1 = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -70,7 +204,7 @@ class SearchGetActivity : AppCompatActivity() {
 
 
             val intent = Intent(this, SearchedActivity::class.java)
-            intent.putExtra("물품명",binding.titleArea.text.toString())
+            intent.putExtra("카테고리명",binding.getCategoryArea.text.toString())
             intent.putExtra("시작일", binding.getStartDate.text.toString())
             intent.putExtra("종료일", binding.getEndDate.text.toString())
             startActivity(intent)

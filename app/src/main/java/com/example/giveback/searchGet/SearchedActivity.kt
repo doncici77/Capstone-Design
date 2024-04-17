@@ -36,7 +36,7 @@ class SearchedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchedBinding
 
-    private lateinit var searchtitle: String
+    private lateinit var searchCategory: String
 
     val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
 
@@ -60,7 +60,7 @@ class SearchedActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        searchtitle = intent.getStringExtra("물품명").toString()
+        searchCategory = intent.getStringExtra("카테고리명").toString()
 
         if(intent.getStringExtra("시작일").toString() == "" && intent.getStringExtra("종료일").toString() == "") {
             startDate = sdf.parse("2024년 1월 1일")
@@ -70,7 +70,7 @@ class SearchedActivity : AppCompatActivity() {
             endDate = sdf.parse(intent.getStringExtra("종료일").toString())
         }
 
-        getFBBoardData(searchtitle)
+        getFBBoardData(searchCategory)
 
         // 되돌아기 버튼을 눌렀을 때 GetFragment로 이동
         binding.backGetFragment.setOnClickListener{
@@ -93,7 +93,7 @@ class SearchedActivity : AppCompatActivity() {
 
                     val sdfDate = sdf.parse(item?.getDate)
 
-                    if((item?.title.toString().contains(searchtitle)) &&
+                    if((item?.category.toString().contains(searchCategory)) &&
                         (sdfDate <= endDate && sdfDate >= startDate))
                     {
                         boardDataList.add(item!!)

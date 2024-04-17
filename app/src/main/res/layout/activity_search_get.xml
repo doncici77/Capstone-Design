@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="물품명"
+                    android:text="카테고리명"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,14 +41,14 @@
                     android:textColor="@color/black">
                 </TextView>
 
-                <EditText
+                <Button
                     android:textSize="20dp"
-                    android:id="@+id/titleArea"
+                    android:id="@+id/getCategoryArea"
                     android:layout_margin="20dp"
                     android:background="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:hint="습득물명을 입력해주세요"/>
+                    android:hint="카테고리를 설정해주세요"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

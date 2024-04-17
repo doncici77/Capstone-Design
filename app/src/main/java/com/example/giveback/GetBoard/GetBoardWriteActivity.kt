@@ -101,9 +101,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
                 alertDialog.dismiss()
             }
 
-            // 전자을 클릭했을 때
+            // 전자기기을 클릭했을 때
             alertDialog.findViewById<Button>(R.id.device)?.setOnClickListener {
-                Toast.makeText(this, "전자 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "전자기기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
 
                 category =  alertDialog.findViewById<Button>(R.id.device).text.toString()
                 binding.getCategoryArea.setText(category)

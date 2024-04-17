@@ -20,7 +20,7 @@
             android:drawableTop="@drawable/wallet"
             android:text="지갑"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -33,7 +33,7 @@
             android:drawableTop="@drawable/card"
             android:text="카드"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -46,7 +46,7 @@
             android:drawableTop="@drawable/cash"
             android:text="현금"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -59,7 +59,7 @@
             android:drawableTop="@drawable/bag"
             android:text="가방"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -71,15 +71,15 @@
 
         <Button
             android:id="@+id/device"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="#E0E0E0"
             android:drawableTop="@drawable/device"
-            android:text="전자"
+            android:text="전자기기"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -92,7 +92,7 @@
             android:drawableTop="@drawable/cloth"
             android:text="의류"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -105,7 +105,7 @@
             android:drawableTop="@drawable/sport"
             android:text="스포츠"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -118,7 +118,7 @@
             android:drawableTop="@drawable/car"
             android:text="자동차"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -138,7 +138,7 @@
             android:drawableTop="@drawable/document"
             android:text="서류"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -151,7 +151,7 @@
             android:drawableTop="@drawable/instrument"
             android:text="악기"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -164,7 +164,7 @@
             android:drawableTop="@drawable/certification"
             android:text="증명서"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
         <Button
@@ -177,7 +177,7 @@
             android:drawableTop="@drawable/etc"
             android:text="기타"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="14dp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,17 +13,84 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GiveBack"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.GiveBack">
+            android:name=".searchGet.SearchedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchGet.SearchGetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetBoard.GetBoardEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetBoard.GetBoardInsideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetBoard.GetBoardWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LostBoard.LostBoardEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LostBoard.LostGetBoardInsideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LostBoard.LostBoardWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QnABoard.QnaBoardEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QnABoard.QnaBoardInsideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QnABoard.QnaBoardWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.JoinActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".auth.ResetPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
     </application>
 

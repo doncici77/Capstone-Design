@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "920697665954",
+    "firebase_url": "https://giveback-e961f-default-rtdb.firebaseio.com",
+    "project_id": "giveback-e961f",
+    "storage_bucket": "giveback-e961f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920697665954:android:912e27e0190169d5d9dafb",
+        "android_client_info": {
+          "package_name": "com.example.giveback"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATiS9VeZL2-Rh9wCeD71TgQCp1Zq1yOq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -27,9 +27,9 @@ class ResetPasswordActivity : AppCompatActivity() {
             } else {
                 auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "비밀번호 재설정 링크가 이메일로 전송되었습니다.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "비밀번호 재설정 링크가 이메일로 전송되었습니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this, "비밀번호 재설정 링크 전송 실패.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "비밀번호 재설정 링크 전송 실패.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

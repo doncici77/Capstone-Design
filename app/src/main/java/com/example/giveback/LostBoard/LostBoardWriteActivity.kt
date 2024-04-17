@@ -48,7 +48,7 @@ class LostBoardWriteActivity : AppCompatActivity() {
                 .child(key) // 랜덤한 값
                 .setValue(LostBoardModel(title,content,uid,time))
 
-            Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
             // 이미지를 Firebase 스토리지에 업로드
             if(isImageUpload) {

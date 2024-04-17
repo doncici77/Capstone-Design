@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
             // 이메일과 비밀번호가 비어있는지 확인
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -54,14 +54,14 @@ class LoginActivity : AppCompatActivity() {
                             val intent = Intent(this, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
-                            Toast.makeText(this, "로그인 성공", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                         } else {
                             // 이메일 인증이 완료되지 않은 경우
-                            Toast.makeText(this, "이메일 인증을 완료해주세요.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "이메일 인증을 완료해주세요.", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         // 로그인 실패 시 처리
-                        Toast.makeText(this, "로그인 실패", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
                     }
                 }
         }

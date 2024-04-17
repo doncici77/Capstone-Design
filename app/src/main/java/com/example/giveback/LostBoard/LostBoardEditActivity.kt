@@ -71,7 +71,7 @@ class LostBoardEditActivity : AppCompatActivity() {
                     binding.contentArea.text.toString(),
                     writerUid,
                     FBAuth.getTime()))
-        Toast.makeText(this,"수정완료", Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"수정완료", Toast.LENGTH_SHORT).show()
         finish()
     }
 

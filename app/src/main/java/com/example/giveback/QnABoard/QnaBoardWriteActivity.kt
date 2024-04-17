@@ -42,7 +42,7 @@ class QnaBoardWriteActivity : AppCompatActivity() {
                 .child(key) // 랜덤한 값
                 .setValue(QnaBoardModel(uid, email.toString(),title,content, "대기"))
 
-            Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
             finish()
         }

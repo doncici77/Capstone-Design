@@ -124,15 +124,15 @@ class JoinActivity : AppCompatActivity() {
                 val user = auth.currentUser
                 user?.sendEmailVerification()?.addOnCompleteListener { verificationTask ->
                     if (verificationTask.isSuccessful) {
-                        Toast.makeText(this, "인증 이메일이 발송되었습니다. 이메일을 확인해주세요.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "인증 이메일이 발송되었습니다. 이메일을 확인해주세요.", Toast.LENGTH_SHORT).show()
                         // 이메일 인증 후에 회원가입 버튼 활성화
                         binding.joinBtn.isEnabled = true
                     } else {
-                        Toast.makeText(this, "이메일 발송에 실패했습니다.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "이메일 발송에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "회원가입 실패", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
             }
         }
     }

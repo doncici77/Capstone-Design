@@ -63,7 +63,7 @@ class LostGetBoardInsideActivity : AppCompatActivity() {
         val alertDialog = mBuilder.show()
         // 수정버튼을 클릭했을 때
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
-            Toast.makeText(this,"수정 버튼을 눌렀습니다.",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"수정 버튼을 눌렀습니다.",Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, LostBoardEditActivity::class.java)
             intent.putExtra("key", key)
@@ -72,7 +72,7 @@ class LostGetBoardInsideActivity : AppCompatActivity() {
         // 삭제버튼을 클릭했을 때
         alertDialog.findViewById<Button>(R.id.removeBtn)?.setOnClickListener {
             FBRef.lostboardRef.child(key).removeValue()
-            Toast.makeText(this,"삭제완료",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"삭제완료",Toast.LENGTH_SHORT).show()
 
             finish()
         }

@@ -99,7 +99,7 @@ class QnaBoardInsideActivity : AppCompatActivity() {
             )
 
         // 댓글 입력 완료 토스트 메시지를 띄운다.
-        Toast.makeText(this,"댓글 입력 완료",Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"댓글 입력 완료",Toast.LENGTH_SHORT).show()
         // 댓글 입력 후에 입력창의 텍스트를 지운다.
         binding.commentArea.setText("")
     }
@@ -114,7 +114,7 @@ class QnaBoardInsideActivity : AppCompatActivity() {
         val alertDialog = mBuilder.show()
         // 수정버튼을 클릭했을 때
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
-            Toast.makeText(this,"수정 버튼을 눌렀습니다.",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"수정 버튼을 눌렀습니다.",Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, QnaBoardEditActivity::class.java)
             intent.putExtra("key", key)
@@ -123,7 +123,7 @@ class QnaBoardInsideActivity : AppCompatActivity() {
         // 삭제버튼을 클릭했을 때
         alertDialog.findViewById<Button>(R.id.removeBtn)?.setOnClickListener {
             FBRef.qnaboardRef.child(key).removeValue()
-            Toast.makeText(this,"삭제완료",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"삭제완료",Toast.LENGTH_SHORT).show()
 
             finish()
         }

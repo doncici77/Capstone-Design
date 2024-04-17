@@ -61,7 +61,7 @@ class GetBoardInsideActivity : AppCompatActivity() {
         val alertDialog = mBuilder.show()
         // 수정버튼을 클릭했을 때
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
-            Toast.makeText(this, "수정 버튼을 눌렀습니다.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "수정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, GetBoardEditActivity::class.java)
             intent.putExtra("key", key)
@@ -77,7 +77,7 @@ class GetBoardInsideActivity : AppCompatActivity() {
                 .setTitle("해당 게시글을 삭제하겠습니까?")
                 .setPositiveButton("확인") { dialog, which ->
                     FBRef.getboardRef.child(key).removeValue()
-                    Toast.makeText(this, "삭제완료", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "삭제완료", Toast.LENGTH_SHORT).show()
 
                     finish()
                 }
@@ -114,6 +114,7 @@ class GetBoardInsideActivity : AppCompatActivity() {
 
                     binding.emailArea.setText("습득자: ${dataModel.email}")
                     binding.titleArea.setText("습득물명: ${dataModel.title}")
+                    binding.categoryArea.setText("카테고리명: ${dataModel.category}")
                     binding.getDateArea.setText("습득날짜: ${dataModel.getDate}")
                     binding.getlocationArea.setText("습득위치: ${dataModel.getLocation} ${dataModel.getdetailLocation}")
                     binding.keeplocationArea.setText("보관위치: ${dataModel.keepLocation} ${dataModel.keepdetailLocation}")

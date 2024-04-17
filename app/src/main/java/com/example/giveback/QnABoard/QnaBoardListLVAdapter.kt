@@ -43,6 +43,7 @@ class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>, val boar
         val status = view?.findViewById<TextView>(R.id.statusArea)
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
+
         if(boardList[position].uid.equals(FBAuth.getUid())) {
             itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#EEEEEE"))
         }
@@ -52,6 +53,7 @@ class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>, val boar
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 // 글이 추가되었을 때 처리하는 로직
                 status?.text = "완료"
+                itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#00FF80"))
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {

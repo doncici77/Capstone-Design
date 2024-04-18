@@ -482,6 +482,7 @@ QnA에 댓글이 달리면 해당 게시글의 상태를 대기에서 완료로 
 ```
 ## 24.04.19
 [알림 여러개 쌓기](https://velog.io/@yujeong136/Android-notification-%EC%83%9D%EC%84%B1-%EA%B4%80%EB%A0%A8-%EC%B6%94%EA%B0%80-%EC%A0%95%EB%A6%AC)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9dd0a253-cd56-48a0-9cd6-621466864c8a)
 ```
 현재 알림을 여러개 보내도, 가장 최신의 알림 1개로 업데이트만 되고, 쌓이지 않음. < 알림 여러개 쌓이게 하기. _ 아마 id값을 다른 값으로 주면 같은 알림이라고 인식 안 할 것 같다.
 

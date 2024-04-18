@@ -468,8 +468,15 @@ ps 알림을 눌렀을 때 해당 게시글로 이동하는 기능과 알림 메
 ```
 QnA에 댓글이 달리면 해당 게시글의 상태를 대기에서 완료로 변경한다.
 ```
-## 24.04.16
-
+## 24.04.18
+```kotlin
+// 코루틴을 시작하여 백그라운드에서 실행
+                GlobalScope.launch {
+                    if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())) {
+                        sendNotification()
+                    }
+                }
 ```
-
+```
+코루틴을 시작하여 백그라운드에서 키워드 알림이 실행되도록 수정하였다.
 ```

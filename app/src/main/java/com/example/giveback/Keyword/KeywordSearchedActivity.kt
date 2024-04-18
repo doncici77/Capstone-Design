@@ -69,7 +69,7 @@ class KeywordSearchedActivity : AppCompatActivity() {
 
                     val item = dataModel.getValue(GetBoardModel::class.java)
 
-                    if(searchKeyword.equals(item?.category.toString()))
+                    if(item?.category.toString().contains(searchKeyword))
                     {
                         boardDataList.add(item!!)
                         boardKeyList.add(dataModel.key.toString())

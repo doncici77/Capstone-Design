@@ -40,6 +40,8 @@ class KeywordWriteActivity : AppCompatActivity() {
 
     var myUid = auth.currentUser?.uid.toString()
 
+    var keywordList = mutableListOf<String>()
+
     private lateinit var dialog: Dialog
 
     private lateinit var category: String
@@ -191,7 +193,7 @@ class KeywordWriteActivity : AppCompatActivity() {
                     // uid를 가져온다.
                     val uid = FBAuth.getUid()
 
-                    val keyword = binding.keywordArea.text.toString()
+                    val keyword = binding.keywordArea.text
 
                     // 키부터 생성하고 데이터베이스에 저장하도록 수정
                     val key = FBRef.getboardRef.push().key.toString()
@@ -202,7 +204,7 @@ class KeywordWriteActivity : AppCompatActivity() {
                         .setValue(
                             KeywordStatusModel(
                                 uid,
-                                keyword,
+                                keyword.toString()
                             )
                         )
                     getKeyword()

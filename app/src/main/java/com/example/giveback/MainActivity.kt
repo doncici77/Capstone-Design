@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.giveback.Keyword.SetKeywordActivity
 import com.google.firebase.auth.FirebaseAuth
 
 // 메인 화면

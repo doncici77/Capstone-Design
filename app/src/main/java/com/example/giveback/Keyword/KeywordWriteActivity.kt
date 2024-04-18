@@ -204,6 +204,7 @@ class KeywordWriteActivity : AppCompatActivity() {
                                 keyword,
                             )
                         )
+                    getKeyword()
                     finish()
                 }
                 .setNegativeButton("취소", null)
@@ -218,7 +219,6 @@ class KeywordWriteActivity : AppCompatActivity() {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 // 글이 추가되었을 때 처리하는 로직
                 val post = snapshot.getValue(GetBoardModel::class.java)
-                val post2 = snapshot.getValue(KeywordStatusModel::class.java)
 
                 if(post?.category == binding.keywordArea.text.toString()){
                     // notification
@@ -245,8 +245,6 @@ class KeywordWriteActivity : AppCompatActivity() {
 
         // posts 경로에 ChildEventListener 등록
         FBRef.getboardRef.addChildEventListener(childEventListener)
-        // post2 경로에 ChildEventListener 동록
-        FBRef.keywordRef.addChildEventListener(childEventListener)
     }
 
     private fun permissionCheck() {

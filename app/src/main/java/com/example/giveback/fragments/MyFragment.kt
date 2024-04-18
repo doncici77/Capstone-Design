@@ -1,18 +1,15 @@
 package com.example.giveback.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.giveback.Keyword.SetKeywordActivity
+import com.example.giveback.Keyword.KeywordActivity
 import com.example.giveback.MyBoard.MyBoardActivity
 import com.example.giveback.R
 import com.example.giveback.auth.LoginActivity
@@ -72,7 +69,7 @@ class MyFragment : Fragment() {
         // 키워드 버튼을 눌렀을 때 키워드 설정 페이지(SetKeywordActivitiy)로 이동
         binding.keyword.setOnClickListener {
             // SetkeywordActivity로 화면 이동
-            val intent = Intent(requireContext(), SetKeywordActivity::class.java)
+            val intent = Intent(requireContext(), KeywordActivity::class.java)
             startActivity(intent)
         }
         

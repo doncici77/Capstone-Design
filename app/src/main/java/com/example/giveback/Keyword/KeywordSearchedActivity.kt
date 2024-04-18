@@ -28,7 +28,7 @@ class KeywordSearchedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKeywordSearchedBinding
 
-    private lateinit var searchtitle: String
+    private lateinit var searchKeyword: String
     private lateinit var startDate: Date
     private lateinit var endDate: Date
     private lateinit var getlocation: String
@@ -51,12 +51,12 @@ class KeywordSearchedActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        searchtitle = intent.getStringExtra("물품명").toString()
+        searchKeyword = intent.getStringExtra("키워드명").toString()
         startDate = sdf.parse(intent.getStringExtra("시작일").toString())
         endDate = sdf.parse(intent.getStringExtra("종료일").toString())
         getlocation = intent.getStringExtra("습득위치").toString()
 
-        getFBBoardData(searchtitle)
+        getFBBoardData(searchKeyword)
 
         // 되돌아기 버튼을 눌렀을 때 GetFragment로 이동
         binding.backGetFragment.setOnClickListener{
@@ -65,7 +65,7 @@ class KeywordSearchedActivity : AppCompatActivity() {
         }
     }
 
-    private fun getFBBoardData(searchtitle:String) {
+    private fun getFBBoardData(searchKeyword:String) {
 
         val postListner = object: ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -79,7 +79,7 @@ class KeywordSearchedActivity : AppCompatActivity() {
 
                     val sdfDate = sdf.parse(item?.getDate)
 
-                    if(searchtitle.equals(item?.title.toString()) &&
+                    if(searchKeyword.equals(item?.category.toString()) &&
                         (sdfDate <= endDate && sdfDate >= startDate))
                     {
                         boardDataList.add(item!!)

@@ -36,29 +36,14 @@
                     android:background="#000000">
                 </LinearLayout>
 
-                <LinearLayout
-                    android:background="#1111"
+                <Button
+                    android:textSize="20dp"
+                    android:id="@+id/keywordArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/keywordArea1"
-                        android:layout_margin="20dp"
-                        android:background="@android:color/transparent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:hint="물품 키워드를 입력해주세요"/>
-
-                    <Switch
-                        android:checked="false"
-                        android:layout_gravity="center"
-                        android:id="@+id/switch1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </Switch>
-
-                </LinearLayout>
+                    android:layout_height="60dp"
+                    android:hint="카테고리를 설정해주세요"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -29,6 +29,8 @@ import com.example.giveback.utils.FBAuth
 import com.example.giveback.utils.FBRef
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class KeywordWriteActivity : AppCompatActivity() {
 
@@ -42,15 +44,20 @@ class KeywordWriteActivity : AppCompatActivity() {
 
     var keywordList = mutableListOf<String>()
 
+    var uid = FBAuth.getUid()
+
     private lateinit var dialog: Dialog
 
     private lateinit var category: String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_keyword_write)
 
         createNotificationChannel()
+
 
 
         // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
@@ -190,8 +197,6 @@ class KeywordWriteActivity : AppCompatActivity() {
                 .setTitle("${binding.keywordArea.text.toString()}을 키워드로 등록합니다.")
                 .setMessage("등록된 키워드로 습득물 게시글이 올라올 시 알림이 발생합니다.")
                 .setPositiveButton("확인") { dialog, which ->
-                    // uid를 가져온다.
-                    val uid = FBAuth.getUid()
 
                     val keyword = binding.keywordArea.text
 
@@ -223,10 +228,11 @@ class KeywordWriteActivity : AppCompatActivity() {
                 // 글이 추가되었을 때 처리하는 로직
                 val post = snapshot.getValue(GetBoardModel::class.java)
                 val post2 = snapshot.getValue(KeywordStatusModel::class.java)
-
-                if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())){
-                    // notification
-                    sendNotification()
+                // 코루틴을 시작하여 백그라운드에서 실행
+                GlobalScope.launch {
+                    if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())) {
+                        sendNotification()
+                    }
                 }
             }
 

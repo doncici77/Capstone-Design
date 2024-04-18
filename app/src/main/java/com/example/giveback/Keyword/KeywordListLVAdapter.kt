@@ -1,18 +1,22 @@
 package com.example.giveback.Keyword
 
 import android.graphics.Color
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.giveback.QnABoard.KeywordStatusModel
 import com.example.giveback.R
 import com.example.giveback.utils.FBAuth
+import com.example.giveback.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -42,6 +46,11 @@ class KeywordListLVAdapter(val boardList : MutableList<KeywordStatusModel>, val 
         //}
 
         val keyword = view?.findViewById<TextView>(R.id.keywordArea)
+        val removeBtn = view?.findViewById<ImageView>(R.id.removeBtn)
+
+        removeBtn?.setOnClickListener {
+            FBRef.keywordRef.child(boardKeyList[position]).removeValue()
+        }
 
         keyword!!.text = "등록된 키워드명: ${boardList[position].category}"
 

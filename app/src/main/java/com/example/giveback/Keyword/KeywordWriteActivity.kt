@@ -12,6 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -219,8 +220,9 @@ class KeywordWriteActivity : AppCompatActivity() {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 // 글이 추가되었을 때 처리하는 로직
                 val post = snapshot.getValue(GetBoardModel::class.java)
+                val post2 = snapshot.getValue(KeywordStatusModel::class.java)
 
-                if(post?.category == binding.keywordArea.text.toString()){
+                if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())){
                     // notification
                     sendNotification()
                 }
@@ -301,9 +303,6 @@ class KeywordWriteActivity : AppCompatActivity() {
 
         val intent = Intent(this, KeywordSearchedActivity::class.java) // YourTargetActivity는 이동할 화면의 클래스입니다.
         intent.putExtra("키워드명",binding.keywordArea.text.toString())
-        intent.putExtra("시작일", "2024년 1월 1일")
-        intent.putExtra("종료일", "2030년 1월 1일")
-        intent.putExtra("습득위치", "123")
         val pendingIntent = PendingIntent.getActivity(this@KeywordWriteActivity, 0, intent,
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_MUTABLE)
 

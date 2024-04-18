@@ -29,11 +29,6 @@ class KeywordSearchedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityKeywordSearchedBinding
 
     private lateinit var searchKeyword: String
-    private lateinit var startDate: Date
-    private lateinit var endDate: Date
-    private lateinit var getlocation: String
-
-    val sdf = SimpleDateFormat("yyyy년 MM월 dd일")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,9 +47,6 @@ class KeywordSearchedActivity : AppCompatActivity() {
         }
 
         searchKeyword = intent.getStringExtra("키워드명").toString()
-        startDate = sdf.parse(intent.getStringExtra("시작일").toString())
-        endDate = sdf.parse(intent.getStringExtra("종료일").toString())
-        getlocation = intent.getStringExtra("습득위치").toString()
 
         getFBBoardData(searchKeyword)
 
@@ -77,10 +69,7 @@ class KeywordSearchedActivity : AppCompatActivity() {
 
                     val item = dataModel.getValue(GetBoardModel::class.java)
 
-                    val sdfDate = sdf.parse(item?.getDate)
-
-                    if(searchKeyword.equals(item?.category.toString()) &&
-                        (sdfDate <= endDate && sdfDate >= startDate))
+                    if(searchKeyword.equals(item?.category.toString()))
                     {
                         boardDataList.add(item!!)
                         boardKeyList.add(dataModel.key.toString())

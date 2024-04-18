@@ -44,10 +44,6 @@ class QnaBoardListLVAdapter(val boardList : MutableList<QnaBoardModel>, val boar
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
 
-        if(boardList[position].uid.equals(FBAuth.getUid())) {
-            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#EEEEEE"))
-        }
-
         // ChildEventListener 등록
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {

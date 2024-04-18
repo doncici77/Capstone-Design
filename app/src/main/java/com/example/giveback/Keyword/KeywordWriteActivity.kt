@@ -302,9 +302,9 @@ class KeywordWriteActivity : AppCompatActivity() {
     private fun sendNotification() {
 
         val intent = Intent(this, KeywordSearchedActivity::class.java) // YourTargetActivity는 이동할 화면의 클래스입니다.
-        intent.putExtra("키워드명",binding.keywordArea.text.toString())
+        intent.putExtra("키워드명", binding.keywordArea.text.toString())
         val pendingIntent = PendingIntent.getActivity(this@KeywordWriteActivity, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_MUTABLE)
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
 
         val builder = NotificationCompat.Builder(this, "TestChannel")
             .setSmallIcon(R.drawable.notification_icon)

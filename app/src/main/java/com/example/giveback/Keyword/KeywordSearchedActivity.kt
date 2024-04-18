@@ -36,10 +36,10 @@ class KeywordSearchedActivity : AppCompatActivity() {
 
         // BoardListLVAdpater와 연결
         boardRVAdapter = GetBoardListLVAdapter(boardDataList, boardKeyList)
-        binding.boardListView.adapter = boardRVAdapter
+        binding.keywordList.adapter = boardRVAdapter
 
         // 게시글 리스트 중 하나를 클릭했을 때
-        binding.boardListView.setOnItemClickListener { parent, view, position, id ->
+        binding.keywordList.setOnItemClickListener { parent, view, position, id ->
 
             val intent = Intent(this, GetBoardInsideActivity::class.java)
             intent.putExtra("key",boardKeyList[position])

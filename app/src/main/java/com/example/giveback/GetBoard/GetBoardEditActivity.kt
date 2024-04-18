@@ -80,7 +80,118 @@ class GetBoardEditActivity : AppCompatActivity() {
 
                 alertDialog.dismiss()
             }
+
+            // 카드을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.card)?.setOnClickListener {
+                Toast.makeText(this, "카드 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.card).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 현금을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cash)?.setOnClickListener {
+                Toast.makeText(this, "현금 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cash).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 가방을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.bag)?.setOnClickListener {
+                Toast.makeText(this, "가방 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.bag).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 전자기기을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.device)?.setOnClickListener {
+                Toast.makeText(this, "전자기기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.device).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 의류을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.cloth)?.setOnClickListener {
+                Toast.makeText(this, "의류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.cloth).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 스포츠을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.sport)?.setOnClickListener {
+                Toast.makeText(this, "스포츠 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.sport).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 자동차을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.car)?.setOnClickListener {
+                Toast.makeText(this, "자동차 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.car).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 서류를 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.document)?.setOnClickListener {
+                Toast.makeText(this, "서류 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.document).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 악기을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.instrument)?.setOnClickListener {
+                Toast.makeText(this, "악기 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.instrument).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 증명서을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.certification)?.setOnClickListener {
+                Toast.makeText(this, "증명서 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.certification).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
+
+            // 기타을 클릭했을 때
+            alertDialog.findViewById<Button>(R.id.etc)?.setOnClickListener {
+                Toast.makeText(this, "기타 카테고리를 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+                category =  alertDialog.findViewById<Button>(R.id.etc).text.toString()
+                binding.getCategoryArea.setText(category)
+
+                alertDialog.dismiss()
+            }
         }
+
 
 
         // 수정 버튼을 누르면 게시글과 이미지의 수정이 일어난다.

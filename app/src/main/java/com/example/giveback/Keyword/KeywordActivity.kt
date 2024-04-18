@@ -40,6 +40,12 @@ class KeywordActivity : AppCompatActivity() {
 
         getFBBoardData()
 
+        // keyword초기화 버튼을 클릭했을 때 키워드 설정 페이지로 이동
+        binding.clearAllBtn.setOnClickListener {
+            FBRef.keywordRef.removeValue()
+        }
+
+        // keyword 작성 버튼을 클릭했을 때 키워드 설정 페이지로 이동
         binding.keywordWriteBtn.setOnClickListener {
             val intent = Intent(this, KeywordWriteActivity::class.java)
             startActivity(intent)

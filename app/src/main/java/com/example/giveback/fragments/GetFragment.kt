@@ -21,6 +21,7 @@ import com.example.giveback.GetBoard.GetBoardInsideActivity
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.searchGet.SearchGetActivity
+import com.example.giveback.searchSelectActivity
 import com.example.giveback.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.ktx.Firebase
@@ -67,9 +68,9 @@ class GetFragment : Fragment() {
             startActivity(intent)
         }
 
-        // 돋보기 버튼을 눌렀을 때 검색 페이지(SearchGetActivity)로 이동
+        // 돋보기 버튼을 눌렀을 때 검색 선택 페이지(searchSelectActivity)로 이동
         binding.searchBtn.setOnClickListener {
-            val intent = Intent(context, SearchGetActivity::class.java)
+            val intent = Intent(context, searchSelectActivity::class.java)
             startActivity(intent)
         }
 

@@ -1,22 +1,16 @@
 package com.example.giveback.searchGet
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.giveback.GetBoard.GetBoardInsideActivity
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
-import com.example.giveback.LostBoard.LostGetBoardInsideActivity
 import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivitySearchedBinding
-import com.example.giveback.fragments.GetFragment
 import com.example.giveback.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,9 +19,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 
-class SearchedActivity : AppCompatActivity() {
+class SearchedGetActivity : AppCompatActivity() {
 
-    private val TAG = SearchedActivity::class.java.simpleName
+    private val TAG = SearchedGetActivity::class.java.simpleName
 
     private val boardDataList = mutableListOf<GetBoardModel>()
     private val boardKeyList = mutableListOf<String>()

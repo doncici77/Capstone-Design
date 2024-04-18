@@ -12,7 +12,7 @@
 
         <TextView
             android:background="@color/mainColor"
-            android:text="물품 상세 검색"
+            android:text="습득물 상세 검색"
             android:textStyle="bold"
             android:textSize="30dp"
             android:textColor="@color/black"

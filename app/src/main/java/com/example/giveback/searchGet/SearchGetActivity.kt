@@ -5,16 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.R
-import com.example.giveback.WebviewActivity
-import com.example.giveback.databinding.ActivityGetBoardWriteBinding
 import com.example.giveback.databinding.ActivitySearchGetBinding
-import com.example.giveback.fragments.GetFragment
 import java.util.Calendar
 
 class SearchGetActivity : AppCompatActivity() {
@@ -203,7 +198,7 @@ class SearchGetActivity : AppCompatActivity() {
         binding.searchBtn.setOnClickListener{
 
 
-            val intent = Intent(this, SearchedActivity::class.java)
+            val intent = Intent(this, SearchedGetActivity::class.java)
             intent.putExtra("카테고리명",binding.getCategoryArea.text.toString())
             intent.putExtra("시작일", binding.getStartDate.text.toString())
             intent.putExtra("종료일", binding.getEndDate.text.toString())

@@ -2,7 +2,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".searchGet.SearchedActivity">
+    tools:context=".searchGet.SearchedGetActivity">
 
         <LinearLayout
             android:orientation="vertical"

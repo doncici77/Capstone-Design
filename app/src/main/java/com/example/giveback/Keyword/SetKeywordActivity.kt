@@ -21,6 +21,7 @@ import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivitySetKeywordBinding
 import com.example.giveback.utils.FBRef
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class SetKeywordActivity : AppCompatActivity() {
@@ -29,6 +30,9 @@ class SetKeywordActivity : AppCompatActivity() {
 
     private val PERMISSION_REQUEST_CODE = 5000
 
+    var auth = FirebaseAuth.getInstance()
+
+    var myUid = auth.currentUser?.uid.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,7 +64,8 @@ class SetKeywordActivity : AppCompatActivity() {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 // 글이 추가되었을 때 처리하는 로직
                 val post = snapshot.getValue(GetBoardModel::class.java)
-                if(post?.title == binding.keywordArea1.text.toString()){
+
+                if(post?.uid.toString() == myUid && post?.title == binding.keywordArea1.text.toString()){
                     // notification
                     sendNotification()
                 }

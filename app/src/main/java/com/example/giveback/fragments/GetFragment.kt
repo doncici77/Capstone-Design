@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.bumptech.glide.Glide
 import com.example.giveback.R
 import com.example.giveback.databinding.FragmentGetBinding
 import com.google.firebase.database.DataSnapshot
@@ -21,11 +19,7 @@ import com.example.giveback.GetBoard.GetBoardInsideActivity
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.searchGet.SearchGetActivity
-import com.example.giveback.searchSelectActivity
 import com.example.giveback.utils.FBRef
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 
 // 습득물 페이지
 class GetFragment : Fragment() {
@@ -36,6 +30,7 @@ class GetFragment : Fragment() {
     private val boardKeyList = mutableListOf<String>()
 
     private lateinit var boardRVAdapter: GetBoardListLVAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,12 +60,14 @@ class GetFragment : Fragment() {
 
             val intent = Intent(context, GetBoardInsideActivity::class.java)
             intent.putExtra("key",boardKeyList[position])
+            intent.putExtra("email", boardDataList[position].email)
+            intent.putExtra("uid", boardDataList[position].uid)
             startActivity(intent)
         }
 
-        // 돋보기 버튼을 눌렀을 때 검색 선택 페이지(searchSelectActivity)로 이동
+        // 돋보기 버튼을 눌렀을 때 검색 페이지(SearchGetActivity)로 이동
         binding.searchBtn.setOnClickListener {
-            val intent = Intent(context, searchSelectActivity::class.java)
+            val intent = Intent(context, SearchGetActivity::class.java)
             startActivity(intent)
         }
 

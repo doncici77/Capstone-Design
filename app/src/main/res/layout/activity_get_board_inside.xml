@@ -45,6 +45,7 @@
                     android:layout_height="300dp"/>
 
                 <Button
+                    android:id="@+id/chatBtn"
                     android:layout_gravity="center"
                     android:background="@color/black"
                     android:textColor="@color/white"

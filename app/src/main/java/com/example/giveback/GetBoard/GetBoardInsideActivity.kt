@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.example.giveback.Chatting.ChatActivity
 import com.example.giveback.R
 import com.example.giveback.comment.CommentLVAdpater
 import com.example.giveback.comment.CommentModel
@@ -34,6 +35,9 @@ class GetBoardInsideActivity : AppCompatActivity() {
 
     private lateinit var key:String
 
+    private lateinit var writerEmail: String
+    private lateinit var writerUid: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,6 +53,17 @@ class GetBoardInsideActivity : AppCompatActivity() {
         getImageData(key)
 
         binding.manageNumber.text = "관리번호 : ${key}"
+
+        writerEmail = intent.getStringExtra("email").toString()
+        writerUid = intent.getStringExtra("uid").toString()
+
+        binding.chatBtn.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("uid", writerUid)
+            intent.putExtra("email", writerEmail)
+
+            startActivity(intent)
+        }
     }
 
     // 만든 custom_dialog를 띄우는 showDialog() 함수 생성

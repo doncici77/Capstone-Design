@@ -238,6 +238,14 @@ class KeywordWriteActivity : AppCompatActivity() {
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 // 글이 변경되었을 때 처리하는 로직
+                val post = snapshot.getValue(GetBoardModel::class.java)
+                val post2 = snapshot.getValue(KeywordStatusModel::class.java)
+                // 코루틴을 시작하여 백그라운드에서 실행
+                GlobalScope.launch {
+                    if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())) {
+                        sendNotification()
+                    }
+                }
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
@@ -294,10 +302,10 @@ class KeywordWriteActivity : AppCompatActivity() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "name"
-            val descriptionText = "description"
+            val name = "TestChannel"
+            val descriptionText = "Your channel description here"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("TestChannel", name, importance).apply {
+            val channel = NotificationChannel(name, name, importance).apply {
                 description = descriptionText
             }
             val notificationManager: NotificationManager =
@@ -308,11 +316,14 @@ class KeywordWriteActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun sendNotification() {
-
-        val intent = Intent(this, KeywordSearchedActivity::class.java) // YourTargetActivity는 이동할 화면의 클래스입니다.
+        val intent = Intent(this, KeywordSearchedActivity::class.java)
         intent.putExtra("키워드명", binding.keywordArea.text.toString())
-        val pendingIntent = PendingIntent.getActivity(this@KeywordWriteActivity, 0, intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
+        val pendingIntent = PendingIntent.getActivity(
+            this@KeywordWriteActivity,
+            (System.currentTimeMillis()).toInt(),
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+        )
 
         val builder = NotificationCompat.Builder(this, "TestChannel")
             .setSmallIcon(R.drawable.notification_icon)
@@ -322,10 +333,9 @@ class KeywordWriteActivity : AppCompatActivity() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-
-        // 알림 표시
+        // Display the notification
         with(NotificationManagerCompat.from(this)) {
-            notify(1, builder.build())
+            notify((System.currentTimeMillis()).toInt(), builder.build())
         }
     }
 }

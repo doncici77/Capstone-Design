@@ -2,9 +2,14 @@ package com.example.giveback.Keyword
 
 import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
@@ -23,6 +28,7 @@ class KeywordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKeywordBinding
 
+    private val PERMISSION_REQUEST_CODE = 5000
 
     private val boardDataList = mutableListOf<KeywordStatusModel>()
     private val boardKeyList = mutableListOf<String>()
@@ -39,6 +45,9 @@ class KeywordActivity : AppCompatActivity() {
         binding.keywordListView.adapter = boardRVAdapter
 
         getFBBoardData()
+
+        // 알림 권한 체크
+        permissionCheck()
 
         // keyword초기화 버튼을 클릭했을 때 키워드 설정 페이지로 이동
         binding.clearAllBtn.setOnClickListener {
@@ -88,5 +97,41 @@ class KeywordActivity : AppCompatActivity() {
             }
         }
         FBRef.keywordRef.addValueEventListener(postListner)
+    }
+
+    private fun permissionCheck() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permissionCheck = ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.POST_NOTIFICATIONS
+            )
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    PERMISSION_REQUEST_CODE
+                )
+            }
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(applicationContext, "Permission is denied", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(applicationContext, "Permission is granted", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
     }
 }

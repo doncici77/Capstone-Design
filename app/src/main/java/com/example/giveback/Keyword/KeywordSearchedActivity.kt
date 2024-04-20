@@ -1,9 +1,11 @@
 package com.example.giveback.Keyword
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.example.giveback.GetBoard.GetBoardInsideActivity
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
@@ -91,5 +93,19 @@ class KeywordSearchedActivity : AppCompatActivity() {
             }
         }
         FBRef.getboardRef.addValueEventListener(postListner)
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        val alertDialog = AlertDialog.Builder(this)
+            .setIcon(R.drawable.chat)
+            .setTitle("종료")
+            .setMessage("정말로 종료하시겠습니까?")
+            .setPositiveButton("확인") { dialog, which ->
+                finish()
+            }
+            .setNegativeButton("취소", null)
+            .create()
+        alertDialog.show()
     }
 }

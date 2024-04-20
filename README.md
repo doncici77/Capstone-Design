@@ -501,3 +501,9 @@ UI 가 전체적으로 부족하다는 평가
 1:1 채팅 기능 개발을 위해서는 회원가입할 때 유저 정보를 데이터베이스에 저장해야 한다. user 데이터 객체를 생성하고
 email와 uid 정보를 저장한다.
 ```
+#### 습득자와의 채팅창으로 이동
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/6f7b5a64-dfd9-40bc-bf48-bca9e30b20be)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/e4e04c96-b4ce-424e-b1c7-d4b523c7f14f)
+```
+습득자가 게시한 글에 들어가서 채팅버튼을 누르면 습득자와 채팅할 수 있는 채팅방으로 이동하게 된다.
+```

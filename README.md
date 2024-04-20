@@ -535,3 +535,10 @@ ps 데이터베이스 경로명을 uid 말고 email로 하려고 했으나 파�
 포함될 수 없다고 한다. 이를 substring이나 indexOf를 사용하여 @ 앞을 떼어서 경로명으로 사용할 수는 있겠으나 굳이?라는
 생각이 들어서 그냥 유저 정보에 있는 uid를 경로명으로 사용하기로 했다.
 ```
+#### 메시지 가져오기
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/43f642f3-1fd7-4cad-9d4c-04219d2e3580)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a333b46e-bc31-4cba-afa0-8adc7be11635)
+```
+메시지를 입력하고 전송하면 습득자에게 메시지를 보낼 수 있다.
+```
+

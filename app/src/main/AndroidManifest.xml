@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -26,19 +29,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Chatting.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".Keyword.KeywordWriteActivity"
             android:exported="false" />
         <activity
             android:name=".Keyword.KeywordActivity"
             android:exported="false" />
         <activity
-            android:name=".searchSelectActivity"
-            android:exported="false" />
-        <activity
             android:name=".Keyword.KeywordSearchedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Keyword.SetKeywordActivity"
             android:exported="false" />
         <activity
             android:name=".MyBoard.MyBoardActivity"

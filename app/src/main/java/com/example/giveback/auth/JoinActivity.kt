@@ -12,13 +12,19 @@ import androidx.databinding.DataBindingUtil
 import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivityJoinBinding
+import com.example.giveback.utils.FBAuth
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 // 회원가입 페이지
 class JoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityJoinBinding
+
+    private lateinit var mDbRef: DatabaseReference
 
     private var email_ok: Boolean = false
     private var pw_ok: Boolean = false
@@ -28,6 +34,9 @@ class JoinActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_join)
+
+        // 유저데이터베이스 초기화
+        mDbRef = Firebase.database.reference
 
         // 회원가입 버튼 초기 상태는 비활성화
         binding.joinBtn.isEnabled = false
@@ -131,9 +140,15 @@ class JoinActivity : AppCompatActivity() {
                         Toast.makeText(this, "이메일 발송에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
+                // 회원 정보를 데이터베이스에 저장
+                addUserToDatabase(email, auth.currentUser?.uid!!.toString())
             } else {
                 Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun addUserToDatabase(email:String, uId: String) {
+        mDbRef.child("user").child(uId).setValue(User(email, uId))
     }
 }

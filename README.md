@@ -508,7 +508,23 @@ email와 uid 정보를 저장한다.
 습득자가 게시한 글에 들어가서 채팅버튼을 누르면 습득자와 채팅할 수 있는 채팅방으로 이동하게 된다.
 ```
 #### 습득자에게 메시지 전송
-
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/b91b62ae-163a-4294-8a37-7dae93a9e785)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/027cb571-4028-4613-9c6f-3eabbaa62fbc)
 ```
+ 1. senderRoom = receiverUid + senderUid
 
+   보낸 이의 방의 값을 받는 이 uId와 보낸 이 uId로 
+
+   합쳐서 만들었습니다.
+
+ 2. receiverRoom = senderUid + receiverUid
+
+   받는 이의 방의 값을 보낸 이 uId와 받는 이 uId로
+
+   합쳐서 만들었습니다.
+
+ 3. mDbRef.child("chats").child(senderRoom!!).child("messages").push()
+                .setValue(messageObject)
+
+   chat -> senderRoom -> message -> 메시지 저장
 ```

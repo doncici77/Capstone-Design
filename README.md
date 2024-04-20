@@ -530,4 +530,8 @@ email와 uid 정보를 저장한다.
                 .setValue(messageObject)
 
    chat -> senderRoom -> message -> 메시지 저장
+
+ps 데이터베이스 경로명을 uid 말고 email로 하려고 했으나 파이어베이스 정책 상 데이터베이스의 경로명에는 @ 등 특수문자가
+포함될 수 없다고 한다. 이를 substring이나 indexOf를 사용하여 @ 앞을 떼어서 경로명으로 사용할 수는 있겠으나 굳이?라는
+생각이 들어서 그냥 유저 정보에 있는 uid를 경로명으로 사용하기로 했다.
 ```

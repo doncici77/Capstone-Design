@@ -508,8 +508,11 @@ email와 uid 정보를 저장한다.
 습득자가 게시한 글에 들어가서 채팅버튼을 누르면 습득자와 채팅할 수 있는 채팅방으로 이동하게 된다.
 ```
 #### 습득자에게 메시지 전송
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/b91b62ae-163a-4294-8a37-7dae93a9e785)
-![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/027cb571-4028-4613-9c6f-3eabbaa62fbc)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9d12c918-0ed6-4599-b244-06e1ba0f6fb8)
+#### Chat Model
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/d1304a63-fcc9-41a7-adc7-15e695557d3f)
+#### User Model
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a6ea5a85-1def-4239-8baa-bde7c6ad07d5)
 ```
  1. senderRoom = receiverUid + senderUid
 

@@ -1,21 +1,43 @@
 package com.example.giveback
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.example.giveback.Chatting.ChatActivity
+import com.example.giveback.Chatting.Message
+import com.example.giveback.GetBoard.GetBoardModel
+import com.example.giveback.Keyword.KeywordSearchedActivity
+import com.example.giveback.QnABoard.KeywordStatusModel
+import com.example.giveback.utils.FBRef
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 // 메인 화면
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val PERMISSION_REQUEST_CODE = 5000
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
 
     private fun permissionCheck() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

@@ -103,7 +103,7 @@ class GetBoardInsideActivity : AppCompatActivity() {
     }
     // 이미지 데이터를 받아오는 함수
     private fun getImageData(key: String) {
-        val storageReference = Firebase.storage.reference.child(key + ".png")
+        val storageReference = Firebase.storage.reference.child("${key}1.png")
 
         val imageViewFromFB = binding.getImageArea
 

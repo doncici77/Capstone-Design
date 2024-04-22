@@ -320,9 +320,12 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
                     Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
-                    // 이미지를 Firebase 스토리지에 업로드
-                    if(isImageUpload) {
-                        imageUpload(key)
+                    val imageKeys = listOf("${key}1", "${key}2", "${key}3", "${key}4", "${key}5")
+                    imageKeys.forEach { key ->
+                        showImageUploadDialog()
+                        if(isImageUpload) {
+                            imageUpload(key)
+                        }
                     }
 
                     finish()
@@ -334,6 +337,11 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
         // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
         binding.imageArea1.setOnClickListener {
+            showImageUploadDialog()
+        }
+
+        // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
+        binding.imageArea2.setOnClickListener {
             showImageUploadDialog()
         }
 

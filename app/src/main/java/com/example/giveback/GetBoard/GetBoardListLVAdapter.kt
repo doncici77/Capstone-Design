@@ -42,7 +42,7 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
 
         val imageViewFromFB = view?.findViewById<ImageView>(R.id.imageArea)
 
-        val storageReference = Firebase.storage.reference.child(boardKeyList[position] + ".png")
+        val storageReference = Firebase.storage.reference.child("${boardKeyList[position]}1.png")
 
         storageReference.downloadUrl.addOnCompleteListener { task ->
             if (task.isSuccessful) {

@@ -18,17 +18,17 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // 현재 로그인한 유저가 없다면 3초 이후에 인트로페이지로 이동시킨다.
-        if(auth.currentUser?.uid == null) {
-            Handler().postDelayed({
+        // 현재 로그인한 유저가 없거나 이메일 인증이 되지 않았다면, 로그인 화면으로 이동
+        val user = auth.currentUser
+        Handler().postDelayed({
+            if (user == null || !user.isEmailVerified) {
+                // 유저가 없거나 이메일 인증이 안된 경우
                 startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }, 3000)
-        } else { // 로그인되어 있다면 3초 이후에 메인페이지로 이동시킨다.
-            Handler().postDelayed({
+            } else {
+                // 유저가 있고 이메일 인증도 된 경우
                 startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }, 3000)
-        }
+            }
+            finish()
+        }, 3000)
     }
 }

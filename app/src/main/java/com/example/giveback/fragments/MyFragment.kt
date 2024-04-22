@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.giveback.Chatting.ChatListActivity
 import com.example.giveback.Keyword.KeywordActivity
 import com.example.giveback.MyBoard.MyBoardActivity
 import com.example.giveback.R
@@ -70,6 +71,13 @@ class MyFragment : Fragment() {
         binding.keyword.setOnClickListener {
             // SetkeywordActivity로 화면 이동
             val intent = Intent(requireContext(), KeywordActivity::class.java)
+            startActivity(intent)
+        }
+
+        // chatting 버튼을 클릭했을 때 채팅방 리스트가 있는 (ChatListActivity)로 이동
+        binding.chatting.setOnClickListener {
+            // SetkeywordActivity로 화면 이동
+            val intent = Intent(requireContext(), ChatListActivity::class.java)
             startActivity(intent)
         }
         

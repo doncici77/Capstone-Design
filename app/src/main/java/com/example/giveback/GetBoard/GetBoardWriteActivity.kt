@@ -339,12 +339,6 @@ class GetBoardWriteActivity : AppCompatActivity() {
         binding.imageArea1.setOnClickListener {
             showImageUploadDialog()
         }
-
-        // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
-        binding.imageArea2.setOnClickListener {
-            showImageUploadDialog()
-        }
-
     }
 
     // 이미지를 업로드하는 함수

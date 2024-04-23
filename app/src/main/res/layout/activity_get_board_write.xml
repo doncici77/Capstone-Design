@@ -48,51 +48,6 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imageArea2"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea3"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea4"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea5"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/uidArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="20dp"
-                    android:background="@android:color/transparent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="#000000"
                     android:layout_marginLeft="20dp"

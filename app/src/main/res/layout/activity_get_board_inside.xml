@@ -37,12 +37,14 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <ImageView
                     android:id="@+id/getImageArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"/>
+                    android:layout_marginBottom="30dp"/>
 
                 <Button
                     android:id="@+id/chatBtn"

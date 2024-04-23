@@ -36,6 +36,7 @@ class MessageAdapter(private val context: android.content.Context, private val m
         }else{//받는 데이터
             val viewHolder = holder as ReceiveViewHolder
             viewHolder.receiveMessage.text = currentMessage.message
+            viewHolder.sender.text = currentMessage.sendEmail
         }
     }
 
@@ -63,5 +64,6 @@ class MessageAdapter(private val context: android.content.Context, private val m
     //받는 쪽
     class ReceiveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val receiveMessage: TextView = itemView.findViewById(R.id.receive_message_text)
+        val sender: TextView = itemView.findViewById(R.id.sender)
     }
 }

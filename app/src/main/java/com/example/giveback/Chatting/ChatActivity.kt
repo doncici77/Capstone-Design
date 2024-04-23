@@ -66,6 +66,8 @@ class ChatActivity : AppCompatActivity() {
         //접속자 uId
         val senderUid = mAuth.currentUser?.uid
 
+        val senderEmail = mAuth.currentUser?.email
+
         //보낸이방
         senderRoom = receiverUid + senderUid
 
@@ -82,7 +84,7 @@ class ChatActivity : AppCompatActivity() {
         binding.sendBtn.setOnClickListener {
 
             val message = binding.messageEdit.text.toString()
-            val messageObject = Message(message, senderUid, receiverUid)
+            val messageObject = Message(message, senderUid, receiverUid, senderEmail)
 
             //데이터 저장
             mDbRef.child("chats").child(senderRoom).child("messages").push()

@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.R
+import com.example.giveback.auth.User
 import com.example.giveback.databinding.ActivityChatListBinding
 import com.example.giveback.utils.FBRef
 import com.google.firebase.auth.FirebaseAuth
@@ -24,10 +26,12 @@ class ChatListActivity : AppCompatActivity() {
     private val chatDataList = mutableListOf<Message>()
     private val chatKeyList = mutableListOf<String>()
 
-    private lateinit var ChatRVAdapter: ChatListLVAdapter
+    lateinit var adapter: UserAdapter
 
     lateinit var mAuth: FirebaseAuth //인증 객체
     lateinit var mDbRef: DatabaseReference//DB 객체
+
+    private lateinit var userList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +39,35 @@ class ChatListActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_list)
 
-        // BoardListLVAdpater와 연결
-        ChatRVAdapter = ChatListLVAdapter(chatDataList, chatKeyList)
-        binding.chatListView.adapter = ChatRVAdapter
-
         // 파이어베이스 인증, 데이터베이스 초기화
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseDatabase.getInstance().reference
 
+        //리스트 초기화
+        userList = ArrayList()
+
+        adapter = UserAdapter(this, userList)
+
+        binding.userRecycelrView.layoutManager = LinearLayoutManager(this)
+        binding.userRecycelrView.adapter = adapter
+
+        //사용자 정보 가져오기
+        mDbRef.child("user").addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(postSnapshot in snapshot.children){
+                    //유저 정보
+                    val currentUser = postSnapshot.getValue(User::class.java)
+
+                    if(mAuth.currentUser?.uid != currentUser?.uId){
+                        userList.add(currentUser!!)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //실패 시 실행
+            }
+        })
     }
 }

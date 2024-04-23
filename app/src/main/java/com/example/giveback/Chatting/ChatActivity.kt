@@ -57,7 +57,7 @@ class ChatActivity : AppCompatActivity() {
         receiverUid = intent.getStringExtra("uid").toString()
 
         //액션바에 상대방 이름 보여주기
-        binding.topBar.text = "습득자: ${receiverEmail}님과의 채팅방입니다."
+        binding.topBar.text = "${receiverEmail}님과의 채팅방입니다."
 
         // 파이어베이스 인증, 데이터베이스 초기화
         mAuth = FirebaseAuth.getInstance()
@@ -180,12 +180,13 @@ class ChatActivity : AppCompatActivity() {
             this@ChatActivity,
             (System.currentTimeMillis()).toInt(),
             intent,
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_MUTABLE
         )
+        intent.putExtra("email","${receiverEmail}")
 
         val builder = NotificationCompat.Builder(this, "TestChannel")
             .setSmallIcon(R.drawable.notification_icon)
-            .setContentTitle("누군가가 채팅을 시작했습니다.")
+            .setContentTitle("${receiverEmail}가 채팅을 걸어왔습니다")
             .setContentText("앱을 실행하여 채팅을 시작하세요")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)

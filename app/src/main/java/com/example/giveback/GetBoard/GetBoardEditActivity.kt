@@ -320,7 +320,7 @@ class GetBoardEditActivity : AppCompatActivity() {
     private fun imageUpload(key: String) {
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child("$key.png")
+        val mountainsRef = storageRef.child("${key}1.png")
 
 
         // 이미지 업로드
@@ -377,7 +377,7 @@ class GetBoardEditActivity : AppCompatActivity() {
 
     // 이미지데이터를 불러오는 함수
     private fun getImageData(key: String) {
-        val storageReference = Firebase.storage.reference.child(key + ".png")
+        val storageReference = Firebase.storage.reference.child("${key}1.png")
 
         val imageViewFromFB = binding.imageArea
 

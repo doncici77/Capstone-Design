@@ -33,7 +33,8 @@
             android:exported="false" />
         <activity
             android:name=".Chatting.ChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Keyword.KeywordWriteActivity"
             android:exported="false" />

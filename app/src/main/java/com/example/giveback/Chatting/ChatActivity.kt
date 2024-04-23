@@ -12,6 +12,7 @@ import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivityChatBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -50,6 +51,7 @@ class ChatActivity : AppCompatActivity() {
 
         //RecyclerView
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
+
         binding.chatRecyclerView.adapter = messageAdapter
 
         // GetBoardInsideActivity에서 넘어온 데이터를 변수에 담기
@@ -96,6 +98,8 @@ class ChatActivity : AppCompatActivity() {
                 }
             //입력값 초기화
             binding.messageEdit.setText("")
+            binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount)
+            messageAdapter.notifyDataSetChanged()
         }
 
         getMessage()
@@ -115,6 +119,7 @@ class ChatActivity : AppCompatActivity() {
                     }
                     //적용
                     messageAdapter.notifyDataSetChanged()
+                    binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount-1)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -199,4 +204,5 @@ class ChatActivity : AppCompatActivity() {
             notify((System.currentTimeMillis()).toInt(), builder.build())
         }
     }
+
 }

@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/sender"
         android:text="sender"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -20,8 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_margin="5dp"
-        android:background="@color/green"
+        android:background="@color/white"
         android:padding="10dp"
         android:text="받는 메시지"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 </LinearLayout>

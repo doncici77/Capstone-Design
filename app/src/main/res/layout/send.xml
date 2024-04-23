@@ -12,6 +12,6 @@
         android:background="@color/mainColor"
         android:padding="10dp"
         android:text="보내는 메시지"
-        android:textColor="@android:color/white"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 </RelativeLayout>

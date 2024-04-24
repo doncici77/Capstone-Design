@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/send_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:text="보낸 시간"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:gravity=""/>
 
     <TextView
         android:id="@+id/send_message_text"
@@ -12,6 +32,6 @@
         android:background="@color/mainColor"
         android:padding="10dp"
         android:text="보내는 메시지"
-        android:textColor="@color/black"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
-</RelativeLayout>
+</LinearLayout>

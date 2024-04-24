@@ -9,6 +9,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,9 +79,6 @@ class ChatActivity : AppCompatActivity() {
 
         //받는이방
         receiverRoom = senderUid + receiverUid
-
-
-        createNotificationChannel()
 
         getKeyword()
 
@@ -173,20 +172,6 @@ class ChatActivity : AppCompatActivity() {
             .addChildEventListener(childEventListener)
     }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "TestChannel"
-            val descriptionText = "Your channel description here"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(name, name, importance).apply {
-                description = descriptionText
-            }
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private fun sendNotification() {
 
@@ -195,7 +180,7 @@ class ChatActivity : AppCompatActivity() {
             this@ChatActivity,
             (System.currentTimeMillis()).toInt(),
             intent,
-            PendingIntent.FLAG_MUTABLE
+            PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_ONE_SHOT
         )
         intent.putExtra("email","${receiverEmail}")
 

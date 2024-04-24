@@ -9,13 +9,16 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.giveback.R
+import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityChatBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -62,8 +65,14 @@ class ChatActivity : AppCompatActivity() {
         receiverEmail = intent.getStringExtra("email").toString()
         receiverUid = intent.getStringExtra("uid").toString()
 
+        val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+
         //액션바에 상대방 이름 보여주기
-        binding.topBar.text = "${receiverEmail}님과의 채팅방입니다."
+        getSupportActionBar()!!.setTitle("${receiverEmail}님과의 채팅")
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 활성화
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.backicon)
 
         // 파이어베이스 인증, 데이터베이스 초기화
         mAuth = FirebaseAuth.getInstance()
@@ -110,6 +119,20 @@ class ChatActivity : AppCompatActivity() {
         }
 
         getMessage()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                // 여기에 설정 아이템을 눌렀을 때의 동작을 추가하세요.
+                return true
+            }
+            android.R.id.home -> {
+                val intent = Intent(this, ChatListActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return true
     }
 
     //메시지 가져오기

@@ -83,15 +83,17 @@ class ChatActivity : AppCompatActivity() {
 
         getKeyword()
 
-        //메세지를 보낸 시간
-        val time = System.currentTimeMillis()
-        val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
-        val curTime = dateFormat.format(Date(time)).toString()
-
         //메시지 전송 버튼 이벤트
         binding.sendBtn.setOnClickListener {
 
+            //메세지 객체 생성
             val message = binding.messageEdit.text.toString()
+
+            //메세지를 보낸 시간
+            val time = System.currentTimeMillis()
+            val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
+            val curTime = dateFormat.format(Date(time)).toString()
+
             val messageObject = Message(message, senderUid, receiverUid, senderEmail, curTime)
 
             //데이터 저장

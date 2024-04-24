@@ -51,6 +51,13 @@ class ChatListActivity : AppCompatActivity() {
         binding.userRecycelrView.layoutManager = LinearLayoutManager(this)
         binding.userRecycelrView.adapter = adapter
 
+        // 검색 옵션 변수
+        var searchOption = "email"
+        // 검색 옵션에 따라 검색
+        binding.searchBtn.setOnClickListener {
+            search(binding.searchWord.text.toString(), searchOption)
+        }
+
         //사용자 정보 가져오기
         mDbRef.child("user").addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -60,6 +67,32 @@ class ChatListActivity : AppCompatActivity() {
 
                     if(mAuth.currentUser?.uid != currentUser?.uId){
                         userList.add(currentUser!!)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //실패 시 실행
+            }
+        })
+    }
+
+
+    // 파이어베이스에서 데이터를 불러와서 검색어가 있는지 판단
+    private fun search(searchWord : String, option : String) {
+
+        //사용자 정보 가져오기
+        mDbRef.child("user").addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                userList.clear()
+
+                for(postSnapshot in snapshot.children){
+                    val item = postSnapshot.getValue(User::class.java)
+
+                    if (item!!.email.contains(searchWord)) {
+                        userList.add(item!!)
                     }
                 }
                 adapter.notifyDataSetChanged()

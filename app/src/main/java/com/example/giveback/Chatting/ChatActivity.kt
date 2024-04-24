@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ChatActivity : AppCompatActivity() {
 
@@ -81,12 +83,16 @@ class ChatActivity : AppCompatActivity() {
 
         getKeyword()
 
+        //메세지를 보낸 시간
+        val time = System.currentTimeMillis()
+        val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
+        val curTime = dateFormat.format(Date(time)).toString()
 
         //메시지 전송 버튼 이벤트
         binding.sendBtn.setOnClickListener {
 
             val message = binding.messageEdit.text.toString()
-            val messageObject = Message(message, senderUid, receiverUid, senderEmail)
+            val messageObject = Message(message, senderUid, receiverUid, senderEmail, curTime)
 
             //데이터 저장
             mDbRef.child("chats").child(senderRoom).child("messages").push()

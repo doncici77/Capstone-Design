@@ -128,8 +128,7 @@ class ChatActivity : AppCompatActivity() {
                 return true
             }
             android.R.id.home -> {
-                val intent = Intent(this, ChatListActivity::class.java)
-                startActivity(intent)
+                finish()
             }
         }
         return true

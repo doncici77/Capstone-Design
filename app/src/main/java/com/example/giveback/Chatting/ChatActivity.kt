@@ -89,8 +89,6 @@ class ChatActivity : AppCompatActivity() {
         //받는이방
         receiverRoom = senderUid + receiverUid
 
-        getKeyword()
-
         //메시지 전송 버튼 이벤트
         binding.sendBtn.setOnClickListener {
 
@@ -116,6 +114,9 @@ class ChatActivity : AppCompatActivity() {
             binding.messageEdit.setText("")
             binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount)
             messageAdapter.notifyDataSetChanged()
+
+            // 알림 발생
+            getKeyword()
         }
 
         getMessage()
@@ -166,7 +167,7 @@ class ChatActivity : AppCompatActivity() {
                 val post = snapshot.getValue(Message::class.java)
                 // 코루틴을 시작하여 백그라운드에서 실행
                 GlobalScope.launch {
-                    if (post?.receiveId?.toString().equals(mAuth.currentUser?.uid.toString())) {
+                    if (post?.sendId?.toString().equals(receiverUid.toString())) {
                         sendNotification()
                     }
                 }

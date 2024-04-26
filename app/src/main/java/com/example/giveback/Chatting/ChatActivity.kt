@@ -120,6 +120,7 @@ class ChatActivity : AppCompatActivity() {
         }
 
         getMessage()
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -203,7 +204,7 @@ class ChatActivity : AppCompatActivity() {
             this@ChatActivity,
             (System.currentTimeMillis()).toInt(),
             intent,
-            PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_ONE_SHOT
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
         )
         intent.putExtra("email","${receiverEmail}")
 

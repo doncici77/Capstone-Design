@@ -18,9 +18,11 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.giveback.GalleryAdapter
 import com.example.giveback.R
 import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityGetBoardWriteBinding
@@ -46,11 +48,26 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
     private lateinit var category: String
 
+
+    lateinit var galleryAdapter: GalleryAdapter
+
+    var imageList: ArrayList<Uri> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_get_board_write)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_get_board_write)
+
+
+
+        //adapter 초기화
+        galleryAdapter = GalleryAdapter(imageList, this)
+
+        //recyclerView 설정
+        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerView.adapter = galleryAdapter
+
 
         // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
         binding.getCategoryArea.setOnClickListener {
@@ -322,7 +339,6 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
                     val imageKeys = listOf("${key}1", "${key}2", "${key}3", "${key}4", "${key}5")
                     imageKeys.forEach { key ->
-                        showImageUploadDialog()
                         if(isImageUpload) {
                             imageUpload(key)
                         }
@@ -349,7 +365,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
 
         // 이미지 업로드
-        val imageView = binding.imageArea1
+        val imageView = findViewById<ImageView>(R.id.galleryView)
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
 
@@ -398,6 +414,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
         val galleryButton = dialog.findViewById<Button>(R.id.galleryButton)
         galleryButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+
+            // 사진 멀티 선택 가능
+            gallery.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             startActivityForResult(gallery, 100)
             isImageUpload = true
             dialog.dismiss()
@@ -422,10 +441,28 @@ class GetBoardWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
-            binding.imageArea1.setImageURI(data?.data)
+
+            //멀티 선택은 clipData
+            if(data!!.clipData != null){ //멀티 이미지
+
+                //선택한 이미지 갯수
+                val count = data!!.clipData!!.itemCount
+
+                for(index in 0 until count){
+                    //이미지 담기
+                    val imageUri = data!!.clipData!!.getItemAt(index).uri
+                    //이미지 추가
+                    imageList.add(imageUri)
+                }
+            }else{ //싱글 이미지
+                val imageUri = data!!.data
+                imageList.add(imageUri!!)
+            }
+            galleryAdapter.notifyDataSetChanged()
+
         } else if(resultCode == RESULT_OK && requestCode == 200) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.imageArea1.setImageBitmap(imageBitmap)
+            findViewById<ImageView>(R.id.galleryView).setImageBitmap(imageBitmap)
         }
     }
 

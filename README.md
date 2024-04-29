@@ -593,3 +593,17 @@ ps 현재 파이어베이스 스토어에는 업로드 되지 않는다. 코드�
 count를 lateinit var 키워드를 사용하여 전역변수로 뺀다음 count를 사용해서 upload함수에 매개변수로 넣는다면
 파일명 + count 의 형태로 할 수 있을 것 같다.
 ```
+#### 여러 장 업로드 로직 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/db1ee53b-e314-48d9-b948-0674e421b511)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/aff64fcd-5bfa-44fa-b140-ee418c2c2fcb)
+```
+이미지 업로드 하는 함수를 선택한 이미지 수만큼 반복해서 실행하도록 로직을 수정했다.
+
+count는 0부터 시작한다. 첫 번째 선택한 이미지 -> 0번으로 해서
+key0, key1 이렇게 이름을 붙여서 업로드하도록 코드를 짰다.
+
+선택한 이미지가 파이어베이스 스토어에 정상적으로 업로드 되는 것을 확인했고
+GetBoardActivity 즉 습득물 게시판에서는 대표 이미지인 0번 이미지 한장만 업로드 되고
+GetBoardInsideActivity 즉 습득물 게시글 하나를 선택해서 자세히 보기를 했을 때는 업로드한 이미지를 모두 볼 수 있도록
+수정할 예정이다.
+```

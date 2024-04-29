@@ -574,6 +574,8 @@ Firebase Cloud Messaging 클라우드 서비스를 학습해서 적용해 볼 �
 ```
 #### 업로드 이미지 RecyclerView
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/e56f77aa-81f8-4a3d-a807-53914ff716cc)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ca09f4a0-7bfe-4c33-b2b9-f9aac626ab1f)
+
 ```
 갤러리에서 이미지를 여러 장 선택할 수 있도록 수정하였다.
 선택되어진 이미지들은 Grid 뷰의 형태로 업로드된다.

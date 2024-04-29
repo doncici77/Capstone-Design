@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -39,6 +40,8 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityGetBoardWriteBinding
 
+    private val TAG = GetBoardWriteActivity::class.java.simpleName
+
     private var isImageUpload = false
 
     val user = FirebaseAuth.getInstance().currentUser
@@ -47,6 +50,8 @@ class GetBoardWriteActivity : AppCompatActivity() {
     private lateinit var dialog: Dialog
 
     private lateinit var category: String
+
+    private lateinit var count: Number
 
 
     lateinit var galleryAdapter: GalleryAdapter
@@ -446,14 +451,17 @@ class GetBoardWriteActivity : AppCompatActivity() {
             if(data!!.clipData != null){ //멀티 이미지
 
                 //선택한 이미지 갯수
-                val count = data!!.clipData!!.itemCount
+                count = data!!.clipData!!.itemCount
 
-                for(index in 0 until count){
+                for(index in 0 until count as Int){
                     //이미지 담기
                     val imageUri = data!!.clipData!!.getItemAt(index).uri
                     //이미지 추가
                     imageList.add(imageUri)
                 }
+
+                Log.d(TAG, "현재 선택한 사진 수 : ${count.toString()}")
+
             }else{ //싱글 이미지
                 val imageUri = data!!.data
                 imageList.add(imageUri!!)

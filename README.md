@@ -582,3 +582,14 @@ Firebase Cloud Messaging 클라우드 서비스를 학습해서 적용해 볼 �
 
 ps 현재 파이어베이스 스토어에는 업로드 되지 않는다. 코드를 수정할 예정이다.
 ```
+#### 사진 여러 장 업로드 개발의 방향성
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f1157106-0dd5-4bf0-aed5-7deb5f2303f6)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/c7549be0-c26a-43af-8a13-1b1d494d7114)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a5fffadd-df0b-42c1-9786-86c04eee26bb)
+```
+선택한 사진의 수를 clipData의 getItemCount를 사용해서 count에 저장한 다음
+갤러리에서 사진 2장을 선택하고 count  Value에 대한 로그를 찍었을 때 선택한 사진의 수만큼 count가 되는 것을 알 수 있다.
+
+count를 lateinit var 키워드를 사용하여 전역변수로 뺀다음 count를 사용해서 upload함수에 매개변수로 넣는다면
+파일명 + count 의 형태로 할 수 있을 것 같다.
+```

@@ -566,3 +566,17 @@ ps 데이터베이스 경로명을 uid 말고 email로 하려고 했으나 파�
 습득물 코드를 재사용해서 분실물 게시판을 완성할 예정
 Firebase Cloud Messaging 클라우드 서비스를 학습해서 적용해 볼 예정 ->메모리관리에 대한 불편함을 클라우드로 이관
 ```
+## 24.04.29
+#### 이미지 업로드 버튼 수정
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9fc44794-fd80-48b7-846f-cf0fa1481245)
+```
+이미지 추가 버튼을 생성하고 버튼을 누르면 갤러리or카메라로 선택할 수 있는 다이얼로그가 나오도록 변경하였다.
+```
+#### 업로드 이미지 RecyclerView
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/e56f77aa-81f8-4a3d-a807-53914ff716cc)
+```
+갤러리에서 이미지를 여러 장 선택할 수 있도록 수정하였다.
+선택되어진 이미지들은 Grid 뷰의 형태로 업로드된다.
+
+ps 현재 파이어베이스 스토어에는 업로드 되지 않는다. 코드를 수정할 예정이다.
+```

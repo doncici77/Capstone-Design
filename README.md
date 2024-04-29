@@ -596,6 +596,9 @@ count를 lateinit var 키워드를 사용하여 전역변수로 뺀다음 count�
 #### 여러 장 업로드 로직 구현
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/db1ee53b-e314-48d9-b948-0674e421b511)
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/aff64fcd-5bfa-44fa-b140-ee418c2c2fcb)
+#### 파이어베이스 스토어에 업로드 된 이미지 2장
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/6c60e5d0-1ac8-49b6-af75-2fa4137ce363)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/7f86845f-95dc-43f5-ac1f-05a389e7dde8)
 ```
 이미지 업로드 하는 함수를 선택한 이미지 수만큼 반복해서 실행하도록 로직을 수정했다.
 

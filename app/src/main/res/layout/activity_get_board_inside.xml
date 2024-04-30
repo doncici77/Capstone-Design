@@ -38,13 +38,57 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/getImageArea"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="30dp"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+
+                    <ImageView
+                        android:id="@+id/getImageArea0"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"/>
+
+                    <ImageView
+                        android:id="@+id/getImageArea1"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+
+                    <ImageView
+                        android:id="@+id/getImageArea3"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"/>
+
+                    <ImageView
+                        android:id="@+id/getImageArea4"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"/>
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/chatBtn"

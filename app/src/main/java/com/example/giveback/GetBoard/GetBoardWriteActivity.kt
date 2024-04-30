@@ -342,11 +342,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
                     Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
-                    val imageKeys = listOf("${key}1", "${key}2", "${key}3", "${key}4", "${key}5")
-                    imageKeys.forEach { key ->
-                        if(isImageUpload) {
-                            imageUpload(key)
-                        }
+                    // 선택된 이미지 수만큼 업로드하도록 수정
+                    for (i in 0 until imageList.count()) {
+                        imageUpload(key, imageList.get(i), i)
                     }
 
                     finish()
@@ -356,17 +354,17 @@ class GetBoardWriteActivity : AppCompatActivity() {
             alertDialog.show()
         }
 
-        // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
-        binding.imageArea1.setOnClickListener {
+        // 이미지 업로드 버튼을 클릭했을 때 이미지를 업로드한다.
+        binding.imageUploadBtn.setOnClickListener {
             showImageUploadDialog()
         }
     }
 
     // 이미지를 업로드하는 함수
-    private fun imageUpload(key: String) {
+    private fun imageUpload(key:String, uri:Uri, count: Int) {
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child("$key.png")
+        val mountainsRef = storageRef.child("${key}${count}.png")
 
 
         // 이미지 업로드
@@ -374,12 +372,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
 
-        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
-        val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
-
-        val uploadTask = mountainsRef.putBytes(data)
+        val uploadTask = mountainsRef.putFile(uri)
 
         uploadTask.addOnFailureListener {
             // 업로드 실패 처리

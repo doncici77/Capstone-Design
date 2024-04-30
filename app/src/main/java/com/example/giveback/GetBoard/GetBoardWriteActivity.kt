@@ -24,9 +24,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.giveback.GalleryAdapter
+import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityGetBoardWriteBinding
+import com.example.giveback.fragments.GetFragment
 import com.example.giveback.utils.FBAuth
 import com.example.giveback.utils.FBRef
 import com.google.firebase.auth.FirebaseAuth
@@ -63,8 +65,6 @@ class GetBoardWriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_get_board_write)
-
-
 
         //adapter 초기화
         galleryAdapter = GalleryAdapter(imageList, this)
@@ -347,7 +347,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
                         imageUpload(key, imageList.get(i), i)
                     }
 
-                    finish()
+                    // 작성이 끝나면 MainActivity로 이동한다.
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 }
                 .setNegativeButton("취소", null)
                 .create()

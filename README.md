@@ -630,13 +630,17 @@ ps 공식 개발문서에 이미지 비트맵처리와 관련한 내용이 너�
 
 Glide 같은 경우 자체에 cache 동작을 제공한다.
 ```
-## 습득물 자세히보기 페이지 사진 여러 개 
+#### 습득물 자세히보기 페이지 사진 여러 개 
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/12aca6f8-dcef-49fa-87d5-476a52f74a84)
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/34354e1c-66eb-44a6-807c-6e3a594b266d)
+#### 사진이 한장일 때
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/3dda1c11-68c6-4c01-a44f-1035b3947042)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/53131e4b-2aae-4f8d-87f7-84cf6c376c12)
 ```
 Glide로 이미지를 불러올 때 ImageView로 한 개씩 가져오는 것이 가능했다.
 처음에 게시글 작성 페이지에서 Uri 타입이 담긴 imageList를 intent로 넘겨서 uri 리스트로 처리하려고 했는데 문제가 발생해서
 imageView를 여러 개 생성하고 0 부터 count(count는 최대 이미지 개수가 된다.)까지 반복문을 돌려서
 이미지를 경로명0, 경로명1 이렇게 받아오되 경로명에 해당하는 이미지가 없을 때 이미지뷰를 invisible 처리해서 이미지가 없는데
 공간을 차지하고 있는 문제를 해결했다. 또 이미지뷰를 linearlayout으로 Grid 형태로 4x4의 형태로 나오게끔 처리했다.
+사진 개수에 따라서 유동적으로 사진이 차지하고 있는 공간의 크기가 변한다.(수가 적으면 커지고 수가 많아지면 Grid형태)
 ```

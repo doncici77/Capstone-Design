@@ -612,3 +612,10 @@ GetBoardInsideActivity 즉 습득물 게시글 하나를 선택해서 자세히 
 
 ps 공식 개발문서에 이미지 비트맵처리와 관련한 내용이 너무 부족한 것 같다 .
 ```
+## 24.04.30
+#### 습득물 게시판 대표이미지
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/fd1fd8ee-c19a-45b4-81c5-21c40680a198)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/23f4ef3d-bd32-4ab7-9c06-140e72bffd1f)
+```
+제일 첫 번째로 선택한 이미지가 대표이미지로 나오도록 수정했다.
+```

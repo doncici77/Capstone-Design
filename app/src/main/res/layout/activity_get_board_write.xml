@@ -45,13 +45,13 @@
                     android:layout_height="match_parent" />
 
                 <Button
+                    android:id="@+id/imageUploadBtn"
                     android:padding="15dp"
                     android:layout_gravity="center"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:text="이미지 추가"
                     android:background="@color/mainColor"
-                    android:id="@+id/imageArea1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="30dp"/>

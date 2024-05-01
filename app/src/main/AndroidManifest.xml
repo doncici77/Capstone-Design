@@ -69,7 +69,7 @@
             android:name=".LostBoard.LostBoardEditActivity"
             android:exported="false" />
         <activity
-            android:name=".LostBoard.LostGetBoardInsideActivity"
+            android:name=".LostBoard.LostBoardInsideActivity"
             android:exported="false" />
         <activity
             android:name=".LostBoard.LostBoardWriteActivity"

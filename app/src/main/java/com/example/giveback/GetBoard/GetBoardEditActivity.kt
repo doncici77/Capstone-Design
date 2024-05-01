@@ -254,7 +254,7 @@ class GetBoardEditActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
@@ -278,7 +278,7 @@ class GetBoardEditActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.

@@ -644,3 +644,25 @@ imageView를 여러 개 생성하고 0 부터 count(count는 최대 이미지 �
 공간을 차지하고 있는 문제를 해결했다. 또 이미지뷰를 linearlayout으로 Grid 형태로 4x4의 형태로 나오게끔 처리했다.
 사진 개수에 따라서 유동적으로 사진이 차지하고 있는 공간의 크기가 변한다.(수가 적으면 커지고 수가 많아지면 Grid형태)
 ```
+## 24.05.01
+#### 분실물 작성 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/277be702-40f0-4eab-9d32-126059b7782d)
+```
+분실물 작성 페이지를 구현하였습니다. 습득물 작성 페이지의 코드에서 보관위치와 상세보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 게시판 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/01d5bdba-611c-4fe0-8b19-270ca992d1c8)
+```
+분실물 게시판 페이지를 구현하였습니다. 습득물 게시판 페이지의 코드에서 보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 상세보기 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/2a8fe45d-f20e-42b7-91ec-12798a3a0aac)
+```
+분실물 상세보기 페이지를 구현하였습니다. 습득물 게시판 페이지의 코드에서 보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 수정 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/8a3c5a23-3899-45b7-99c4-6d3bb121bd15)
+```
+분실물 수정 페이지를 구현하였습니다. 수정과 삭제기능을 포함합니다.
+습득물 수정 페이지의 코드에서 보관위치 수정란을 삭제하고 재사용하였습니다.
+```

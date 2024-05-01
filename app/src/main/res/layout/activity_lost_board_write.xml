@@ -132,7 +132,7 @@
                             android:layout_width="300dp"
                             android:layout_height="60dp"
                             android:spinnerMode="dropdown"
-                            android:hint="습득위치를 선택해주세요"/>
+                            android:hint="분실위치를 선택해주세요"/>
 
                         <EditText
 
@@ -141,7 +141,7 @@
                             android:background="@android:color/transparent"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
-                            android:hint="상세 습득위치를 입력해주세요"/>
+                            android:hint="상세 분실위치를 입력해주세요"/>
 
                     </LinearLayout>
 

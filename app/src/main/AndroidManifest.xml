@@ -48,6 +48,12 @@
             android:name=".MyBoard.MyBoardActivity"
             android:exported="false" />
         <activity
+            android:name=".searchLost.SearchedLostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchLost.SearchLostActivity"
+            android:exported="false" />
+        <activity
             android:name=".searchGet.SearchedGetActivity"
             android:exported="false" />
         <activity

@@ -10,7 +10,7 @@ import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.MainActivity
 import com.example.giveback.R
-import com.example.giveback.databinding.ActivitySearchedBinding
+import com.example.giveback.databinding.ActivitySearchedGetBinding
 import com.example.giveback.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,7 +28,7 @@ class SearchedGetActivity : AppCompatActivity() {
 
     private lateinit var boardRVAdapter: GetBoardListLVAdapter
 
-    private lateinit var binding: ActivitySearchedBinding
+    private lateinit var binding: ActivitySearchedGetBinding
 
     private lateinit var searchCategory: String
 
@@ -38,9 +38,9 @@ class SearchedGetActivity : AppCompatActivity() {
     private lateinit var endDate: Date
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_searched)
+        setContentView(R.layout.activity_searched_get)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_searched)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_searched_get)
 
         // BoardListLVAdpater와 연결
         boardRVAdapter = GetBoardListLVAdapter(boardDataList, boardKeyList)

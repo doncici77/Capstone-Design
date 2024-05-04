@@ -594,6 +594,7 @@ count를 lateinit var 키워드를 사용하여 전역변수로 뺀다음 count�
 파일명 + count 의 형태로 할 수 있을 것 같다.
 ```
 #### 여러 장 업로드 로직 구현
+[안드로이드 파이어베이스 스토리지 공식 문서](https://firebase.google.com/docs/storage/android/upload-files?hl=ko)     
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/db1ee53b-e314-48d9-b948-0674e421b511)
 ![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/aff64fcd-5bfa-44fa-b140-ee418c2c2fcb)
 #### 파이어베이스 스토어에 업로드 된 이미지 2장

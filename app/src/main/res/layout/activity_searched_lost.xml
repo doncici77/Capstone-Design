@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".searchLost.SearchedLostActivity">
+<layout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".searchLost.SearchedLostActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -28,9 +31,9 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="100dp"
                     android:layout_marginRight="20dp"
-                    android:text="분실물 홈으로 되돌아가기"
+                    android:text="홈으로 되돌아가기"
                     android:textStyle="bold"
                     android:textSize="30dp"
                     android:textColor="@color/black"
@@ -46,15 +49,15 @@
 
             </LinearLayout>
 
-        <ListView
-            android:layout_marginTop="30dp"
-            android:id="@+id/boardListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="215dp" />
+            <ListView
+                android:id="@+id/boardListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="215dp" />
 
-
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
 </layout>

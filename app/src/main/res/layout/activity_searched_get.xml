@@ -28,14 +28,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="습득물 홈으로 되돌아가기"
-                android:textStyle="bold"
-                android:textSize="30dp"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="20dp"
+                android:text="홈으로 되돌아가기"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:src="@drawable/back"

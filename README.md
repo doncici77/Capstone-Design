@@ -685,3 +685,15 @@ imageView를 여러 개 생성하고 0 부터 count(count는 최대 이미지 �
 
 ps 코드와 기능을 다시 보면서 문제를 정의하고 생각해봐야겠다.
 ```
+## Glide Preload 로딩 이슈 해결
+[이미지 로딩 개선안](https://medium.com/@wodbs135/%EC%B4%88%EA%B8%89-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0%EA%B8%B0-da3610509231)
+[Glide 관련 메서드](https://zibro.tistory.com/18)
+#### Glide Preload 적용 전 .Gif
+![123-ezgif com-video-to-gif-converter](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f3a423e5-231a-4050-9c8d-a3c3c43134e7)
+#### Glide Preload 적용 후 .Gif
+![ezgif com-video-to-gif-converter](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/814d3944-3108-49f9-b41f-bf39d592c133)
+```
+Glide의 override(이미지 리사이징)과 캐싱 메서드(skipMemoryCache, diskCacheStragtegy)를 사용하여 이미지를 서버에서 가져올 때 발생하는
+로딩 지연의 문제를 해결(최적화)하였습니다.
+추가로 로딩 중 이미지를 추가하였습니다. 에러 시에도 로딩 중 이미지가 나타납니다.
+```

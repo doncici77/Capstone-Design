@@ -685,7 +685,8 @@ imageView를 여러 개 생성하고 0 부터 count(count는 최대 이미지 �
 
 ps 코드와 기능을 다시 보면서 문제를 정의하고 생각해봐야겠다.
 ```
-## Glide Preload 로딩 이슈 해결
+## 24.05.05
+#### Glide Preload 로딩 이슈 해결
 [이미지 로딩 개선안](https://medium.com/@wodbs135/%EC%B4%88%EA%B8%89-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0%EA%B8%B0-da3610509231)
 [Glide 관련 메서드](https://zibro.tistory.com/18)
 #### Glide 이미지 최적화 전 .Gif

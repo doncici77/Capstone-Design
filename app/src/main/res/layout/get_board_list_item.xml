@@ -34,8 +34,8 @@
         <ImageView
             android:id="@+id/imageArea"
             android:layout_width="131dp"
-            android:layout_height="131dp"
-            android:src="@drawable/btnwrite"></ImageView>
+            android:layout_height="131dp">
+        </ImageView>
 
         <LinearLayout
             android:layout_width="match_parent"

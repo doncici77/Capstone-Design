@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".searchLost.SearchLostActivity"
+        android:background="@color/white">
+
+        <TextView
+            android:background="@color/mainColor"
+            android:text="분실물 상세 검색"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginBottom="30dp">
+        </TextView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="카테고리명"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <Button
+                    android:textSize="20dp"
+                    android:id="@+id/getCategoryArea"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="카테고리를 설정해주세요"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <TextView
+                    android:text="분실일자"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <Button
+                    android:textSize="20dp"
+                    android:id="@+id/lostStartDate"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="시작일자를 선택해주세요"/>
+
+                <ImageView
+                    android:src="@drawable/arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+                </ImageView>
+
+                <Button
+                    android:id="@+id/lostEndDate"
+                    android:textSize="20dp"
+                    android:layout_margin="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="종료일자를 선택해주세요"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/searchBtn"
+                    android:layout_margin="50dp"
+                    android:layout_gravity="center"
+                    android:text="검색하기"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:background="@drawable/background_radius_yellow"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content">
+                </Button>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

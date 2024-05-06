@@ -39,57 +39,22 @@
                     android:background="#000000">
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageArea1"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/imageUploadBtn"
+                    android:padding="15dp"
+                    android:layout_gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:text="이미지 추가"
+                    android:background="@color/mainColor"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/plusbtn" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imageArea2"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea3"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea4"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                    <ImageView
-                        android:id="@+id/imageArea5"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/plusbtn" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/uidArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="20dp"
-                    android:background="@android:color/transparent" />
+                    android:layout_margin="30dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

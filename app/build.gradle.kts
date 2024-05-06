@@ -89,7 +89,7 @@ dependencies {
 
     // 파이어베이스 인증을 사용하기 위함
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
-    
+
     // 파이어베이스 실시간 데이터베이스를 사용하기 위함
     implementation("com.google.firebase:firebase-database-ktx")
 

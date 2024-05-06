@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -18,9 +19,12 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.giveback.GalleryAdapter
+import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityGetBoardWriteBinding
@@ -37,6 +41,8 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityGetBoardWriteBinding
 
+    private val TAG = GetBoardWriteActivity::class.java.simpleName
+
     private var isImageUpload = false
 
     val user = FirebaseAuth.getInstance().currentUser
@@ -46,11 +52,26 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
     private lateinit var category: String
 
+    private lateinit var count: Number
+
+
+    lateinit var galleryAdapter: GalleryAdapter
+
+    var imageList: ArrayList<Uri> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_get_board_write)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_get_board_write)
+
+        //adapter 초기화
+        galleryAdapter = GalleryAdapter(imageList, this)
+
+        //recyclerView 설정
+        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerView.adapter = galleryAdapter
+
 
         // 카테고리를 선택해주세요 버튼을 눌렀을 때 카테고리 설정 창으로 이동한다.
         binding.getCategoryArea.setOnClickListener {
@@ -217,7 +238,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
@@ -241,7 +262,7 @@ class GetBoardWriteActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
@@ -320,51 +341,39 @@ class GetBoardWriteActivity : AppCompatActivity() {
 
                     Toast.makeText(this,"게시글 입력 완료", Toast.LENGTH_SHORT).show()
 
-                    val imageKeys = listOf("${key}1", "${key}2", "${key}3", "${key}4", "${key}5")
-                    imageKeys.forEach { key ->
-                        showImageUploadDialog()
-                        if(isImageUpload) {
-                            imageUpload(key)
-                        }
+                    // 선택된 이미지 수만큼 업로드하도록 수정
+                    for (i in 0 until imageList.count()) {
+                        imageUpload(key, imageList.get(i), i)
                     }
 
-                    finish()
+                    // 작성이 끝나면 MainActivity로 이동한다.
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 }
                 .setNegativeButton("취소", null)
                 .create()
             alertDialog.show()
         }
 
-        // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
-        binding.imageArea1.setOnClickListener {
+        // 이미지 업로드 버튼을 클릭했을 때 이미지를 업로드한다.
+        binding.imageUploadBtn.setOnClickListener {
             showImageUploadDialog()
         }
-
-        // 이미지 영역을 클릭했을 때 이미지를 업로드한다.
-        binding.imageArea2.setOnClickListener {
-            showImageUploadDialog()
-        }
-
     }
 
     // 이미지를 업로드하는 함수
-    private fun imageUpload(key: String) {
+    private fun imageUpload(key:String, uri:Uri, count: Int) {
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child("$key.png")
+        val mountainsRef = storageRef.child("${key}${count}.png")
 
 
         // 이미지 업로드
-        val imageView = binding.imageArea1
+        val imageView = findViewById<ImageView>(R.id.galleryView)
         imageView.isDrawingCacheEnabled = true
         imageView.buildDrawingCache()
 
-        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
-        val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
-
-        val uploadTask = mountainsRef.putBytes(data)
+        val uploadTask = mountainsRef.putFile(uri)
 
         uploadTask.addOnFailureListener {
             // 업로드 실패 처리
@@ -404,6 +413,9 @@ class GetBoardWriteActivity : AppCompatActivity() {
         val galleryButton = dialog.findViewById<Button>(R.id.galleryButton)
         galleryButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+
+            // 사진 멀티 선택 가능
+            gallery.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             startActivityForResult(gallery, 100)
             isImageUpload = true
             dialog.dismiss()
@@ -428,10 +440,31 @@ class GetBoardWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
-            binding.imageArea1.setImageURI(data?.data)
+
+            //멀티 선택은 clipData
+            if(data!!.clipData != null){ //멀티 이미지
+
+                //선택한 이미지 갯수
+                count = data!!.clipData!!.itemCount
+
+                for(index in 0 until count as Int){
+                    //이미지 담기
+                    val imageUri = data!!.clipData!!.getItemAt(index).uri
+                    //이미지 추가
+                    imageList.add(imageUri)
+                }
+
+                Log.d(TAG, "현재 선택한 사진 수 : ${count.toString()}")
+
+            }else{ //싱글 이미지
+                val imageUri = data!!.data
+                imageList.add(imageUri!!)
+            }
+            galleryAdapter.notifyDataSetChanged()
+
         } else if(resultCode == RESULT_OK && requestCode == 200) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.imageArea1.setImageBitmap(imageBitmap)
+            findViewById<ImageView>(R.id.galleryView).setImageBitmap(imageBitmap)
         }
     }
 

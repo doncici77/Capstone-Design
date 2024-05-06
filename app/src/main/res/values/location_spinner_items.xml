@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="getlocation_array">
+    <string-array name="location_array">
         <item>W1 정문</item>
         <item>W2 보건복지대학 3호관</item>
         <item>W3 대학본부</item>

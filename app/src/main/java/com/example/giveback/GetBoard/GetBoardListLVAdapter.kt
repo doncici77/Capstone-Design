@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.giveback.R
 import com.example.giveback.utils.FBAuth
 import com.google.android.gms.tasks.OnCompleteListener
@@ -42,16 +43,26 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
 
         val imageViewFromFB = view?.findViewById<ImageView>(R.id.imageArea)
 
-        val storageReference = Firebase.storage.reference.child("${boardKeyList[position]}1.png")
+        val storageReference = Firebase.storage.reference.child("${boardKeyList[position]}0.png")
 
         storageReference.downloadUrl.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUrl = task.result
+
                 if (imageViewFromFB != null) {
+
                     Glide.with(view)
                         .load(downloadUrl)
+                        .override(300, 200) // 이미지 사이즈
+                        .skipMemoryCache(false) // 메모리에 캐싱하려면 false
+                        .diskCacheStrategy(DiskCacheStrategy.ALL) // 모든 이미지를 캐싱(기본값)
+                        .thumbnail(
+                            Glide.with(view).load(R.drawable.loading) // loading은 GIF 파일
+                        ) // Glide로 이미지 로딩을 시작하기 전에 보여줄 이미지
+                        .error(R.drawable.loading) //리소스를 불러오다가 에러 발생 시 보여줄 이미지
                         .into(imageViewFromFB)
                 }
+
             } else {
                 imageViewFromFB?.isVisible = false
             }
@@ -68,8 +79,8 @@ class GetBoardListLVAdapter(val boardList : MutableList<GetBoardModel>, val boar
         }
 
         title!!.text = "습득명: ${boardList[position].title}"
-        getLocation!!.text = "습득장소: ${boardList[position].getLocation} ${boardList[position].getdetailLocation}"
-        keepLocation!!.text = "보관장소: ${boardList[position].keepLocation} ${boardList[position].keepdetailLocation}"
+        getLocation!!.text = "습득위치: ${boardList[position].getLocation} ${boardList[position].getdetailLocation}"
+        keepLocation!!.text = "보관위치: ${boardList[position].keepLocation} ${boardList[position].keepdetailLocation}"
         getDate!!.text = boardList[position].getDate
 
         return view!!

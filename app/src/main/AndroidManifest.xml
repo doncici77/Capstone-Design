@@ -29,8 +29,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Chatting.ChatActivity"
+            android:name=".Chatting.ChatListActivity"
             android:exported="false" />
+        <activity
+            android:name=".Chatting.ChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Keyword.KeywordWriteActivity"
             android:exported="false" />
@@ -42,6 +46,12 @@
             android:exported="false" />
         <activity
             android:name=".MyBoard.MyBoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchLost.SearchedLostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchLost.SearchLostActivity"
             android:exported="false" />
         <activity
             android:name=".searchGet.SearchedGetActivity"
@@ -65,7 +75,7 @@
             android:name=".LostBoard.LostBoardEditActivity"
             android:exported="false" />
         <activity
-            android:name=".LostBoard.LostGetBoardInsideActivity"
+            android:name=".LostBoard.LostBoardInsideActivity"
             android:exported="false" />
         <activity
             android:name=".LostBoard.LostBoardWriteActivity"

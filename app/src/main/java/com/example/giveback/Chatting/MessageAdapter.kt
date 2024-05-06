@@ -33,9 +33,12 @@ class MessageAdapter(private val context: android.content.Context, private val m
         if(holder.javaClass == SendViewHolder::class.java){
             val viewHolder = holder as SendViewHolder
             viewHolder.sendMessage.text = currentMessage.message
+            viewHolder.sendTime.text = currentMessage.time
         }else{//받는 데이터
             val viewHolder = holder as ReceiveViewHolder
             viewHolder.receiveMessage.text = currentMessage.message
+            viewHolder.sender.text = currentMessage.sendEmail
+            viewHolder.sendTime.text = currentMessage.time
         }
     }
 
@@ -58,10 +61,13 @@ class MessageAdapter(private val context: android.content.Context, private val m
     //보낸 쪽
     class SendViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val sendMessage: TextView = itemView.findViewById(R.id.send_message_text)
+        val sendTime: TextView = itemView.findViewById(R.id.send_time)
     }
 
     //받는 쪽
     class ReceiveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val receiveMessage: TextView = itemView.findViewById(R.id.receive_message_text)
+        val sender: TextView = itemView.findViewById(R.id.sender)
+        val sendTime: TextView = itemView.findViewById(R.id.receive_time)
     }
 }

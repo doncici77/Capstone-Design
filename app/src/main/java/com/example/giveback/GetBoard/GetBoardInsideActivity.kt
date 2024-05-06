@@ -2,16 +2,20 @@ package com.example.giveback.GetBoard
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.giveback.Chatting.ChatActivity
+import com.example.giveback.GalleryAdapter
 import com.example.giveback.R
 import com.example.giveback.comment.CommentLVAdpater
 import com.example.giveback.comment.CommentModel
@@ -38,6 +42,9 @@ class GetBoardInsideActivity : AppCompatActivity() {
     private lateinit var writerEmail: String
     private lateinit var writerUid: String
 
+    // 이미지 최대 개수
+    var count = 5
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,9 +55,9 @@ class GetBoardInsideActivity : AppCompatActivity() {
             showDialog()
         }
 
+
         key = intent.getStringExtra("key").toString()
         getBoardData(key)
-        getImageData(key)
 
         binding.manageNumber.text = "관리번호 : ${key}"
 
@@ -64,6 +71,8 @@ class GetBoardInsideActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        getImageData(key, count)
     }
 
     // 만든 custom_dialog를 띄우는 showDialog() 함수 생성
@@ -102,20 +111,29 @@ class GetBoardInsideActivity : AppCompatActivity() {
         }
     }
     // 이미지 데이터를 받아오는 함수
-    private fun getImageData(key: String) {
-        val storageReference = Firebase.storage.reference.child("${key}1.png")
+    private fun getImageData(key: String, count: Int) {
 
-        val imageViewFromFB = binding.getImageArea
+        // 사진을 차례대로 받아서 이미지뷰0~5번에 뿌림
+        for (i in 0 until count) {
 
-        storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Glide.with(this)
-                    .load(task.result)
-                    .into(imageViewFromFB)
-            } else {
-                binding.getImageArea.isVisible = false
-            }
-        })
+            val storageReference = Firebase.storage.reference.child("${key}${i}.png")
+
+            val imageViewFromFB = findViewById<ImageView>(resources.getIdentifier("getImageArea$i", "id", packageName))
+
+            storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val downloadUrl = task.result
+                    if (imageViewFromFB != null) {
+                        Glide.with(this)
+                            .load(downloadUrl)
+                            .into(imageViewFromFB)
+                    }
+                } else {
+                    imageViewFromFB?.isVisible = false
+                }
+            })
+
+        }
     }
 
     // 게시글을 가져오는 함수

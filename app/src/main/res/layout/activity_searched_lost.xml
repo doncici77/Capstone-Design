@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".searchLost.SearchedLostActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/mainColor"
+                android:gravity="center"
+                android:text="검색된 분실물 게시글 정보"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:background="#1111"
+                android:id="@+id/backGetFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginRight="20dp"
+                    android:text="홈으로 되돌아가기"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp">
+                </ImageView>
+
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/boardListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="215dp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

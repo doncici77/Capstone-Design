@@ -1,7 +1,5 @@
 package com.example.giveback.GetBoard
 
-import android.widget.ImageView
-
 // 습득물 게시글의 데이터 구조를 정의
 data class GetBoardModel (
     val uid: String  = "", // 습득자

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.giveback.GetBoard.GetBoardEditActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.FragmentGetBinding
 import com.google.firebase.database.DataSnapshot
@@ -20,6 +21,8 @@ import com.example.giveback.GetBoard.GetBoardListLVAdapter
 import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.searchGet.SearchGetActivity
 import com.example.giveback.utils.FBRef
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 // 습득물 페이지
 class GetFragment : Fragment() {
@@ -30,6 +33,8 @@ class GetFragment : Fragment() {
     private val boardKeyList = mutableListOf<String>()
 
     private lateinit var boardRVAdapter: GetBoardListLVAdapter
+
+    private val TAG = GetFragment::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,8 +109,26 @@ class GetFragment : Fragment() {
 
                     val item = dataModel.getValue(GetBoardModel::class.java)
 
-                    boardDataList.add(item!!)
-                    boardKeyList.add(dataModel.key.toString())
+                    val inputDate = item?.getDate
+
+                    val inputFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+                    val outputFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+
+                    val date = inputFormat.parse(inputDate)
+
+                    val calendar = Calendar.getInstance()
+                    calendar.time = date
+                    calendar.add(Calendar.MONTH, 1)
+
+                    val outputDate = outputFormat.format(calendar.time)
+
+                    Log.d(TAG, outputDate)
+
+                    // 1달 전 데이터들만 추가한다.
+                    if(item?.getDate!! != outputDate) {
+                        boardDataList.add(item!!)
+                        boardKeyList.add(dataModel.key.toString())
+                    }
                 }
 
                 boardKeyList.reverse()

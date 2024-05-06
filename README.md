@@ -547,3 +547,167 @@ ps 데이터베이스 경로명을 uid 말고 email로 하려고 했으나 파�
 전체 사용자리스트를 서랍뷰에 넣고 습득자의 이메일을 습득자 게시글에서 알 수 있으니까 그거를 전체 사용자리스트에서 검색한 후
 해당하는 사용자를 누르면 채팅을 시작할 수 있게끔은 구현 가능
 ```
+## 24.04.23
+```
+현재 알림 기능을 포그라운드와 백그라운드에서 작동하도록 개발하였다.
+포그라운드에서 특정 액티비티에 진입 시 코드 상에서 백그라운드로 코드를 돌리게 끔 짰다.
+알림이 중첩되지만 전에 있던 데이터에 대한 알림도 발생하는 것을 수정하려고 한다.(intent. ONE SHOT)
+
+또한 현재 에뮬레이터에서는 백그라운드에서 알림이 잘 작동하지만 실제 기기에서는 백그라운드 메모리 관리 시스템에 따라
+필수적이거나 필요하다고 생각되는 앱의 메모리 사용을 제외하고 적은 량의 메모리를 할당하고 있어 강제로 앱을 종료시키는 문제가
+발생하는 데 이를 강제적으로 백그라운드 상태에 계속 있게 하거나 메모리 최적화하는 코드를 적용하여 해결해야 할 것 같다. 
+```
+```
+서버에서 데이터를 가져오거나 할 때 걸리는 시간 차로 인하여 기본 이미지가 1~2초간 보여지는 현상이 있다.
+데이터 수정 역시도 바로 수정되지 않고 새로고침하거나 시간 차를 두어야 하는데 이를 해결하기 위한 작업을 이번주에는 할 것 같다.
+```
+## 24.04.28
+```
+습득물 코드를 재사용해서 분실물 게시판을 완성할 예정
+Firebase Cloud Messaging 클라우드 서비스를 학습해서 적용해 볼 예정 ->메모리관리에 대한 불편함을 클라우드로 이관
+```
+## 24.04.29
+#### 이미지 업로드 버튼 수정
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/9fc44794-fd80-48b7-846f-cf0fa1481245)
+```
+이미지 추가 버튼을 생성하고 버튼을 누르면 갤러리or카메라로 선택할 수 있는 다이얼로그가 나오도록 변경하였다.
+```
+#### 업로드 이미지 RecyclerView
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/e56f77aa-81f8-4a3d-a807-53914ff716cc)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/ca09f4a0-7bfe-4c33-b2b9-f9aac626ab1f)
+
+```
+갤러리에서 이미지를 여러 장 선택할 수 있도록 수정하였다.
+선택되어진 이미지들은 Grid 뷰의 형태로 업로드된다.
+
+ps 현재 파이어베이스 스토어에는 업로드 되지 않는다. 코드를 수정할 예정이다.
+```
+#### 사진 여러 장 업로드 개발의 방향성
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f1157106-0dd5-4bf0-aed5-7deb5f2303f6)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/c7549be0-c26a-43af-8a13-1b1d494d7114)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a5fffadd-df0b-42c1-9786-86c04eee26bb)
+```
+선택한 사진의 수를 clipData의 getItemCount를 사용해서 count에 저장한 다음
+갤러리에서 사진 2장을 선택하고 count  Value에 대한 로그를 찍었을 때 선택한 사진의 수만큼 count가 되는 것을 알 수 있다.
+
+count를 lateinit var 키워드를 사용하여 전역변수로 뺀다음 count를 사용해서 upload함수에 매개변수로 넣는다면
+파일명 + count 의 형태로 할 수 있을 것 같다.
+```
+#### 여러 장 업로드 로직 구현
+[안드로이드 파이어베이스 스토리지 공식 문서](https://firebase.google.com/docs/storage/android/upload-files?hl=ko)     
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/db1ee53b-e314-48d9-b948-0674e421b511)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/aff64fcd-5bfa-44fa-b140-ee418c2c2fcb)
+#### 파이어베이스 스토어에 업로드 된 이미지 2장
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/6c60e5d0-1ac8-49b6-af75-2fa4137ce363)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/7f86845f-95dc-43f5-ac1f-05a389e7dde8)
+```
+이미지 업로드 하는 함수를 선택한 이미지 수만큼 반복해서 실행하도록 로직을 수정했다.
+
+count는 0부터 시작한다. 첫 번째 선택한 이미지 -> 0번으로 해서
+key0, key1 이렇게 이름을 붙여서 업로드하도록 코드를 짰다.
+
+선택한 이미지가 파이어베이스 스토어에 정상적으로 업로드 되는 것을 확인했고
+GetBoardActivity 즉 습득물 게시판에서는 대표 이미지인 0번 이미지 한장만 업로드 되고
+GetBoardInsideActivity 즉 습득물 게시글 하나를 선택해서 자세히 보기를 했을 때는 업로드한 이미지를 모두 볼 수 있도록
+수정할 예정이다.
+
+ps 공식 개발문서에 이미지 비트맵처리와 관련한 내용이 너무 부족한 것 같다 .
+```
+## 24.04.30
+#### 습득물 게시판 대표이미지
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/fd1fd8ee-c19a-45b4-81c5-21c40680a198)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/23f4ef3d-bd32-4ab7-9c06-140e72bffd1f)
+```
+제일 첫 번째로 선택한 이미지가 대표이미지로 나오도록 수정했다.
+```
+#### 이미지 로딩 딜레이 문제
+
+```
+이미지 로딩 딜레이를 줄여보기Permalink
+현실적으로 이미지 같은 경우에는 서버로 부터 다운받은 시간 자체를 줄이기는 어렵다.
+가장 이상적인 방법으로는 썸네일용 저용량 이미지 파일을 서버에서 제공하는 것도 있지만 서버에서 제공하지 않는다면 결국 client, 즉 APP에서 문제를 해결해야 한다.
+따라서 이미지를 다운받는 속도를 줄일수 없다면 그 다음 방법으로는 보여질 이미지를 미리 다운 받아서 app에 저장하는 것이다.
+즉 cache를 이용하는 것이다. cache 자체는 직접 구현할수도 있지만 더 좋은 것은 라이브러리를 사용하는 것이다.
+
+Glide 같은 경우 자체에 cache 동작을 제공한다.
+```
+#### 습득물 자세히보기 페이지 사진 여러 개 
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/12aca6f8-dcef-49fa-87d5-476a52f74a84)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/34354e1c-66eb-44a6-807c-6e3a594b266d)
+#### 사진이 한장일 때
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/3dda1c11-68c6-4c01-a44f-1035b3947042)
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/53131e4b-2aae-4f8d-87f7-84cf6c376c12)
+```
+Glide로 이미지를 불러올 때 ImageView로 한 개씩 가져오는 것이 가능했다.
+처음에 게시글 작성 페이지에서 Uri 타입이 담긴 imageList를 intent로 넘겨서 uri 리스트로 처리하려고 했는데 문제가 발생해서
+imageView를 여러 개 생성하고 0 부터 count(count는 최대 이미지 개수가 된다.)까지 반복문을 돌려서
+이미지를 경로명0, 경로명1 이렇게 받아오되 경로명에 해당하는 이미지가 없을 때 이미지뷰를 invisible 처리해서 이미지가 없는데
+공간을 차지하고 있는 문제를 해결했다. 또 이미지뷰를 linearlayout으로 Grid 형태로 4x4의 형태로 나오게끔 처리했다.
+사진 개수에 따라서 유동적으로 사진이 차지하고 있는 공간의 크기가 변한다.(수가 적으면 커지고 수가 많아지면 Grid형태)
+```
+## 24.05.01
+#### 분실물 작성 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/277be702-40f0-4eab-9d32-126059b7782d)
+```
+분실물 작성 페이지를 구현하였습니다. 습득물 작성 페이지의 코드에서 보관위치와 상세보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 게시판 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/01d5bdba-611c-4fe0-8b19-270ca992d1c8)
+```
+분실물 게시판 페이지를 구현하였습니다. 습득물 게시판 페이지의 코드에서 보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 상세보기 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/2a8fe45d-f20e-42b7-91ec-12798a3a0aac)
+```
+분실물 상세보기 페이지를 구현하였습니다. 습득물 게시판 페이지의 코드에서 보관위치 란을 삭제하고 재사용하였습니다.
+```
+#### 분실물 수정 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/8a3c5a23-3899-45b7-99c4-6d3bb121bd15)
+```
+분실물 수정 페이지를 구현하였습니다. 수정과 삭제기능을 포함합니다.
+습득물 수정 페이지의 코드에서 보관위치 수정란을 삭제하고 재사용하였습니다.
+```
+## 24.05.02 
+#### 분실물 검색 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/cb76c5a2-f438-446e-91ef-afe997445b17)
+```
+분실물 검색 페이지를 구현하였습니다. 습득물 검색 페이지의 코드를 재사용하였습니다.
+```
+#### 분실물 검색된 페이지 구현
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/15966886-3c72-4760-9f99-b8cce54c11be)
+```
+분실물 검색된 페이지를 구현하였습니다. 습득물 검색 페이지의 코드를 재사용하였습니다.
+```
+## 24.05.03
+#### 한 달뒤 자동으로 삭제되는 기능 구현 
+```
+한 달뒤에 자동으로 삭제되는 기눙을 구현한다.
+
+ps 코드와 기능을 다시 보면서 문제를 정의하고 생각해봐야겠다.
+```
+## 24.05.05
+#### Glide Preload 로딩 이슈 해결
+[이미지 로딩 개선안](https://medium.com/@wodbs135/%EC%B4%88%EA%B8%89-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0%EA%B8%B0-da3610509231)
+[Glide 관련 메서드](https://zibro.tistory.com/18)
+#### Glide 이미지 최적화 전 .Gif
+![123-ezgif com-video-to-gif-converter](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/f3a423e5-231a-4050-9c8d-a3c3c43134e7)
+#### Glide 이미지 최적화 후 .Gif
+![ezgif com-video-to-gif-converter](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/814d3944-3108-49f9-b41f-bf39d592c133)
+```
+Glide의 override(이미지 리사이징)과 캐싱 메서드(skipMemoryCache, diskCacheStragtegy)를 사용하여 이미지를 서버에서 가져올 때 발생하는
+로딩 지연의 문제를 해결(최적화)하였습니다.
+추가로 로딩 중 이미지를 추가하였습니다. 에러 시에도 로딩 중 이미지가 나타납니다.
+```
+## 24.05.06
+#### 리스트 뷰 UI 개선
+![image](https://github.com/chihyeonwon/Capstone-Design/assets/58906858/a52cc52c-d58a-4683-8a91-67774a8c086f)
+```
+기존 컨텐츠 크기에 따라 변하던 리스트 뷰의 높이 크기가 고정되도록 수정하였습니다.
+리스트 뷰의 높이를 통일 -> (Text(습득명,습득장소)자식요소가 일정 크기를 넘어가면 짤리게 둔다.)
+```
+## 24.05.06 
+#### 게시글 url 공유 기능
+```
+사용자 편의성-> 하지만 공유 기능을 사용하려면 앱을 들어가야하지 않나? <- 기업의 입장에서는 앱 사용자를 유치하기 위해서는
+공유기능을 넣는것이 좋아보임
+```

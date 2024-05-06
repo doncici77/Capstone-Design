@@ -254,7 +254,7 @@ class GetBoardEditActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
@@ -278,7 +278,7 @@ class GetBoardEditActivity : AppCompatActivity() {
             this,
 
             // 설정한 string-array 태그의 name 입니다.
-            R.array.getlocation_array,
+            R.array.location_array,
 
             // android.R.layout.simple_spinner_dropdown_item 은 android 에서 기본 제공
             // 되는 layout 입니다. 이 부분은 "선택된 item" 부분의 layout을 결정합니다.
@@ -320,7 +320,7 @@ class GetBoardEditActivity : AppCompatActivity() {
     private fun imageUpload(key: String) {
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child("$key.png")
+        val mountainsRef = storageRef.child("${key}1.png")
 
 
         // 이미지 업로드
@@ -377,7 +377,7 @@ class GetBoardEditActivity : AppCompatActivity() {
 
     // 이미지데이터를 불러오는 함수
     private fun getImageData(key: String) {
-        val storageReference = Firebase.storage.reference.child(key + ".png")
+        val storageReference = Firebase.storage.reference.child("${key}1.png")
 
         val imageViewFromFB = binding.imageArea
 

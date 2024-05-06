@@ -13,13 +13,20 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- 액션바 텍스트 색상 -->
+        <item name="toolbarStyle">@style/CustomToolBar</item>
+
     </style>
 
     <style name="AuthEditText" parent="android:Widget.EditText">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="CustomToolBar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="titleTextColor">@color/white</item>
     </style>
 
 </resources>

@@ -9,10 +9,16 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.giveback.R
+import com.example.giveback.WebviewActivity
 import com.example.giveback.databinding.ActivityChatBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -23,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ChatActivity : AppCompatActivity() {
 
@@ -50,14 +58,21 @@ class ChatActivity : AppCompatActivity() {
 
         //RecyclerView
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
+
         binding.chatRecyclerView.adapter = messageAdapter
 
         // GetBoardInsideActivity에서 넘어온 데이터를 변수에 담기
         receiverEmail = intent.getStringExtra("email").toString()
         receiverUid = intent.getStringExtra("uid").toString()
 
+        val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+
         //액션바에 상대방 이름 보여주기
-        binding.topBar.text = "습득자: ${receiverEmail}님과의 채팅방입니다."
+        getSupportActionBar()!!.setTitle("${receiverEmail}님과의 채팅")
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 활성화
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.backicon)
 
         // 파이어베이스 인증, 데이터베이스 초기화
         mAuth = FirebaseAuth.getInstance()
@@ -66,23 +81,26 @@ class ChatActivity : AppCompatActivity() {
         //접속자 uId
         val senderUid = mAuth.currentUser?.uid
 
+        val senderEmail = mAuth.currentUser?.email
+
         //보낸이방
         senderRoom = receiverUid + senderUid
 
         //받는이방
         receiverRoom = senderUid + receiverUid
 
-
-        createNotificationChannel()
-
-        getKeyword()
-
-
         //메시지 전송 버튼 이벤트
         binding.sendBtn.setOnClickListener {
 
+            //메세지 객체 생성
             val message = binding.messageEdit.text.toString()
-            val messageObject = Message(message, senderUid, receiverUid)
+
+            //메세지를 보낸 시간
+            val time = System.currentTimeMillis()
+            val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
+            val curTime = dateFormat.format(Date(time)).toString()
+
+            val messageObject = Message(message, senderUid, receiverUid, senderEmail, curTime)
 
             //데이터 저장
             mDbRef.child("chats").child(senderRoom).child("messages").push()
@@ -94,9 +112,28 @@ class ChatActivity : AppCompatActivity() {
                 }
             //입력값 초기화
             binding.messageEdit.setText("")
+            binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount)
+            messageAdapter.notifyDataSetChanged()
+
+            // 알림 발생
+            getKeyword()
         }
 
         getMessage()
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                // 여기에 설정 아이템을 눌렀을 때의 동작을 추가하세요.
+                return true
+            }
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return true
     }
 
     //메시지 가져오기
@@ -113,6 +150,7 @@ class ChatActivity : AppCompatActivity() {
                     }
                     //적용
                     messageAdapter.notifyDataSetChanged()
+                    binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount-1)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -130,7 +168,7 @@ class ChatActivity : AppCompatActivity() {
                 val post = snapshot.getValue(Message::class.java)
                 // 코루틴을 시작하여 백그라운드에서 실행
                 GlobalScope.launch {
-                    if (post?.receiveId?.toString().equals(mAuth.currentUser?.uid.toString())) {
+                    if (post?.sendId?.toString().equals(receiverUid.toString())) {
                         sendNotification()
                     }
                 }
@@ -158,20 +196,6 @@ class ChatActivity : AppCompatActivity() {
             .addChildEventListener(childEventListener)
     }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "TestChannel"
-            val descriptionText = "Your channel description here"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(name, name, importance).apply {
-                description = descriptionText
-            }
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private fun sendNotification() {
 
@@ -180,12 +204,13 @@ class ChatActivity : AppCompatActivity() {
             this@ChatActivity,
             (System.currentTimeMillis()).toInt(),
             intent,
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
         )
+        intent.putExtra("email","${receiverEmail}")
 
         val builder = NotificationCompat.Builder(this, "TestChannel")
             .setSmallIcon(R.drawable.notification_icon)
-            .setContentTitle("누군가가 채팅을 시작했습니다.")
+            .setContentTitle("${receiverEmail}가 채팅을 걸어왔습니다")
             .setContentText("앱을 실행하여 채팅을 시작하세요")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
@@ -196,4 +221,5 @@ class ChatActivity : AppCompatActivity() {
             notify((System.currentTimeMillis()).toInt(), builder.build())
         }
     }
+
 }

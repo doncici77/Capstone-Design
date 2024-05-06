@@ -13,13 +13,10 @@ import com.example.giveback.GetBoard.GetBoardModel
 import com.example.giveback.MainActivity
 import com.example.giveback.R
 import com.example.giveback.databinding.ActivityKeywordSearchedBinding
-import com.example.giveback.databinding.ActivitySearchedBinding
 import com.example.giveback.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import java.text.SimpleDateFormat
-import java.util.Date
 
 class KeywordSearchedActivity : AppCompatActivity() {
 

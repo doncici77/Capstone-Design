@@ -74,7 +74,7 @@ class LostBoardListLVAdapter(val boardList : MutableList<LostBoardModel>, val bo
         }
 
         title!!.text = "분실물명: ${boardList[position].title}"
-        LostLocation!!.text = "분실장소: ${boardList[position].lostLocation} ${boardList[position].lostdetailLocation}"
+        LostLocation!!.text = "분실위치: ${boardList[position].lostLocation} ${boardList[position].lostdetailLocation}"
         LostDate!!.text = boardList[position].lostDate
 
         return view!!

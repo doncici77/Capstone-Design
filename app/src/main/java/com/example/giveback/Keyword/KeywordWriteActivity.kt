@@ -5,11 +5,13 @@ import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
@@ -222,47 +224,25 @@ class KeywordWriteActivity : AppCompatActivity() {
     }
 
     private fun getKeyword() {
-        // ChildEventListener 등록
-        val childEventListener = object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                // 글이 추가되었을 때 처리하는 로직
-                val post = snapshot.getValue(GetBoardModel::class.java)
-                val post2 = snapshot.getValue(KeywordStatusModel::class.java)
-                // 코루틴을 시작하여 백그라운드에서 실행
-                GlobalScope.launch {
-                    if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())) {
-                        sendNotification()
-                    }
+        // ChildEventListener 대신 ValueEventListener 사용하여 데이터의 변화를 감지
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // 가장 최근에 추가된 글만 확인
+                val latestPost = dataSnapshot.children.lastOrNull()?.getValue(GetBoardModel::class.java)
+                if (latestPost?.category == category) {
+                    // 최신 게시글이 사용자가 설정한 키워드와 일치하는 경우 알림 발송
+                    sendNotification()
                 }
             }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                // 글이 변경되었을 때 처리하는 로직
-                val post = snapshot.getValue(GetBoardModel::class.java)
-                val post2 = snapshot.getValue(KeywordStatusModel::class.java)
-                // 코루틴을 시작하여 백그라운드에서 실행
-                GlobalScope.launch {
-                    if(post?.category.equals(findViewById<TextView>(R.id.keywordArea).text.toString())) {
-                        sendNotification()
-                    }
-                }
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                // 글이 삭제되었을 때 처리하는 로직
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                // 글의 순서가 변경되었을 때 처리하는 로직
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // 에러 처리
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 데이터베이스 오류 처리
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
 
-        // posts 경로에 ChildEventListener 등록
-        FBRef.getboardRef.addChildEventListener(childEventListener)
+        // DatabaseReference에 ValueEventListener 등록
+        FBRef.getboardRef.addValueEventListener(postListener)
     }
 
     private fun permissionCheck() {
